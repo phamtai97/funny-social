@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FollowButton from '../core/FollowButton';
+
 import './user-review.css';
 
 class UserReview extends Component {
@@ -10,6 +12,10 @@ class UserReview extends Component {
         }
 
         return res + "follow-text";
+    }
+
+    onClickFollow = () => {
+        alert("Hello");
     }
 
     render() {
@@ -29,9 +35,9 @@ class UserReview extends Component {
                         {name}
                     </div>
 
-                    <div className={this.getFollowBtnClassName(new Date().getTime() % 2)}>
-                    </div>
-
+                    <FollowButton className="follow-btn"
+                        onClick={this.onClickFollow}
+                    />
                 </div>
             </div>
         );

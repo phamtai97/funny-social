@@ -45,25 +45,3 @@
     text-align: center;
     color: white;
 }
-
-.user-review .wrapper .following-text:hover {
-    background-color: #ad0000;
-}
-
-.user-review .wrapper .follow-text::after {
-    content: 'Follow';
-    color: black;
-}
-
-.user-review .wrapper .following-text {
-    background-color: #1DA1F2;
-}
-
-.user-review .wrapper .following-text::after {
-    content: 'Following';
-}
-
-.user-review .wrapper .following-text:hover::after {
-    content: 'Unfollow';
-}
-
