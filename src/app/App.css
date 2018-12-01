@@ -1,6 +1,11 @@
 .App{
     width: 100vw;
-    height: 100vh;
+    height: auto;
     display: flex !important;
     flex-direction: column !important; 
+
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.2) !important;
 }

@@ -1,0 +1,134 @@
+.post-review {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.post-review:hover {
+    background-color: rgba(66, 122, 224, 0.1);
+}
+
+.post-review .avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.post-review .avatar .avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.post-review-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.post-review-wrapper .header {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.post-review-wrapper .header .name{
+    margin-right: 5px;
+}
+
+.post-review-wrapper .header .time{
+    margin-left: 5px;
+}
+
+
+.post-review-wrapper .content {
+    
+}
+
+.post-review-wrapper .footer {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-review-wrapper .footer .item {
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding-right: 5px;
+}
+
+.post-review-wrapper .footer .item:hover {
+    cursor: pointer;
+}
+
+.post-review-wrapper .footer .item .icon{
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.post-review-wrapper .footer .item .love {
+    background-image: url("../../images/love-icon.png");
+}
+
+.post-review-wrapper .footer .item .love:hover {
+    background-image: url("../../images/love-icon-hover.png");
+}
+
+.post-review-wrapper .footer .item .like {
+    background-image: url("../../images/like-icon.png");
+}
+
+.post-review-wrapper .footer .item .like:hover {
+    background-image: url("../../images/like-icon-hover.png");
+}
+
+.post-review-wrapper .footer .item .angry {
+    background-image: url("../../images/angry-icon.png");
+}
+
+
+.post-review-wrapper .footer .item .angry:hover {
+    background-image: url("../../images/angry-icon-hover.png");
+}
+
+.post-review-wrapper .footer .item .comment {
+    background-image: url("../../images/comment-icon.png");
+}
+
+.post-review-wrapper .footer .item .comment:hover {
+    background-image: url("../../images/comment-icon-blue.png");
+}
+
+.post-review-wrapper .footer .item .count{
+    margin-left: 5px;
+    width: 35px;
+    text-align: center;
+}
+
+.post-review-wrapper .footer .react {
+    background-image: url("../../images/comment-icon-blue.png");
+}
+
+.post-review-wrapper .footer .react:hover {
+    background-image: url("../../images/comment-icon.png");
+}
+
+.post-review-wrapper .footer .share {
+    background-image: url("../../images/share-icon.png");
+}
+
+.post-review-wrapper .footer .share:hover {
+    background-image: url("../../images/share-icon-blue.png");
+}
+
+
