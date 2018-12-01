@@ -3,16 +3,19 @@ import './header-main.css';
 import ItemHeader from './item-header-main';
 import { Input, Button, Avatar, Dropdown, Menu, Tooltip} from 'antd';
 import CollectionCreateFormUpdateProfile from './update-profile.js';
+import DetailPostComponent from '../detail-post';
 
 const Search = Input.Search;
 const profile_setting = <span>Profile and Setting</span>;
 
 
 const CollectionCreateForm = CollectionCreateFormUpdateProfile;
-    
+const DetailPost = DetailPostComponent;
+
 class HeaderPage extends Component{
     state = {
         visible: false,   
+        visibleDetailPost:false
     };
     
     //handle update profile
@@ -58,7 +61,8 @@ class HeaderPage extends Component{
 
     //handler write status
     handleClickFunnyBtn = () => {
-        alert("Funny");
+        // alert("Funny");
+        this.showModalDetailPost();
     }
 
     //handler clich on menu
@@ -74,6 +78,19 @@ class HeaderPage extends Component{
         }
     }
     
+    //handle click in detal post
+    handleCancelDetailPost = () => {
+        this.setState({ visibleDetailPost: false });
+    }
+
+    handleOkDetailPost = () => {
+        this.setState({ visibleDetailPost: false });        
+    }
+
+    showModalDetailPost = () => {
+        this.setState({ visibleDetailPost: true });
+    }
+
     render(){
         const menu = (
             <Menu onClick={this.handleMenuClick}>
@@ -100,6 +117,13 @@ class HeaderPage extends Component{
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
                 />
+
+                <DetailPost 
+                    visible={this.state.visibleDetailPost}
+                    onCancel={this.handleCancelDetailPost}
+                    onCreate={this.handleOkDetailPost}
+                >
+                </DetailPost>
 
                 <div className="header">
                     <div className="header-wrapper">
