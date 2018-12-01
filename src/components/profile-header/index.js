@@ -21,18 +21,22 @@ class ProfileHeader extends Component {
         this.setState({
             selected: "posts"
         });
+
+        this.props.onViewPost();
     }
 
     onClickFollowing = () => {
         this.setState({
             selected: "following"
         });
+        this.props.onViewFollowing();
     }
 
     onClickFollowers = () => {
         this.setState({
             selected: "followers"
         });
+        this.props.onViewFollower();
     }
 
     onClickEditProfile = () => {
@@ -44,8 +48,10 @@ class ProfileHeader extends Component {
     }
 
     render() {
+        console.log(this);
         const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
         const { isOwner } = this.state;
+        const name = "Võ Minh Trí";
 
         return (
             <div className="profile-header">
@@ -58,8 +64,9 @@ class ProfileHeader extends Component {
                             </div>
                         </div>
                         <div className="name">
-                            Võ Minh Trí
+                            {name}
                         </div>
+
                     </div>
                     <div className="profile-navbar">
                         <div className="navbar-container">

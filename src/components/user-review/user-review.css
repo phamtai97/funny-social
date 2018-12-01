@@ -1,0 +1,69 @@
+.user-review {
+    background-color: white;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.user-review:hover {
+    background-color: rgba(66, 122, 224, 0.1);
+}
+
+.user-review .avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.user-review .avatar .avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    background-position: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.user-review .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.user-review .wrapper .name {
+    padding: 5px;
+}
+
+.user-review .wrapper .follow-btn {
+    width: calc(100% - 10px);
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid #1DA1F2;
+    text-align: center;
+    color: white;
+}
+
+.user-review .wrapper .following-text:hover {
+    background-color: #ad0000;
+}
+
+.user-review .wrapper .follow-text::after {
+    content: 'Follow';
+    color: black;
+}
+
+.user-review .wrapper .following-text {
+    background-color: #1DA1F2;
+}
+
+.user-review .wrapper .following-text::after {
+    content: 'Following';
+}
+
+.user-review .wrapper .following-text:hover::after {
+    content: 'Unfollow';
+}
+

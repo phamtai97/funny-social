@@ -1,6 +1,12 @@
 .profile-header {
     width: 100%;
     height: 60px;
+    background-color: white;
+    position: fixed;
+    top: 63px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .profile-header-wrapper {
@@ -10,7 +16,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: white;
 }
 
 .profile-info {
@@ -25,7 +30,7 @@
     height: 60px;
 }
 
-.avatar .avatar-img {
+.profile-info .avatar .avatar-img {
     width: 50px;
     height: 50px;
     border-radius: 100%;

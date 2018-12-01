@@ -6,7 +6,7 @@ import {store} from '../store/store.js';
 import 'antd/dist/antd.css';
 
 import HomePage from '../components/home-page/home-page.js';
-import ProfilePage from '../components/profile-page/profile-page.js';
+import ProfilePage from '../containers/ProfilePage';
 
 import HeaderPage from '../components/header/header.js';
 
