@@ -8,7 +8,7 @@ import 'antd/dist/antd.css';
 import HomePage from '../components/home-page/home-page.js';
 import ProfilePage from '../components/profile-page/profile-page.js';
 
-import HeaderPage from '../components/header/header.js';
+import HeaderPage from '../components/header-main';
 
 
 class App extends Component {
@@ -18,10 +18,10 @@ class App extends Component {
           <BrowserRouter>
             <div className="App">
               <HeaderPage></HeaderPage>
-              <Switch>
+              {/* <Switch>
                 <Route exact path = '/' component = {HomePage}/>
                 <Route path = '/profile' component = {ProfilePage}/>
-              </Switch>
+              </Switch> */}
             </div>
           </BrowserRouter>
         </Provider>
