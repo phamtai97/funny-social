@@ -1,0 +1,7 @@
+.App{
+    width: 100vw;
+    height: 100vh;
+    display: flex !important;
+    flex-direction: column !important; 
+    
+}
