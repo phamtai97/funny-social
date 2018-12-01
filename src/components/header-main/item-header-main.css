@@ -1,0 +1,21 @@
+.item-container{
+    height: 63px;
+    border-bottom: 2px  solid rgba(255, 255, 255, 0.87);
+    display: flex!important;
+    align-items: center !important;
+}
+
+.content{
+    font-family: 'Rasa', serif;
+    font-size: 1vw;  
+    padding: 10px;
+}
+
+.item-container:hover{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
+}
+
+.item-container:active{
+    color: rgb(0, 170, 255);
+}
