@@ -3,9 +3,9 @@ import './FollowButton.css';
 
 class FollowButton extends Component {
 
-    getFollowBtnClassName = (index) => {
+    getFollowBtnClassName = () => {
         let res = this.props.className;
-        if (index === 1) {
+        if ('following' === this.props.type) {
             return res + " following-text"
         }
 

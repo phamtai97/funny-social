@@ -36,6 +36,7 @@ class UserReview extends Component {
                     </div>
 
                     <FollowButton className="follow-btn"
+                        type="following"
                         onClick={this.onClickFollow}
                     />
                 </div>
