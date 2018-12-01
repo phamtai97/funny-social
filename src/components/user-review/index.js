@@ -21,6 +21,7 @@ class UserReview extends Component {
     render() {
         const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
         const name = "Võ Minh Trí";
+        const dummy = new Date().getTime() % 2 === 0 ? "following" : "follow";
 
         return (
             <div className="user-review">
@@ -36,7 +37,7 @@ class UserReview extends Component {
                     </div>
 
                     <FollowButton className="follow-btn"
-                        type="following"
+                        type={dummy}
                         onClick={this.onClickFollow}
                     />
                 </div>
