@@ -1,0 +1,21 @@
+.item-container{
+    height: 63px;
+    border-bottom: 2px  solid rgba(255, 255, 255, 0.87);
+    display: flex!important;
+    align-items: center !important;
+}
+
+.content{
+    font-family: 'Chivo', sans-serif;
+    font-size: 0.9vw;  
+    padding: 10px;
+}
+
+.item-container:hover{
+    background: rgba(212, 241, 255, 0.87);
+    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
+}
+
+.item-container:active{
+    background: rgba(156, 222, 255, 0.87);
+}
