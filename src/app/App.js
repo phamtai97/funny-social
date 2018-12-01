@@ -19,11 +19,7 @@ class App extends Component {
             <div className="App">
               <HeaderPage></HeaderPage>
               <Switch>
-<<<<<<< HEAD
                 <Route exact path = '/' component = {HomePage}/>
-=======
-                {/* <Route exact path = '/' component = {HomePage}/> */}
->>>>>>> master
                 <Route path = '/' component = {ProfilePage}/>
               </Switch>
             </div>
