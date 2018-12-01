@@ -6,16 +6,21 @@
 }
 
 .content{
-    font-family: 'Chivo', sans-serif;
-    font-size: 0.9vw;  
+    font-family: 'Rasa', serif;
+    font-size: 1vw;  
     padding: 10px;
 }
 
 .item-container:hover{
-    background: rgba(212, 241, 255, 0.87);
+    color: rgba(0, 170, 255, 0.89);
     border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
 }
 
 .item-container:active{
-    background: rgba(156, 222, 255, 0.87);
+    color: rgb(0, 170, 255);
+}
+
+.selected{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
 }

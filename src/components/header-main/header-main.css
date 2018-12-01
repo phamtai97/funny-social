@@ -1,14 +1,11 @@
 .header{
-    display:flex;
-    flex-direction: row;
+    width: 100vw;
+    height: 63px;
     background: white;
-    height: 63px !important;
-    align-items: center !important;
 }
 
 .header-container{
     height: 63px !important;
-    /* width: 100vw !important; */
     z-index: 1 !important; 
     position:fixed;
     left:0;
@@ -16,15 +13,29 @@
     top:0;
 }
 
+.header-wrapper {
+    display:flex;
+    flex-direction: row;
+    background: white;
+    height: 63px !important;
+    align-items: center !important;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 .item{
-    margin-left: 15vw;
     display: flex;
     align-items: center;
     flex-direction: row;
 }
 
 .search-bar{
-    margin-left: 38vw; 
+    margin-left: 28vw; 
+}
+
+.search-bar .ant-input-affix-wrapper .ant-input{
+    border-radius: 100px !important;
+
 }
 
 .avatar-me{
@@ -33,4 +44,9 @@
 
 .button-funny-social{
     margin-left: 1.5vw;
+}
+
+.button-funny-social .ant-btn{
+    border-radius: 100px !important;
+    background: rgb(0, 170, 255) !important;
 }

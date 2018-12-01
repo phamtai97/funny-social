@@ -1,0 +1,17 @@
+.container-upload {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+.container-upload .ant-upload{
+    border-radius: 50% !important;
+}
+
+/* .ant-modal-content{
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.ant-modal-content .ant-modal-header{
+    border-radius: 100px 100px 0 0!important;
+} */
