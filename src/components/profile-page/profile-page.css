@@ -1,7 +1,6 @@
-.container-profile-page{
+.profile-page{
     width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-grow: 1 !important;
+    display: flex;
+    flex-direction: column;
     margin-top: 63px;
 }

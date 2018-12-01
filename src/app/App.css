@@ -3,4 +3,5 @@
     height: 100vh;
     display: flex !important;
     flex-direction: column !important; 
+    background-color :rgba(0, 0, 0, 0.2);
 }

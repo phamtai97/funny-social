@@ -1,0 +1,122 @@
+.profile-header {
+    width: 100%;
+    height: 60px;
+}
+
+.profile-header-wrapper {
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+}
+
+.profile-info {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-info .avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.avatar .avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.profile-info .name {
+    margin-left: 20px;
+    text-align: center;
+}
+
+.profile-info .data-count {
+
+}
+
+.profile-navbar {
+    flex-grow: 1;
+}
+
+.navbar-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-container .navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border-bottom: 2px solid white;
+}
+
+.navbar-container .selected {
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+}
+
+.navbar-container .normal {
+    cursor: pointer;
+}
+
+.navbar-item .title {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+}
+
+.navbar-item .data-count {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+}
+
+
+.navbar-container .normal:hover {
+    color: rgba(0, 170, 255, 0.89);
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+}
+
+.profile-tools {
+    width: 25%;
+}
+
+.tools-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.tools-container .item {
+    border: 1px solid #66757f;
+    border-radius: 15px;
+    padding: 3px 10px 3px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.tools-container .item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 170, 255, 0.89);
+}
