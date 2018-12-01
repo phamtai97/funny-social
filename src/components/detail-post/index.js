@@ -3,7 +3,11 @@ import { Modal} from 'antd';
 import './detail-post.css';
 import { Avatar, Button } from 'antd';
 import moment from 'moment';
+<<<<<<< HEAD
 import helpers from '../../helpers/helpers.js';
+=======
+import helpers from '../../helper/helper.js';
+>>>>>>> 434870739d860f806d723acfedd53c24a86e593a
 
 class DetailPost extends Component{
     state={
