@@ -3,11 +3,6 @@
     height: auto;
     display: flex !important;
     flex-direction: column !important; 
-<<<<<<< HEAD
-
-=======
-    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
->>>>>>> 020e76b7981272f1503c4153769351583d51b4b8
 }
 
 body {
