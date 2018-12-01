@@ -19,8 +19,3 @@
 .item-container:active{
     color: rgb(0, 170, 255);
 }
-
-.selected{
-    color: rgba(0, 170, 255, 0.89);
-    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
-}
