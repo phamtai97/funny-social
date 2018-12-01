@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
-import { Button } from 'antd';
+import { Layout, Menu, Avatar, Input} from 'antd';
+import './home-page.css';
 
+const { Header, Content} = Layout;
+const Search = Input.Search;
 
 class HomePage extends Component{
     render() {
         return (
             <div>
-                <Button type="primary">Primary</Button>
-                <Button>Default</Button>
-                <Button type="dashed">Dashed</Button>
-                <Button type="danger">Danger</Button>
+                
             </div>
         );
     }
 }
-
 export default HomePage;
