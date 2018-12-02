@@ -2,12 +2,13 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
 .comment-review:hover {
-    background-color: rgba(66, 122, 224, 0.1);
+    border-bottom: 1px  solid rgba(115, 208, 255, 0.87);
+    background-color: rgba(229, 246, 255, 0.918);
 }
 
 .comment-review .avatar {
@@ -39,7 +40,7 @@
 }
 
 .comment-review-wrapper .header .name{
-    margin-right: 5px;
+    font-family: 'Allerta', sans-serif;
 }
 
 .comment-review-wrapper .header .time{
@@ -48,7 +49,7 @@
 
 
 .comment-review-wrapper .content {
-    
+    padding:  0px;
 }
 
 .comment-review-wrapper .footer {

@@ -2,6 +2,7 @@
     width: 100vw;
     height: 63px;
     background: white;
+    border-bottom: 2px solid rgb(224, 224, 224)
 }
 
 .header-container{
@@ -21,6 +22,8 @@
     align-items: center !important;
     margin-left: 20%;
     margin-right: 20%;
+    background: white;
+    border-bottom: 2px solid rgb(224, 224, 224)
 }
 
 .item{

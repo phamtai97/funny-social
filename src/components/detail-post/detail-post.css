@@ -25,7 +25,7 @@
     height: 50%;
     display: flex;
     align-items: center;
-    ont-family: 'Allerta', sans-serif;
+    font-family: 'Allerta', sans-serif;
     font-size: 3.5vh;
     font-weight: 800;
 }
@@ -80,10 +80,10 @@
     font-size: 4vh;
 }   
 
-.time-create-pos{
+.container-detail-post .time-create-pos{
     margin: 10px 0px 10px 0px;
-    font-size: 1.75vh;
-    color:rgb(179, 179, 179);
+    font-size: 2vh;
+    color:rgb(133, 133, 133);
 }
 
 .item-react{

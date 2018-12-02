@@ -48,7 +48,6 @@ class ProfileHeader extends Component {
     }
 
     render() {
-        console.log(this);
         const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
         const { isOwner } = this.state;
         const name = "Võ Minh Trí";

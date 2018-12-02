@@ -5,15 +5,18 @@
     flex-direction: row;
     border-radius: 5px;
     padding: 10px;
+    align-items: center;
+    border-bottom: 2px solid rgb(255, 255, 255);
 }
 
 .user-review:hover {
-    background-color: rgba(66, 122, 224, 0.1);
+    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
+    background-color: rgba(229, 246, 255, 0.918);
 }
 
 .user-review .avatar {
     width: 60px;
-    height: 60px;
+    height: 100%;
 }
 
 .user-review .avatar .avatar-img {

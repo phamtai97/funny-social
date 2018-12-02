@@ -13,7 +13,6 @@ class FollowButton extends Component {
     }
 
     render() {
-        console.log(this);
         return (
             <div className={this.getFollowBtnClassName(new Date().getTime() % 2)}
                 onClick={() => this.props.onClick()}
