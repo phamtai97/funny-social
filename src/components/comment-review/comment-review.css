@@ -1,0 +1,132 @@
+.comment-review {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.comment-review:hover {
+    background-color: rgba(66, 122, 224, 0.1);
+}
+
+.comment-review .avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.comment-review .avatar .avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-review-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.comment-review-wrapper .header {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-review-wrapper .header .name{
+    margin-right: 5px;
+}
+
+.comment-review-wrapper .header .time{
+    margin-left: 5px;
+}
+
+
+.comment-review-wrapper .content {
+    
+}
+
+.comment-review-wrapper .footer {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-review-wrapper .footer .item {
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding-right: 5px;
+}
+
+.comment-review-wrapper .footer .item:hover {
+    cursor: pointer;
+}
+
+.comment-review-wrapper .footer .item .icon{
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.comment-review-wrapper .footer .item .love {
+    background-image: url("../../images/love-icon.png");
+}
+
+.comment-review-wrapper .footer .item .love:hover {
+    background-image: url("../../images/love-icon-hover.png");
+}
+
+.comment-review-wrapper .footer .item .like {
+    background-image: url("../../images/like-icon.png");
+}
+
+.comment-review-wrapper .footer .item .like:hover {
+    background-image: url("../../images/like-icon-hover.png");
+}
+
+.comment-review-wrapper .footer .item .angry {
+    background-image: url("../../images/angry-icon.png");
+}
+
+
+.comment-review-wrapper .footer .item .angry:hover {
+    background-image: url("../../images/angry-icon-hover.png");
+}
+
+.comment-review-wrapper .footer .item .comment {
+    background-image: url("../../images/comment-icon.png");
+}
+
+.comment-review-wrapper .footer .item .comment:hover {
+    background-image: url("../../images/comment-icon-blue.png");
+}
+
+.comment-review-wrapper .footer .item .count{
+    margin-left: 5px;
+    width: 35px;
+    text-align: center;
+}
+
+.comment-review-wrapper .footer .react {
+    background-image: url("../../images/comment-icon-blue.png");
+}
+
+.comment-review-wrapper .footer .react:hover {
+    background-image: url("../../images/comment-icon.png");
+}
+
+.comment-review-wrapper .footer .share {
+    background-image: url("../../images/share-icon.png");
+}
+
+.comment-review-wrapper .footer .share:hover {
+    background-image: url("../../images/share-icon-blue.png");
+}
