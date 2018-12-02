@@ -1,0 +1,82 @@
+.list-react-wrapper .list-react {
+    display: flex;
+    flex-direction: row;
+}
+
+.list-react-wrapper .list-react .item {
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding-right: 5px;
+}
+
+.list-react .item:hover {
+    cursor: pointer;
+}
+
+.list-react-wrapper .list-react .item .icon{
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.list-react-wrapper .list-react .item .love {
+    background-image: url("../../images/love-icon.png");
+}
+
+.list-react-wrapper .list-react .item .love:hover {
+    background-image: url("../../images/love-icon-hover.png");
+}
+
+.list-react-wrapper .list-react .item .like {
+    background-image: url("../../images/like-icon.png");
+}
+
+.list-react-wrapper .list-react .item .like:hover {
+    background-image: url("../../images/like-icon-hover.png");
+}
+
+.list-react-wrapper .list-react .item .angry {
+    background-image: url("../../images/angry-icon.png");
+}
+
+.list-react-wrapper .list-react .item .angry:hover {
+    background-image: url("../../images/angry-icon-hover.png");
+}
+
+.list-react-wrapper .list-react .item .comment {
+    background-image: url("../../images/comment-icon.png");
+}
+
+.list-react-wrapper .list-react .item .comment:hover {
+    background-image: url("../../images/comment-icon-blue.png");
+}
+
+.list-react-wrapper .list-react .item .count{
+    margin-left: 5px;
+    width: 35px;
+    text-align: center;
+}
+
+/* .list-react-wrapper .list-react .react {
+    background-image: url("../../images/comment-icon-blue.png");
+}
+
+.list-react-wrapper .list-react .react:hover {
+    background-image: url("../../images/comment-icon.png");
+} */
+
+.list-react-wrapper .list-react .share {
+    background-image: url("../../images/share-icon.png");
+}
+
+.list-react-wrapper .list-react .share:hover {
+    background-image: url("../../images/share-icon-blue.png");
+}
+
+.list-react-wrapper .list-react .count:hover{
+    color: rgba(0, 170, 255, 0.89);
+}

@@ -20,7 +20,7 @@ class App extends Component {
               <HeaderPage></HeaderPage>
               <Switch>
                 <Route exact path = '/' component = {HomePage}/>
-                <Route path = '/' component = {ProfilePage}/>
+                <Route path = '/profile-page' component = {ProfilePage}/>
               </Switch>
             </div>
           </BrowserRouter>
