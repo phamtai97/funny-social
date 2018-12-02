@@ -4,27 +4,31 @@ import './detail-post.css';
 import { Avatar, Button } from 'antd';
 import moment from 'moment';
 import helpers from '../../helpers/helpers.js';
-
 class DetailPost extends Component{
     state={
         loading: false, 
     }
 
     render(){
-        const { visible, onCancel, onCreate } = this.props;
+        const { visible, onCancel, onCreate, width } = this.props;
         const nameWritePost = "Pham Tai";
         const gamil = "abcxyz@gmail.com";
         const content = "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
-        const timeCreatePost = moment().format(helpers.FORMAT_DATE)
+        const timeCreatePost = moment().format(helpers.FORMAT_DATE);
+        
         return(
             <div className="container-modal">
-                <Modal visible={visible}                 
+                <Modal 
+                    footer={null}
+                    width={width}
+                    visible={visible}                 
                     onCancel={onCancel}
                     onOk={onCreate}>
+
                     <div className="container-detail-post">
                         <div className="header-detail-post">
                             <div className="avatar-post">
-                                <Avatar size={80} icon="user" />
+                                <Avatar icon="user"/>
                             </div>
                             <div className="info-post">
                                 <div className="name-post">

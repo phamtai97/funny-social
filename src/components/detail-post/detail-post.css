@@ -1,14 +1,3 @@
-/* .ant-modal{
-    display:flex!important;
-    flex-direction: column;
-    align-items: center;
-}
-.ant-modal-content{
-    width: 50vw !important;
-    height: 100%;
-
-}
-
 .container-detail-post{
     display: flex;
     flex-direction: column;
@@ -17,7 +6,7 @@
 .header-detail-post{
     margin-top: 3vh;
     width: 100%;
-    height: 20vh;
+    height: 10vh;
     background: yellow;
     display: flex;
     flex-direction: row;
@@ -38,7 +27,7 @@
     display: flex;
     align-items: center;
     ont-family: 'Allerta', sans-serif;
-    font-size: 6vh;
+    font-size: 3.5vh;
     font-weight: 800;
 }
 
@@ -49,15 +38,31 @@
     align-items: center;
     font-family: 'Chivo', sans-serif;
     color: rgb(167, 167, 167);
-    font-size: 5vh;
+    font-size: 2.5vh;
 }
 
 .avatar-post{
-    margin-left: 20px; 
+
+}
+.avatar-post .ant-avatar-icon{
+    width: 10vh;
+    height: 10vh;
+
+}
+
+.avatar-post .ant-avatar{
+    display: flex !important;
+    justify-content: center;
+    align-items: center !important;
+}
+
+.avatar-post .anticon-user>svg{
+    width: 4vh !important;
+    height: 4vh !important;
 }
 
 .ant-modal-footer{
-    display: none;
+    /* display: none; */
 }
 
 .follow-button{
@@ -74,20 +79,22 @@
 .content-post{
     background: green;
     width: 100%;
-    font-size: 6vh;
+    font-size: 4vh;
 }   
 
 .time-create-pos{
+    margin: 10px 0px 10px 0px;
     background: rgb(0, 119, 128);
-    font-size: 4vh;
+    font-size: 2vh;
+    color:rgb(179, 179, 179);
 }
 
 .item-react{
     background: red;
-    height: 12vh;
+    height: 6vh;
 }
 
 .react-action{
     background: gray;
-    height: 15vh;
-}  */
+    height: 6vh;
+} 
