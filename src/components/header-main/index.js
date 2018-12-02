@@ -119,6 +119,7 @@ class HeaderPage extends Component{
                 />
 
                 <DetailPost 
+                    width={"800px"}
                     visible={this.state.visibleDetailPost}
                     onCancel={this.handleCancelDetailPost}
                     onCreate={this.handleOkDetailPost}
