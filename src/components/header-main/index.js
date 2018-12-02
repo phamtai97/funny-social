@@ -3,14 +3,13 @@ import './header-main.css';
 import ItemHeader from './item-header-main';
 import { Input, Button, Avatar, Dropdown, Menu, Tooltip} from 'antd';
 import CollectionCreateFormUpdateProfile from './update-profile.js';
-import DetailPostComponent from '../detail-post';
+import DetailPost from '../../components/detail-post';
+import helpers from '../../helpers/helpers.js';
 
 const Search = Input.Search;
 const profile_setting = <span>Profile and Setting</span>;
 
-
 const CollectionCreateForm = CollectionCreateFormUpdateProfile;
-const DetailPost = DetailPostComponent;
 
 class HeaderPage extends Component{
     state = {
@@ -112,14 +111,13 @@ class HeaderPage extends Component{
         return(
             <div className="header-container">
                 <CollectionCreateForm
-                    wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
                 />
 
                 <DetailPost 
-                    width={"800px"}
+                    width={helpers.WIDTH_DETAIL_POST}
                     visible={this.state.visibleDetailPost}
                     onCancel={this.handleCancelDetailPost}
                     onCreate={this.handleOkDetailPost}

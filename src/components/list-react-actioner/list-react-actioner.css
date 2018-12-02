@@ -1,0 +1,5 @@
+.list-react-actioner-container{
+    overflow-y:auto;
+    max-height: 55vh; 
+    height: fit-content;
+}

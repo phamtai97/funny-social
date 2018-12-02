@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import { Modal} from 'antd';
 import './detail-post.css';
-import { Avatar, Button, Input } from 'antd';
+import { Avatar, Button, Input, Modal } from 'antd';
 import moment from 'moment';
 import helpers from '../../helpers/helpers.js';
-import ListReact from './list-react.js';
+import ListReact from '../../containers/ReactReviewDetailPost';
 import ListComment from '../list-comment';
 
 class DetailPost extends Component{
@@ -20,13 +19,11 @@ class DetailPost extends Component{
     render(){
         const { visible, onCancel, onCreate, width } = this.props;
         const nameWritePost = "Pham Tai";
-        const gamil = "abcxyz@gmail.com";
+        const gmail = "abcxyz@gmail.com";
         const content = "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
         const timeCreatePost = moment().format(helpers.FORMAT_DATE);
         const listActioner = [{"src":"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}
         , {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}];
-
-        console.log(listActioner);
 
         return(
             <div className="container-modal">
@@ -47,7 +44,7 @@ class DetailPost extends Component{
                                     {nameWritePost}
                                 </div>
                                 <div className="gmail-post">
-                                    {gamil}
+                                    {gmail}
                                 </div>
                             </div>
                             <div className="follow-button">
@@ -61,13 +58,12 @@ class DetailPost extends Component{
                             {timeCreatePost}
                         </div>
                         <div className="list-react-actioner">
-                            <ListReact></ListReact>
+                            <ListReact typeReact={this.props.typeReact}>
+                            </ListReact>
                             <div className="avatar-actioner">
                                 {listActioner.map((item, index) => {
-                                    const src = item.src;
-                                    console.log(src);
                                     return(
-                                        <Avatar src={src} className="avatar-actioner-wrapper"></Avatar>
+                                        <Avatar key={index} src={item.src} className="avatar-actioner-wrapper"></Avatar>
                                     )
                                 })}
                             </div>

@@ -27,7 +27,6 @@ class ProfilePage extends Component {
     render() {
         const { onViewPost, onViewFollowing, onViewFollower } = this.props;
 
-        console.log(this);
         return (
             <div className="profile-page">
                 <ProfileHeader

@@ -96,7 +96,7 @@ class CollectionCreateForm extends Component {
                                     required: true, message: 'Please input new your E-mail!',
                                 }],
                             })
-                                (<Input type/>)
+                                (<Input/>)
                             }
                         </FormItem>
                     </Form>
