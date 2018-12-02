@@ -5,7 +5,7 @@ import { Avatar, Button, Input } from 'antd';
 import moment from 'moment';
 import helpers from '../../helpers/helpers.js';
 import ListReact from './list-react.js';
-import ListPost from '../list-post';
+import ListComment from '../list-comment';
 
 class DetailPost extends Component{
     state={
@@ -81,7 +81,7 @@ class DetailPost extends Component{
                             </div>
                         </div>
                         <div className="list-comment">
-                            <ListPost></ListPost>
+                            <ListComment></ListComment>
                         </div>
                     </div>
                 </Modal>
