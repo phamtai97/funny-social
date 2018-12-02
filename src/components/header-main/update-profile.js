@@ -55,51 +55,53 @@ class CollectionCreateForm extends Component {
         const imageUrl = this.state.imageUrl;
 
         return (
-            <Modal
-                visible={visible}
-                title="Update your profile"
-                okText="Update"
-                onCancel={onCancel}
-                onOk={onCreate}
-            >
-                <Form layout="vertical" className="container-form">
-                    <div className="container-upload">
-                        <Upload
-                            name="avatar"
-                            listType="picture-card"
-                            className="avatar-uploader"
-                            showUploadList={false}
-                            action="//jsonplaceholder.typicode.com/posts/"
-                            beforeUpload={beforeUpload}
-                            onChange={this.handleChange}
-                            className="update-avatar"
-                        >
-                        {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
-                        </Upload> 
-                    
-                    </div>
-                    
-                    <FormItem label="New your name">
-                        {getFieldDecorator('newName', {
-                            rules: [{ required: true, message: 'Please input the new your name!' }],
-                        })
-                        (
-                            <Input />
-                        )}
-                    </FormItem>
-                    <FormItem label="New your gmail">
-                        {getFieldDecorator('email', {
-                            rules: [{
-                                type: 'email', message: 'The input is not valid E-mail!',
-                                }, {
-                                required: true, message: 'Please input new your E-mail!',
-                            }],
-                        })
-                            (<Input type/>)
-                        }
-                    </FormItem>
-                </Form>
-            </Modal>
+            <div className="container-update-profile">
+                <Modal
+                    visible={visible}
+                    title="Update your profile"
+                    okText="Update"
+                    onCancel={onCancel}
+                    onOk={onCreate}
+                >
+                    <Form layout="vertical" className="container-form">
+                        <div className="container-upload">
+                            <Upload
+                                name="avatar"
+                                listType="picture-card"
+                                className="avatar-uploader"
+                                showUploadList={false}
+                                action="//jsonplaceholder.typicode.com/posts/"
+                                beforeUpload={beforeUpload}
+                                onChange={this.handleChange}
+                                className="update-avatar"
+                            >
+                            {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
+                            </Upload> 
+                        
+                        </div>
+                        
+                        <FormItem label="New your name">
+                            {getFieldDecorator('newName', {
+                                rules: [{ required: true, message: 'Please input the new your name!' }],
+                            })
+                            (
+                                <Input />
+                            )}
+                        </FormItem>
+                        <FormItem label="New your gmail">
+                            {getFieldDecorator('email', {
+                                rules: [{
+                                    type: 'email', message: 'The input is not valid E-mail!',
+                                    }, {
+                                    required: true, message: 'Please input new your E-mail!',
+                                }],
+                            })
+                                (<Input type/>)
+                            }
+                        </FormItem>
+                    </Form>
+                </Modal>
+            </div>
         );
     }
 }

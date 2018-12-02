@@ -5,8 +5,15 @@
 }
 .container-upload .ant-upload{
     border-radius: 50% !important;
+    width: 13vh;
+    height: 13vh;
 }
 
+.container-upload .ant-upload>img{
+    border-radius: 50% !important;
+    width: 13vh;
+    height: 13vh;
+}
 /* .ant-modal-content{
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
