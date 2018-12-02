@@ -14,7 +14,6 @@ const CollectionCreateForm = CollectionCreateFormUpdateProfile;
 class HeaderPage extends Component{
     state = {
         visible: false,   
-        visibleDetailPost:false
     };
     
     //handle update profile
@@ -60,8 +59,7 @@ class HeaderPage extends Component{
 
     //handler write status
     handleClickFunnyBtn = () => {
-        // alert("Funny");
-        this.showModalDetailPost();
+        alert("Funny");
     }
 
     //handler clich on menu
@@ -77,19 +75,6 @@ class HeaderPage extends Component{
         }
     }
     
-    //handle click in detal post
-    handleCancelDetailPost = () => {
-        this.setState({ visibleDetailPost: false });
-    }
-
-    handleOkDetailPost = () => {
-        this.setState({ visibleDetailPost: false });        
-    }
-
-    showModalDetailPost = () => {
-        this.setState({ visibleDetailPost: true });
-    }
-
     render(){
         const menu = (
             <Menu onClick={this.handleMenuClick}>
@@ -115,14 +100,6 @@ class HeaderPage extends Component{
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
                 />
-
-                <DetailPost 
-                    width={helpers.WIDTH_DETAIL_POST}
-                    visible={this.state.visibleDetailPost}
-                    onCancel={this.handleCancelDetailPost}
-                    onCreate={this.handleOkDetailPost}
-                >
-                </DetailPost>
 
                 <div className="header">
                     <div className="header-wrapper">

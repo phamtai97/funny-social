@@ -1,6 +1,6 @@
 .item-container{
     height: 63px;
-    border-bottom: 2px  solid rgba(255, 255, 255, 0.87);
+    /* border-bottom: 2px solid rgba(255, 255, 255, 0.87); */
     display: flex!important;
     align-items: center !important;
 }
@@ -13,7 +13,7 @@
 
 .item-container:hover{
     color: rgba(0, 170, 255, 0.89);
-    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
+    border-bottom: 2px solid rgba(115, 208, 255, 0.87);
 }
 
 .item-container:active{

@@ -7,7 +7,7 @@
 }
 
 .comment-review:hover {
-    border-bottom: 2px  solid rgba(115, 208, 255, 0.87);
+    border-bottom: 1px  solid rgba(115, 208, 255, 0.87);
     background-color: rgba(229, 246, 255, 0.918);
 }
 
