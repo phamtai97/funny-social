@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
 import { Modal} from 'antd';
 import './detail-post.css';
-import { Avatar, Button } from 'antd';
+import { Avatar, Button, Input } from 'antd';
 import moment from 'moment';
 import helpers from '../../helpers/helpers.js';
+import ListReact from './list-react.js';
+import ListPost from '../list-post';
+
 class DetailPost extends Component{
     state={
         loading: false, 
+        key: ''
+    }
+    
+    handleComment = (e) => {
+        alert(e.target.value );
     }
 
     render(){
@@ -15,7 +23,11 @@ class DetailPost extends Component{
         const gamil = "abcxyz@gmail.com";
         const content = "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
         const timeCreatePost = moment().format(helpers.FORMAT_DATE);
-        
+        const listActioner = [{"src":"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}
+        , {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}];
+
+        console.log(listActioner);
+
         return(
             <div className="container-modal">
                 <Modal 
@@ -48,10 +60,29 @@ class DetailPost extends Component{
                         <div className="time-create-pos">
                             {timeCreatePost}
                         </div>
-                        <div className="item-react">
-
+                        <div className="list-react-actioner">
+                            <ListReact></ListReact>
+                            <div className="avatar-actioner">
+                                {listActioner.map((item, index) => {
+                                    const src = item.src;
+                                    console.log(src);
+                                    return(
+                                        <Avatar src={src} className="avatar-actioner-wrapper"></Avatar>
+                                    )
+                                })}
+                            </div>
                         </div>
-                        <div className="react-action"></div>
+                        <div className="input-comment">
+                            <div className="avatar-wrapper">
+                                <Avatar size="large" icon="user"></Avatar>
+                            </div>
+                            <div className="input-comment-wrapper">
+                                <Input size="large" placeholder="Write your comment..." onPressEnter = {this.handleComment}/>
+                            </div>
+                        </div>
+                        <div className="list-comment">
+                            <ListPost></ListPost>
+                        </div>
                     </div>
                 </Modal>
             </div>
