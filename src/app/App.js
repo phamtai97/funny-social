@@ -21,6 +21,9 @@ class App extends Component {
               <Switch>
                 <Route exact path = '/' component = {HomePage}/>
                 <Route path = '/profile-page' component = {ProfilePage}/>
+
+
+                
               </Switch>
             </div>
           </BrowserRouter>
