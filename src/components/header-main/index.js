@@ -3,6 +3,7 @@ import './header-main.css';
 import ItemHeader from './item-header-main';
 import { Input, Button, Avatar, Dropdown, Menu, Tooltip} from 'antd';
 import CollectionCreateFormUpdateProfile from './update-profile.js';
+import {withRouter} from "react-router-dom";
 import DetailPost from '../../components/detail-post';
 import helpers from '../../helpers/helpers.js';
 
@@ -45,7 +46,7 @@ class HeaderPage extends Component{
 
     //handle clich item on header
     handleClickHomeBtn = () => {
-        alert("Home");
+        this.props.history.push('/');
     }
 
     handleClickNotificationBtn = () => {
@@ -65,7 +66,7 @@ class HeaderPage extends Component{
     //handler clich on menu
     handleMenuClick = (e) => {
         if (e.key === '1') {
-            alert("Profile");
+            this.props.history.push('/profile');
         }else if(e.key === '2'){
             this.showModal();
         }else if(e.key === '3'){
@@ -114,13 +115,13 @@ class HeaderPage extends Component{
                                 style={{ width: 250 }}
                             />
                         </div>
-                        <Tooltip placement="bottom" title={profile_setting}>
+                        {/* <Tooltip placement="bottom" title={profile_setting}> */}
                             <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
                                 <div className="avatar-me">
                                     <Avatar size={47} icon="user"/>
                                 </div>
                             </Dropdown>
-                        </Tooltip>
+                        {/* </Tooltip> */}
                         <div className="button-funny-social">
                             <Button type="primary" onClick={this.handleClickFunnyBtn}>Funny</Button>
                         </div>
@@ -131,4 +132,4 @@ class HeaderPage extends Component{
     }
 }
 
-export default HeaderPage;
+export default withRouter(HeaderPage);

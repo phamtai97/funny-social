@@ -1,0 +1,43 @@
+.container-status{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(229, 246, 255);
+    margin-bottom: 10px;
+    height: 100%; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.container-input-status{
+    display: flex;
+    flex-direction: row;    
+    height: 100%;
+    width: 100%;
+}
+
+.container-input-status .avatar-input-status{
+    margin-left: 50px;
+}
+
+.container-input-status .input-status{
+    margin-left: 20px;
+    flex-grow: 1;
+    margin-right:50px;
+}
+
+.input-status .ant-input{
+    border-radius: 30px!important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.wrapper-button .ant-btn{
+    margin-right: 50px;
+    border-radius: 30px !important;
+    background: rgb(0, 170, 255) !important;
+}
+
+.wrapper-button{
+    margin-left: 33vw; 
+    margin-top: 10px;
+}

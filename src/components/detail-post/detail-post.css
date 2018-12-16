@@ -20,7 +20,7 @@
     flex-direction: column;
 }
 
-.name-post{
+.info-post .name-post{
     width: 100%;
     height: 50%;
     display: flex;
@@ -28,16 +28,17 @@
     font-family: 'Allerta', sans-serif;
     font-size: 3.5vh;
     font-weight: 800;
+    color: black;
 }
 
-.gmail-post{
+.info-post .gmail-post{
     width: 100%;
     height: 50%;
     display: flex;
     align-items: center;
     font-family: 'Chivo', sans-serif;
-    color: rgb(167, 167, 167);
-    font-size: 2.5vh;
+    color: rgb(133, 133, 133);
+    font-size: 2.7vh;
 }
 
 .avatar-post{
@@ -75,14 +76,16 @@
     height: 40px !important;
 }
 
-.content-post{
+.container-detail-post .content-post{
     width: 100%;
     font-size: 4vh;
+    font-family: Chivo;
+    color: black;
 }   
 
 .container-detail-post .time-create-pos{
     margin: 10px 0px 10px 0px;
-    font-size: 2vh;
+    font-size: 2.5vh;
     color:rgb(133, 133, 133);
 }
 

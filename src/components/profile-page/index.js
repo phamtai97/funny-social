@@ -7,8 +7,6 @@ import ListFollower from '../list-follower';
 import { VIEW_POST, VIEW_FOLLOWING, VIEW_FOLLOWER } from '../../constants/profile-page-const';
 
 class ProfilePage extends Component {
-
-
     getContent = () => {
         const { view } = this.props;
 
@@ -25,14 +23,15 @@ class ProfilePage extends Component {
     }
 
     render() {
-        const { onViewPost, onViewFollowing, onViewFollower } = this.props;
-
+        const { onViewPost, onViewFollowing, onViewFollower, view} = this.props;
+        
         return (
             <div className="profile-page">
                 <ProfileHeader
                     onViewPost={onViewPost}
                     onViewFollowing={onViewFollowing}
                     onViewFollower={onViewFollower}
+                    view={view}
                 />
                 <div className="content-container">
                     {this.getContent()}

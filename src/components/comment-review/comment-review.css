@@ -41,6 +41,7 @@
 
 .comment-review-wrapper .header .name{
     font-family: 'Allerta', sans-serif;
+    color: black;
 }
 
 .comment-review-wrapper .header .time{
@@ -50,6 +51,7 @@
 
 .comment-review-wrapper .content {
     padding:  0px;
+    font-family: Chivo;
 }
 
 .comment-review-wrapper .footer {

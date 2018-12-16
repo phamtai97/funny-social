@@ -1,14 +1,15 @@
 .item-container{
     height: 63px;
-    /* border-bottom: 2px solid rgba(255, 255, 255, 0.87); */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.87);
     display: flex!important;
     align-items: center !important;
 }
 
 .content{
-    font-family: 'Rasa', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1vw;  
     padding: 10px;
+    color: black;
 }
 
 .item-container:hover{

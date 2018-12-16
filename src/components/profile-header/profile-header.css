@@ -49,6 +49,8 @@
     width: calc(100% - 100px);
     text-align: center;
     font-size: 25px;
+    font-family: 'Allerta', sans-serif;
+    color: black;
 }
 
 .profile-info .data-count {
@@ -86,6 +88,7 @@
 
 .navbar-item .title {
     user-select: none;
+    font-family: 'Roboto', sans-serif;
     -webkit-user-select: none;
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */

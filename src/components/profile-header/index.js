@@ -10,8 +10,16 @@ class ProfileHeader extends Component {
 
     getClassNameSelect = (type) => {
         let className = "navbar-item ";
+        let selected = this.props.view;
+        if(selected === "PROFILE_PAGE_VIEW_POST"){
+            selected = "posts";
+        }else if(selected === "PROFILE_PAGE_VIEW_FOLLOWING"){
+            selected = "following";
+        }else{
+            selected = "followers";
+        }
 
-        if (type === this.state.selected)
+        if (type === selected)
             return className + "selected";
 
         return className + "normal";

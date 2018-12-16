@@ -41,6 +41,8 @@
 
 .post-review-wrapper .header .name{
     margin-right: 5px;
+    font-family: 'Allerta', sans-serif;
+    color: black;
 }
 
 .post-review-wrapper .header .time{
@@ -49,7 +51,7 @@
 
 
 .post-review-wrapper .content {
-    
+    font-family: 'Chivo', sans-serif;
 }
 
 .post-review-wrapper .footer {

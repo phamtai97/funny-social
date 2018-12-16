@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import {store} from '../store/store.js';
 import 'antd/dist/antd.css';
 
-import HomePage from '../components/home-page/home-page.js';
+import HomePage from '../components/home-page';
 import ProfilePage from '../containers/ProfilePage';
 
 import HeaderPage from '../components/header-main';
@@ -20,10 +20,7 @@ class App extends Component {
               <HeaderPage></HeaderPage>
               <Switch>
                 <Route exact path = '/' component = {HomePage}/>
-                <Route path = '/profile-page' component = {ProfilePage}/>
-
-
-                
+                <Route path = '/profile' component = {ProfilePage}/>
               </Switch>
             </div>
           </BrowserRouter>
