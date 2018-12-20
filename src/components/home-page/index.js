@@ -3,6 +3,7 @@ import './home-page.css';
 import ListPost from './list-post';
 import NavLeftInfo from '../../containers/navLeftInfo';
 import InputStatus from './inputStatus';
+import NavRightNotification from './nav-right-notification';
 
 class HomePage extends Component{
     
@@ -23,7 +24,7 @@ class HomePage extends Component{
                     </div>
                     <div className="nav-right">
                         <div className="container-nav-right">
-                            asdasdasd
+                            <NavRightNotification></NavRightNotification>
                         </div>
                     </div>
                 </div>

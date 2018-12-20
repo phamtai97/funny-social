@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './nav-left-info.css';
 import {withRouter} from "react-router-dom";
 import { Avatar } from 'antd';
-
+import AccountBox from './account-box';
 class NavLeftInfo extends Component{
 
     handleClickItemPost = () => {
@@ -37,20 +37,20 @@ class NavLeftInfo extends Component{
         const numberFollowing = 1000;
         const numberFollowers = 1000;
         return(
-            <div>
+            <div className='container-nav-left'>
+                <div className='background-user-home'>
+                    <div className="wrapper-avatar">
+                        <Avatar size={85} icon="user" />
+                    </div>
+                </div>
                 <div className="container-nav-left-info">
                     <div className="container-info">
-                        <div className="wrapper-avatar">
-                            <Avatar size={75} icon="user" />
+                        <div className="name">
+                            {name}
                         </div>
-                        <div className="info">
-                            <div className="name">
-                                {name}
-                            </div>
-                            <div className="gmail">
-                                {gmail}
-                            </div>
-                        </div>  
+                    </div>
+                    <div className='account-box'>
+                        <AccountBox></AccountBox>
                     </div>
                     <div className="info-card">
                         <div className="item-card" onClick={this.handleClickItemPost}>
