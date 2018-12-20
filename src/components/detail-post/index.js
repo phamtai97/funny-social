@@ -3,7 +3,7 @@ import './detail-post.css';
 import { Avatar, Button, Input, Modal } from 'antd';
 import moment from 'moment';
 import helpers from '../../helpers/helpers.js';
-import ListReact from '../../containers/ReactReviewDetailPost';
+import ListReact from '../../containers/reactReviewDetailPost';
 import ListComment from '../list-comment';
 
 class DetailPost extends Component{

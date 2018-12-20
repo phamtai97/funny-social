@@ -1,4 +1,4 @@
-import {reactReviewConstant} from '../constants/react-review-constant.js';
+import {reactReviewConstant} from '../constants/reactReviewConstant.js';
 
 const initalState = {
     typeReact: '',

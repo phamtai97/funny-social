@@ -39,7 +39,7 @@ class PostReview extends Component {
         const cntShare = 4566;
 
         return (
-            <div>
+            <div className="container-post-review">
                 <DetailPost 
                     width={helpers.WIDTH_DETAIL_POST}
                     visible={this.state.visibleDetailPost}

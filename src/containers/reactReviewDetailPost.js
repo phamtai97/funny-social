@@ -1,7 +1,7 @@
-import ListReact from '../components/react-review/list-react';
+import ListReact from '../components/detail-post/list-react.js';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {reactReviewAction} from '../actions/react-review-action.js';
+import {reactReviewAction} from '../actions/reactReviewAction.js';
 
 const mapStateToProps = (state) => ({
     typeReact: state.reactReviewReducer.typeReact,

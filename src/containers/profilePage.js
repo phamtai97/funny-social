@@ -1,7 +1,7 @@
 import ProfilePage from '../components/profile-page';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profile-page-event';
+import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profilePageEvent';
 
 const mapStateToProps = state => ({
     view: state.profilePage.view

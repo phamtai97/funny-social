@@ -1,0 +1,97 @@
+.login-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-page .container-login-page{
+    width: 775px;
+    height: auto;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0px 3px 10px rgb(182, 182, 182);
+    margin-top: 20vh;
+}
+
+.container-login-page .title{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+}
+
+.container-login-page .header-tab{
+    border-bottom: 2px solid rgb(235, 235, 235);
+    height: 50px;
+}
+
+.tab-selected{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89)
+}
+
+.header-tab .wrapper-header-tab{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    font-family: Concert+One;    
+    margin-left: 30px;
+}
+
+.header-tab .tab{
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.header-tab .tab:hover{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+    cursor:pointer;
+}
+
+.content-tab {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-tab-login .title-tab{
+    text-align: center;
+    font-size: 25px;
+    font-family: Chivo;
+}
+
+.wrapper-input-private-key{
+    margin-top: 15px;
+}
+
+.container-tab-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+}
+
+.container-tab-login .wrapper-input-private-key{
+    display: flex;
+    flex-direction: row;
+}
+
+.wrapper-input-private-key .ant-btn{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important
+}
+
+.wrapper-input-private-key .ant-input{
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important
+}

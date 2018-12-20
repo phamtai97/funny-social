@@ -6,6 +6,8 @@ const TYPE_REACT_SHARE = 'share';
 const TYPE_REACT_COMMENT = 'comment';
 const WIDTH_REACT_REVIEW = '400px';
 const WIDTH_DETAIL_POST = '800px';
+const WIDTH_INPUT_STATUS = '600px';
+const IMAGE_DEFAULT = '../images/icon-avatar-default.png'
 module.exports= {
     FORMAT_DATE,
     TYPE_REACT_ANGRY,
@@ -14,5 +16,7 @@ module.exports= {
     TYPE_REACT_LOVE,
     TYPE_REACT_SHARE,
     WIDTH_REACT_REVIEW,
-    WIDTH_DETAIL_POST
+    WIDTH_DETAIL_POST,
+    WIDTH_INPUT_STATUS,
+    IMAGE_DEFAULT
 }

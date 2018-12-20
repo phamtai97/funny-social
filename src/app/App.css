@@ -1,10 +1,10 @@
 .App{
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: flex !important;
     flex-direction: column !important; 
 }
 
 body {
-    background-color: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(226, 226, 226, 0.548) !important;
 }

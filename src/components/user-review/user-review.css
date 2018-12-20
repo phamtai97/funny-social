@@ -38,6 +38,8 @@
 
 .user-review .wrapper .name {
     padding: 5px;
+    font-family: 'Allerta', sans-serif;
+    color: black;
 }
 
 .user-review .wrapper .follow-btn {
