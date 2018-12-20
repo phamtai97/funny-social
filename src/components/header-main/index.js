@@ -97,6 +97,10 @@ class HeaderMain extends Component{
     handleMenuClick = (e) => {
         if (e.key === '1') {
             this.props.history.push('/profile');
+            var payload = {
+                itemHeaderMain: 'profile'
+            }
+            this.props.actionSetItemHeaderMainSelected(payload);
         }else if(e.key === '2'){
             this.showModal();
         }else if(e.key === '3'){
