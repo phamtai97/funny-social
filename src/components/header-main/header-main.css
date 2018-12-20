@@ -18,15 +18,15 @@
     display:flex;
     flex-direction: row;
     background: white;
-    height: 63px !important;
+    height: 100%;
     align-items: center !important;
     margin-left: 15%;
     margin-right: 20%;
     background: white;
-    border-bottom: 2px solid rgb(224, 224, 224)
+    /* border-bottom: 2px solid rgb(224, 224, 224) */
 }
 
-.item{
+.item-header{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -52,4 +52,31 @@
 .button-funny-social .ant-btn{
     border-radius: 100px !important;
     background: rgb(0, 170, 255) !important;
+}
+
+.item-container{
+    height: 63px;
+    border-bottom: 2px solid rgba(224, 224, 224, 0);
+    display: flex!important;
+    align-items: center !important;
+}
+
+.item-container-selected .content{
+    color:rgba(0, 170, 255, 0.89);
+}
+
+.item-container-selected{
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+}
+
+.item-container .content{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9vw;  
+    padding: 10px;
+}
+
+.item-container:hover{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+    cursor:pointer;
 }

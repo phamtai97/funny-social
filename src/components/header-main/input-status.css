@@ -1,0 +1,28 @@
+.ant-modal-title{
+    font-size: 26px !important;
+    text-align: center !important;
+}
+
+
+.wrapper-input-status {
+    display: flex;
+    flex-direction: row;    
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper-input-status .avatar-input-status{
+    margin-left: 10px;
+}
+
+.wrapper-input-status .input-status{
+    margin-left: 20px;
+    flex-grow: 1;
+    margin-right:20px;
+}
+
+.wrapper-input-status .input-status .ant-input{
+    border-radius: 30px!important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}

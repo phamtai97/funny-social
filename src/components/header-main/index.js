@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import './header-main.css';
-import ItemHeader from './item-header-main';
 import { Input, Button, Avatar, Dropdown, Menu, Tooltip} from 'antd';
 import CollectionCreateFormUpdateProfile from './update-profile.js';
+import InputStatus from './input-status';
 import {withRouter} from "react-router-dom";
-import DetailPost from '../../components/detail-post';
-import helpers from '../../helpers/helpers.js';
+import classNames from 'classnames';
 
 const Search = Input.Search;
-const profile_setting = <span>Profile and Setting</span>;
-
 const CollectionCreateForm = CollectionCreateFormUpdateProfile;
+const InputStatusFrom = InputStatus;
 
-class HeaderPage extends Component{
+class HeaderMain extends Component{
     state = {
-        visible: false,   
+        visible: false,  
+        visibleInputStatus: false, 
     };
     
     //handle update profile
@@ -31,6 +30,8 @@ class HeaderPage extends Component{
     }
     
     handleCreate = () => {
+        // console.log(this.formRef.props);
+
         const form = this.formRef.props.form;
 
         form.validateFields((err, values) => {
@@ -44,23 +45,52 @@ class HeaderPage extends Component{
         });
     }
 
+    showModalInputStatus = () => {
+        this.setState({ visibleInputStatus: true });
+    }
+
+    handleCancelInputStatus = () => {
+        this.setState({ visibleInputStatus: false });
+    }
+
+    handleSubmitStatus = () => {
+
+        this.setState({ visibleInputStatus: false });
+    }
+
     //handle clich item on header
-    handleClickHomeBtn = () => {
+    handleClickHomeItem = () => {
         this.props.history.push('/');
+        var payload = {
+            itemHeaderMain: 'home'
+        }
+        this.props.actionSetItemHeaderMainSelected(payload);
     }
 
-    handleClickNotificationBtn = () => {
-        alert("notification")
+    handleClickNotificationItem = () => {
+        var payload = {
+            itemHeaderMain: 'notification'
+        }
+        this.props.actionSetItemHeaderMainSelected(payload);
     }
 
+    handleClickProfileItem = () => {
+        this.props.history.push('/profile');
+        var payload = {
+            itemHeaderMain: 'profile'
+        }
+        this.props.actionSetItemHeaderMainSelected(payload);
+    }
+    
     //handler search
     handleSearch = (value) => {
         alert(value);
     }
 
     //handler write status
-    handleClickFunnyBtn = () => {
-        alert("Funny");
+    handleClickFunnyItem = () => {
+        this.showModalInputStatus();
+        // alert("Funny");
     }
 
     //handler clich on menu
@@ -77,6 +107,7 @@ class HeaderPage extends Component{
     }
     
     render(){
+        const itemHeaderMainSelected = this.props.itemHeaderMain;
         const menu = (
             <Menu onClick={this.handleMenuClick}>
                 <Menu.Item key="1">
@@ -97,16 +128,30 @@ class HeaderPage extends Component{
         return(
             <div className="header-container">
                 <CollectionCreateForm
+                    wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
                 />
 
+                <InputStatusFrom
+                    visible={this.state.visibleInputStatus}
+                    onCancel={this.handleCancelInputStatus}
+                    onCreate={this.handleSubmitStatus}
+                />
+
                 <div className="header">
                     <div className="header-wrapper">
-                        <div className="item">
-                            <ItemHeader content={"Home"} onClick={() => this.handleClickHomeBtn}></ItemHeader>
-                            <ItemHeader content={"Notification"} onClick={() => this.handleClickNotificationBtn}></ItemHeader>
+                        <div className="item-header">
+                            <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'home'})} onClick={this.handleClickHomeItem} >
+                                <div className="content">Home</div>
+                            </div>
+                            <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'notification'})} onClick={this.handleClickNotificationItem}>
+                                <div className="content">Notification</div>
+                            </div>
+                            <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'profile'})} onClick={this.handleClickProfileItem}>
+                                <div className="content">Profile</div>
+                            </div>
                         </div>
                         <div className="search-bar">
                             <Search
@@ -123,7 +168,7 @@ class HeaderPage extends Component{
                             </Dropdown>
                         {/* </Tooltip> */}
                         <div className="button-funny-social">
-                            <Button type="primary" onClick={this.handleClickFunnyBtn}>Funny</Button>
+                            <Button type="primary" onClick={this.handleClickFunnyItem}>Funny</Button>
                         </div>
                     </div>
                 </div>
@@ -132,4 +177,4 @@ class HeaderPage extends Component{
     }
 }
 
-export default withRouter(HeaderPage);
+export default withRouter(HeaderMain);

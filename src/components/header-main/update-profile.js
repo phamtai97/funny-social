@@ -75,7 +75,7 @@ class CollectionCreateForm extends Component {
                                 onChange={this.handleChange}
                                 className="update-avatar"
                             >
-                            {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
+                                {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
                             </Upload> 
                         
                         </div>

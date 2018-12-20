@@ -56,25 +56,11 @@ class ProfileHeader extends Component {
     }
 
     render() {
-        const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
         const { isOwner } = this.state;
-        const name = "Võ Minh Trí";
 
         return (
             <div className="profile-header">
                 <div className="profile-header-wrapper">
-                    <div className="profile-info">
-                        <div className="avatar">
-                            <div className="avatar-img"
-                                style={{ backgroundImage: `url(${avatarUrl})` }}
-                            >
-                            </div>
-                        </div>
-                        <div className="name">
-                            {name}
-                        </div>
-
-                    </div>
                     <div className="profile-navbar">
                         <div className="navbar-container">
                             <div className={this.getClassNameSelect("posts")}

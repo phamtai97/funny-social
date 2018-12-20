@@ -5,6 +5,15 @@ import { Avatar, Button, Input } from 'antd';
 const {TextArea} = Input;
 
 class InputStatus extends Component{
+    //handler write status
+    handleClickFunnyBtn = () => {
+        alert("Funny");
+    }
+
+    handleComment = (e) => {
+        alert(e.target.value );
+    }
+    
     render(){
         return(
             <div>

@@ -1,11 +1,10 @@
 .App{
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: flex !important;
     flex-direction: column !important; 
 }
 
 body {
-    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%) !important;
-    background-blend-mode: screen !important;
+    background: rgba(226, 226, 226, 0.548) !important;
 }

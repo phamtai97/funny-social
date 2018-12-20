@@ -1,4 +1,4 @@
-import {VIEW_POST, VIEW_FOLLOWING, VIEW_FOLLOWER} from '../constants/profile-page-const';
+import {VIEW_POST, VIEW_FOLLOWING, VIEW_FOLLOWER} from '../constants/profilePageConstant';
 
 export const onViewPost = () => {
     return {

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Modal, Avatar } from 'antd';
 import './react-reivew.css';
-import ListReactActioner from '../../containers/ListReactActioner';
-import ListReact from '../../containers/ReactActioner';
+import ListReactActioner from '../../containers/listReactActioner';
+import ListReact from '../../containers/reactActioner';
 
 class ReactReview extends Component{
     render(){

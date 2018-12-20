@@ -1,7 +1,7 @@
-import ListReactActioner from '../components/list-react-actioner';
+import ListReact from '../components/react-review/list-react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {reactReviewAction} from '../actions/react-review-action.js';
+import {reactReviewAction} from '../actions/reactReviewAction.js';
 
 const mapStateToProps = (state) => ({
     typeReact: state.reactReviewReducer.typeReact,
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps)
-)(ListReactActioner)
+)(ListReact)

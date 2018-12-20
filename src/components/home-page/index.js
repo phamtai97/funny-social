@@ -1,18 +1,10 @@
 import React, {Component} from 'react';
 import './home-page.css';
 import ListPost from './list-post';
-import NavLeftInfo from '../../containers/NavLeftInfo';
+import NavLeftInfo from '../../containers/navLeftInfo';
 import InputStatus from './inputStatus';
 
 class HomePage extends Component{
-    //handler write status
-    handleClickFunnyBtn = () => {
-        alert("Funny");
-    }
-
-    handleComment = (e) => {
-        // alert(e.target.value );
-    }
     
     render() {
         return (

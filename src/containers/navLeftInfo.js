@@ -1,7 +1,7 @@
-import ProfilePage from '../components/profile-page';
+import NavLeftInfo from '../components/home-page/nav-left-info';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profile-page-event';
+import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profilePageEvent';
 
 const mapStateToProps = state => ({
     view: state.profilePage.view
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps)
-)(ProfilePage)
+)(NavLeftInfo)
