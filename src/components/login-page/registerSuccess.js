@@ -10,12 +10,6 @@ const Search = Input.Search;
 class RegisterSuccess extends Component{
     state = {
         iconLoadingLogin: false,
-        privateKey: ''
-    }
-    onChangePrivateKey = (e) => {
-        this.setState({
-            privateKey: e.target.value
-        })
     }
 
     sleep = (time) => {
@@ -23,16 +17,14 @@ class RegisterSuccess extends Component{
     }
     
     handleEnterLogin = () => {
-        if(this.state.privateKey.length > 0){
-            this.sleep(5000).then(() => {
-                var payload = {
-                    isLoginSuccess: true
-                }
-                this.props.actionSetLoginSuccess(payload);
-                this.setState({ iconLoadingLogin: false });
-            })
-            this.setState({ iconLoadingLogin: true });
-        }
+        this.sleep(5000).then(() => {
+            var payload = {
+                isLoginSuccess: true
+            }
+            this.props.actionSetLoginSuccess(payload);
+            this.setState({ iconLoadingLogin: false });
+        })
+        this.setState({ iconLoadingLogin: true });
     }
 
 
@@ -102,24 +94,23 @@ class RegisterSuccess extends Component{
                         </div>
                     </div>
                 </div>
-                <div className='wrapper-input-private-key'>
-                    <Input
-                        placeholder='Enter your private key'
-                        enterButton='Login'
-                        size='large'
-                        style={{width: 615}}
-                        onChange={this.onChangePrivateKey}
-                        onPressEnter={this.handleEnterLogin}
-                    />
-                    <Button 
-                        type="primary" 
-                        size="large"
-                        loading={this.state.iconLoadingLogin}
-                        onClick={this.handleEnterLogin}
-                    >Login</Button>
-                </div>
-                <div className="wrapper-button-canncel">
-                    <Button type="danger" size={"large"} style={{width: 685}} onClick={this.handleClickCanncel}>Canncel</Button>
+                <div className='wrapper-decided-button'>
+                    <div className='wrapper-button-cancel'>
+                        <Button 
+                            type="danger" 
+                            size={"large"} 
+                            style={{width: 300}} 
+                            onClick={this.handleClickCanncel}>Cancel</Button>
+                    </div>
+                    <div className='wrapper-button-login'>
+                        <Button 
+                            type="primary" 
+                            size="large"
+                            style={{width: 300}} 
+                            loading={this.state.iconLoadingLogin}
+                            onClick={this.handleEnterLogin}
+                        >Login</Button>
+                    </div>
                 </div>
             </div>
         )

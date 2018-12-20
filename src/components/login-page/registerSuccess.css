@@ -25,9 +25,6 @@
 .title-tab .title-tab{
     flex-grow: 1;
 }
-.container-tab-register-success .wrapper-input-private-key{
-    margin-top: 30px;
-}
 
 .container-tab-register{
     margin: 30px;
@@ -48,10 +45,6 @@
     border-bottom-right-radius: 0px !important
 }
 
-.container-tab-register-success .wrapper-button-canncel {
-    margin-top: 30px;
-}
-
 .container-tab-register-success .wrapper-key{
     background: rgba(206, 237, 255, 0.815);
     height: 160px;
@@ -67,4 +60,15 @@
 
 .wrapper-key .public-key{
     margin-top: 10px;
+}
+
+.wrapper-decided-button{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.wrapper-decided-button .wrapper-button-login{
+    margin-left: 90px;
 }
