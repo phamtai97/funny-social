@@ -49,6 +49,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     border-top: 1px solid rgb(185, 185, 185);
     margin-top: 20px;
 }
@@ -69,7 +70,7 @@
 
 .item-card .count{
     font-family: 'Roboto', sans-serif;
-    font-size: 2.5vh;
+    font-size: 2.7vh;
     color: rgb(21, 177, 255);
     font-weight: bold;
 
@@ -83,3 +84,7 @@
     display: flex;
     flex-direction: row;
 }
+
+/* .ant-btn {
+    background: rgb(0, 170, 255) !important;
+} */

@@ -3,7 +3,6 @@ import './registerSuccess.css';
 import { Input, Button} from 'antd';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Download from '@axetroy/react-download';
-import { throws } from 'assert';
 
 const Search = Input.Search;
 

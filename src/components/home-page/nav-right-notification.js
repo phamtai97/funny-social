@@ -21,6 +21,9 @@ class NavRightNotification extends Component{
                         })
                     }
                 </div>
+                <div className='footer'>
+                    See more
+                </div>
             </div>
         )
     }

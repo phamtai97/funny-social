@@ -20,3 +20,11 @@
     text-align: center;
     padding: 5px;
 }
+
+.container-nav-right-notification .footer{
+    border-bottom: 2px solid rgb(236, 236, 236);
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 5px;
+}

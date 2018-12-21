@@ -22,7 +22,7 @@
 .container-input-status .input-status{
     margin-left: 20px;
     flex-grow: 1;
-    margin-right:50px;
+    margin-right: 50px;
 }
 
 .input-status .ant-input{
@@ -32,12 +32,14 @@
 }
 
 .wrapper-button .ant-btn{
-    margin-right: 40px;
+    margin-right: 50px;
     border-radius: 30px !important;
     background: rgb(0, 170, 255) !important;
 }
 
 .wrapper-button{
-    margin-left: 33vw; 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     margin-top: 10px;
 }
