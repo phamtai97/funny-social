@@ -26,3 +26,8 @@
     padding-left: 20px !important;
     padding-right: 20px !important;
 }
+
+.ant-modal-footer .ant-btn .ant-btn-primary{
+    border-radius: 100px !important;
+    background: rgb(0, 170, 255) !important;
+}

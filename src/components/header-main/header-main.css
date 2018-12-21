@@ -20,8 +20,8 @@
     background: white;
     height: 100%;
     align-items: center !important;
-    margin-left: 15%;
-    margin-right: 20%;
+    margin-left: 16%;
+    margin-right: 16%;
     background: white;
     /* border-bottom: 2px solid rgb(224, 224, 224) */
 }
@@ -33,7 +33,7 @@
 }
 
 .search-bar{
-    margin-left: 28vw; 
+    margin-left: 48%; 
 }
 
 .search-bar .ant-input-affix-wrapper .ant-input{
@@ -73,6 +73,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 0.9vw;  
     padding: 10px;
+    font-weight: bold;
 }
 
 .item-container:hover{

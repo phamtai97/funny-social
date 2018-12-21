@@ -1,6 +1,6 @@
 import {loginConstant} from '../constants/loginConstant';
 const initalState = {
-    isLoginSuccess: true
+    isLoginSuccess: false
 }
 
 export default function loginReducer (state=initalState, actions) {

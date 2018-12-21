@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './nav-left-info.css';
 import {withRouter} from "react-router-dom";
 import { Avatar } from 'antd';
-import AccountBox from './account-box';
+import AccountBox from '../../containers/accountBox';
 class NavLeftInfo extends Component{
 
     handleClickItemPost = () => {
@@ -32,7 +32,6 @@ class NavLeftInfo extends Component{
 
     render(){
         const name = "Vo Minh Tri";
-        const gmail = "abcxyz@gmail.com";
         const numberPost = 1000;
         const numberFollowing = 1000;
         const numberFollowers = 1000;
