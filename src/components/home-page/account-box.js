@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './account-box.css';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { Input, Button, Icon} from 'antd';
+import { Input, Button, Icon, Tooltip} from 'antd';
 
 class AccountBox extends Component {
     render(){
@@ -31,9 +31,11 @@ class AccountBox extends Component {
                         <Icon type="dollar" />
                         <span>Balance: </span>
                     </div>
-                    <div className='balance'>
-                        {money}
-                    </div>
+                    <Tooltip placement="bottomRight" title={money}>
+                        <div className='balance'>
+                            {money}
+                        </div>
+                    </Tooltip>
                     <div className="unit">
                         TRE
                     </div>
@@ -44,9 +46,11 @@ class AccountBox extends Component {
                         <Icon type="rocket" />  
                         <span>Oxygen: </span>
                     </div>
-                    <div className='oxygen'>
-                        {oxygen}
-                    </div>
+                    <Tooltip placement="bottomRight" title={oxygen}>
+                        <div className='oxygen'>
+                            {oxygen}
+                        </div>
+                    </Tooltip>
                     <div className="unit">
                         OXY
                     </div>
