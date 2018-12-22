@@ -6,7 +6,7 @@
 
 .container-nav-left .background-user-home{
     height: 80px;
-    background: rgb(21, 177, 255);
+    background: #1890ff;
     width: 1005;
 }
 
@@ -51,7 +51,7 @@
     align-items: center;
     justify-content: center;
     border-top: 1px solid rgb(185, 185, 185);
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .info-card .item-card{
@@ -63,7 +63,7 @@
 
 .item-card .type{
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5vh;
+    font-size: 17px;
     font-weight: bold;
     color: black
 }
@@ -71,13 +71,13 @@
 .item-card .count{
     font-family: 'Roboto', sans-serif;
     font-size: 2.7vh;
-    color: rgb(21, 177, 255);
+    color: #1890ff;
     font-weight: bold;
 
 }
 
 .item-card .type:hover{
-    color: rgb(29, 176, 255);
+    color: #1890ff;
 }
 
 .container-info {

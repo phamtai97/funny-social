@@ -18,7 +18,7 @@
 .container-name-content .user-name{
     font-family: 'Allerta', sans-serif;
     font-size: 14px;
-    color: rgb(0, 170, 255);
+    color: #1890ff;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
@@ -30,7 +30,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .container-name-content .time-action{

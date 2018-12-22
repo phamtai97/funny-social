@@ -7,13 +7,13 @@ class AccountBox extends Component {
     render(){
         const {publicKey} = this.props;   
         const money = "100000000000000000000000000000";  
-        const oxygen = "11111111111111111"   
+        const oxygen = "11111111111111111111111111"   
         return(
             <div className='container-account-box'>
                 <div className='public-key'>
                     <div className="title-public-key">
                         <Icon type="key" />
-                        <span>Public Key</span>
+                        <span>Public Key: </span>
                     </div>
                     <div className="wrapper-input-button-key">
                         <Input
@@ -29,20 +29,26 @@ class AccountBox extends Component {
                 <div className='container-balance'>
                     <div className='balance-title'>
                         <Icon type="dollar" />
-                        <span>Balance</span>
+                        <span>Balance: </span>
                     </div>
-                    <div className='money'>
+                    <div className='balance'>
                         {money}
+                    </div>
+                    <div className="unit">
+                        TRE
                     </div>
                 </div>
 
                 <div className='container-oxygen'>
                     <div className='oxygen-title'>
                         <Icon type="rocket" />  
-                        <span>Oxygen</span>
+                        <span>Oxygen: </span>
                     </div>
                     <div className='oxygen'>
                         {oxygen}
+                    </div>
+                    <div className="unit">
+                        OXY
                     </div>
                 </div>
             </div>

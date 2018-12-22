@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './header-main.css';
-import { Input, Button, Avatar, Dropdown, Menu, Tooltip} from 'antd';
+import { Input, Button, Avatar, Dropdown, Menu, Icon, Badge} from 'antd';
 import CollectionCreateFormUpdateProfile from './update-profile.js';
 import InputStatus from './input-status';
 import {withRouter} from "react-router-dom";
@@ -68,6 +68,7 @@ class HeaderMain extends Component{
     }
 
     handleClickNotificationItem = () => {
+        this.props.history.push('/notification');
         var payload = {
             itemHeaderMain: 'notification'
         }
@@ -112,6 +113,7 @@ class HeaderMain extends Component{
     
     render(){
         const itemHeaderMainSelected = this.props.itemHeaderMain;
+        const count = 1;
         const menu = (
             <Menu onClick={this.handleMenuClick}>
                 <Menu.Item key="1">
@@ -148,13 +150,24 @@ class HeaderMain extends Component{
                     <div className="header-wrapper">
                         <div className="item-header">
                             <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'home'})} onClick={this.handleClickHomeItem} >
-                                <div className="content">Home</div>
+                                <div className="wrapper-content">
+                                    <Icon type="home"/>
+                                    <span className="content">Home</span>
+                                </div>
                             </div>
                             <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'notification'})} onClick={this.handleClickNotificationItem}>
-                                <div className="content">Notification</div>
+                                <div className="wrapper-content">
+                                    <Icon type="bell"/>
+                                    <Badge count={count} offset={[1, -7]}>
+                                        <span className='content-notification'>Notification</span>
+                                    </Badge>
+                                </div>
                             </div>
                             <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'profile'})} onClick={this.handleClickProfileItem}>
-                                <div className="content">Profile</div>
+                                <div className="wrapper-content">
+                                    <Icon type="profile" />
+                                    <span className='content'>Profile</span>
+                                </div>
                             </div>
                         </div>
                         <div className="search-bar">
