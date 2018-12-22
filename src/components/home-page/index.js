@@ -3,7 +3,7 @@ import './home-page.css';
 import ListPost from './list-post';
 import NavLeftInfo from '../../containers/navLeftInfo';
 import InputStatus from './inputStatus';
-import NavRightNotification from './nav-right-notification';
+import NavRightNotification from '../../containers/navRightNotification';
 
 class HomePage extends Component{
     

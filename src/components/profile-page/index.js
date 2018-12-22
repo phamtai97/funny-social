@@ -5,6 +5,8 @@ import ListFollowing from '../list-following';
 import './profile-page.css';
 import ListFollower from '../list-follower';
 import { VIEW_POST, VIEW_FOLLOWING, VIEW_FOLLOWER } from '../../constants/profilePageConstant';
+import AccountBox from '../../containers/accountBox';
+import UserReview from '../user-review';
 
 class ProfilePage extends Component {
     getContent = () => {
@@ -26,7 +28,9 @@ class ProfilePage extends Component {
         const { onViewPost, onViewFollowing, onViewFollower, view} = this.props;
         const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
         const name = "Võ Minh Trí";
-        
+        let a = Array(5).fill(0);
+        let cnt = 0;
+
         return (
             <div className="profile-page">
                 <div className="container-profile-page">
@@ -50,8 +54,35 @@ class ProfilePage extends Component {
                         onViewFollower={onViewFollower}
                         view={view}
                     />
-                    <div className="content-container">
-                        {this.getContent()}
+                    <div className='container-nav'>
+                        <div className="nav-left-profile-page">
+                            <div className="container-account-box">
+                                <div className="title">
+                                    Account
+                                </div>
+                                <AccountBox></AccountBox>
+                            </div>
+                        </div>
+                        <div className="content-container">
+                            {this.getContent()}
+                        </div>
+                        <div className="nav-right-profile-page">
+                            <div className="container-follower-box">
+                                <div className="title">
+                                    You can follow
+                                </div>
+                                <div className="list-user-follow">
+                                    {
+                                        a.map(()=> {
+                                            cnt++;
+                                            return <UserReview key={cnt}/>
+                                        })
+                                    }
+                                </div>
+                                <div className="footer">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 .container-account-box{
     width: 100%;
-    height: 220px;
+    height: 100%;
     background: white;
     margin-top: 15px;
     display: flex;
@@ -17,7 +17,8 @@
 
 .container-account-box .title-public-key{
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 17px;
+    color: black
 }
 
 .title-public-key>span{
@@ -26,43 +27,56 @@
 
 .container-balance{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 14px;
 }
 
 .container-balance .balance-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
-    margin-top: 15px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
+    color: black
 }
 
 .balance-title>span{
     margin-left: 5px;
 }
 
-.container-balance .money{
+.container-balance .balance{
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    text-align: center;
-    border: 1px solid rgb(185, 185, 185);
-    border-radius: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 2px;
+    margin-left: 3px;
 }
 
+.container-balance .unit{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 2px;
+}
 .container-oxygen{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .container-oxygen .oxygen-title{
     font-family: 'Roboto', sans-serif;
-    margin-top: 15px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .oxygen-title>span{
@@ -71,13 +85,18 @@
 
 .container-oxygen .oxygen{
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
-    text-align: center;
-    border: 1px solid rgb(185, 185, 185);
     border-radius: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 2px;
+    margin-left: 8px;
+}
+
+.container-oxygen .unit{
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 2px;
 }

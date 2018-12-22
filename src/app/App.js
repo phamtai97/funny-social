@@ -6,6 +6,7 @@ import HomePage from '../components/home-page';
 import ProfilePage from '../containers/profilePage';
 import HeaderMain from '../containers/headerMain';
 import LoginPage from '../containers/login';
+import NotificationPage from '../components/notification-page';
 
 class App extends Component {
   render() {
@@ -18,8 +19,8 @@ class App extends Component {
               }
               <Switch>
                 <Route exact path = '/' component = {LoginPage}/>
-                {/* <Route path ='/login' component = {LoginPage}/> */}
                 <Route path = '/profile' component = {ProfilePage}/>
+                <Route path = '/notification' component = {NotificationPage}/>
               </Switch>
             </div>
           </BrowserRouter>

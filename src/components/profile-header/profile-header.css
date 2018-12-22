@@ -58,6 +58,7 @@
 .navbar-item .title {
     user-select: none;
     font-family: 'Chivo';    
+    font-size: 15px;
     -webkit-user-select: none;
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
