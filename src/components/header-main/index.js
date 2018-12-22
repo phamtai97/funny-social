@@ -5,15 +5,19 @@ import CollectionCreateFormUpdateProfile from './update-profile.js';
 import InputStatus from './input-status';
 import {withRouter} from "react-router-dom";
 import classNames from 'classnames';
+import iconSendmoney from '../../images/icon-send-money.png';
+import BoxSendMoney from './box-send-money';
 
 const Search = Input.Search;
 const CollectionCreateForm = CollectionCreateFormUpdateProfile;
 const InputStatusFrom = InputStatus;
+const BoxSendMoneyFrom = BoxSendMoney;
 
 class HeaderMain extends Component{
     state = {
         visible: false,  
         visibleInputStatus: false, 
+        visibleBoxSendMoney: false,
     };
     
     //handle update profile
@@ -45,6 +49,7 @@ class HeaderMain extends Component{
         });
     }
 
+    ///cliclk button status
     showModalInputStatus = () => {
         this.setState({ visibleInputStatus: true });
     }
@@ -54,8 +59,24 @@ class HeaderMain extends Component{
     }
 
     handleSubmitStatus = () => {
-
         this.setState({ visibleInputStatus: false });
+    }
+
+    ///cliclk button send money
+    handleCancelBoxSendMoney  = () => {
+        this.setState({ visibleBoxSendMoney: false });
+    }
+
+    showModalSendMoney = () => {
+        this.setState({ visibleBoxSendMoney: true });
+    }
+
+    handleSendMoney = () => {
+        this.setState({ visibleBoxSendMoney: false });
+    }
+
+    handleClickButtonSendMoney = () => {
+        this.showModalSendMoney();
     }
 
     //handle clich item on header
@@ -110,7 +131,8 @@ class HeaderMain extends Component{
             alert("Log out")
         }
     }
-    
+
+
     render(){
         const itemHeaderMainSelected = this.props.itemHeaderMain;
         const count = 1;
@@ -146,6 +168,12 @@ class HeaderMain extends Component{
                     onCreate={this.handleSubmitStatus}
                 />
 
+                <BoxSendMoneyFrom
+                    visible={this.state.visibleBoxSendMoney}
+                    onCancel={this.handleCancelBoxSendMoney}
+                    onCreate={this.handleSendMoney}
+                />
+
                 <div className="header">
                     <div className="header-wrapper">
                         <div className="item-header">
@@ -169,6 +197,9 @@ class HeaderMain extends Component{
                                     <span className='content'>Profile</span>
                                 </div>
                             </div>
+                        </div>
+                        <div className="button-send-money">
+                            <img src={iconSendmoney}  onClick={this.handleClickButtonSendMoney} ></img>
                         </div>
                         <div className="search-bar">
                             <Search
