@@ -84,12 +84,14 @@
 }
 
 .wrapper-content .content{
-    margin-left: 8px;
+    margin-left: 12px;
 }
 
 .wrapper-content .content-notification{
+    margin-left: 12px;
     font-size: 17px;
 }
+
 .item-container:hover{
     color: rgba(0, 170, 255, 0.89);
     border-bottom: 2px solid rgba(0, 170, 255, 0.89);

@@ -5,17 +5,15 @@ import classNames from 'classnames';
 import RegisterSuccess from '../../containers/registerSuccess';
 import Register from '../../containers/register';
 import HomePage from '../../components/home-page';
-
+import baseURL from '../../config/baseURL';
 
 const Search = Input.Search;
 
 class LoginPage extends Component {
     state = {
         tabName: 'login',
-        valueKeyLogin: '',
-        isLoginSuccess: false,
         privateKey: '',
-        iconLoadingLogin: false,
+        iconLoadingLogin: false ,
     }
 
     handleClickTab = (tabName) => {
@@ -30,12 +28,17 @@ class LoginPage extends Component {
     
     handleEnterLogin = () => {
         if(this.state.privateKey.length > 0){
+            // var payload = {
+            //     url: baseURL + '/',
+            //     privateKey: this.state.privateKey
+            // }
+            // this.props.actionLogin(payload)
+
             this.sleep(1000).then(() => {
                 var payload = {
                     isLoginSuccess: true
                 }
                 this.props.actionSetLoginSuccess(payload);
-                this.setState({ iconLoadingLogin: false });
             })
             this.setState({ iconLoadingLogin: true });
         }
@@ -46,11 +49,18 @@ class LoginPage extends Component {
             privateKey: e.target.value
         })
     }
+    
+    componentDidUpdate = () => {
+        if(this.state.iconLoadingLogin === true){
+            this.setState({
+                iconLoadingLogin: false
+            })
+        }
+    }
 
     render(){
         const {tabName}  = this.state;
         const {isRegisterSuccess, isLoginSuccess} = this.props;
-
         if(isLoginSuccess){
             return(
                 <div>
