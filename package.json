@@ -5,6 +5,7 @@
   "dependencies": {
     "@axetroy/react-download": "^1.1.1",
     "antd": "^3.10.9",
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "crypto": "^1.0.1",
     "moment": "^2.22.2",
@@ -15,6 +16,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "stellar-base": "^0.10.0"
   },
   "scripts": {

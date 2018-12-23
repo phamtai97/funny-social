@@ -79,8 +79,7 @@ class ProfilePage extends Component {
                                         })
                                     }
                                 </div>
-                                <div className="footer">
-                                </div>
+                                <div className="footer"/>
                             </div>
                         </div>
                     </div>

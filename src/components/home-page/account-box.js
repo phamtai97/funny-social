@@ -16,11 +16,13 @@ class AccountBox extends Component {
                         <span>Public Key: </span>
                     </div>
                     <div className="wrapper-input-button-key">
-                        <Input
-                            size='default'
-                            disabled={false}
-                            value={publicKey}
-                        />
+                        <Tooltip placement="bottomRight" title={publicKey}>
+                            <Input
+                                size='default'
+                                disabled={false}
+                                value={publicKey}
+                            />
+                        </Tooltip>
                         <CopyToClipboard text={publicKey}>
                             <Button type="primary" size="default">Copy</Button>
                         </CopyToClipboard>
