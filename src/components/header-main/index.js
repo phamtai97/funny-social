@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './header-main.css';
 import { Input, Button, Avatar, Dropdown, Menu, Icon, Badge} from 'antd';
-import CollectionCreateFormUpdateProfile from './update-profile.js';
+import UpdateProfile from '../../containers/updateProfile';
 import InputStatus from './input-status';
 import {withRouter} from "react-router-dom";
 import classNames from 'classnames';
 import iconSendmoney from '../../images/icon-send-money.png';
 import BoxSendMoney from './box-send-money';
+import {transactionGet} from '../../lib/transaction/get';
+import {baseURL} from '../../config/baseURL';
+
 
 const Search = Input.Search;
-const CollectionCreateForm = CollectionCreateFormUpdateProfile;
+const CollectionCreateForm = UpdateProfile;
 const InputStatusFrom = InputStatus;
 const BoxSendMoneyFrom = BoxSendMoney;
 
@@ -33,8 +36,8 @@ class HeaderMain extends Component{
         this.formRef = formRef;
     }
     
-    handleCreate = () => {
-        // console.log(this.formRef.props);
+    handleCreate = (url) => {
+        console.log(url);
 
         const form = this.formRef.props.form;
 
@@ -47,6 +50,8 @@ class HeaderMain extends Component{
             form.resetFields();
             this.setState({ visible: false });
         });
+        this.setState({ visible: false });
+
     }
 
     ///cliclk button status
@@ -104,6 +109,13 @@ class HeaderMain extends Component{
         this.props.actionSetItemHeaderMainSelected(payload);
     }
     
+    handleClickHistoryItem = () => {
+        this.props.history.push('/history');
+        var payload = {
+            itemHeaderMain: 'history'
+        }
+        this.props.actionSetItemHeaderMainSelected(payload);
+    }
     //handler search
     handleSearch = (value) => {
         alert(value);
@@ -128,18 +140,27 @@ class HeaderMain extends Component{
         }else if(e.key === '3'){
             alert("Change password")
         }else if(e.key === '4'){
-            alert("Log out")
+            if(this.props.privateKey.length > 0){
+                const tx = transactionGet.logout(this.props.privateKey);
+                var payload = {
+                    url: baseURL.BASE_URL + baseURL.URL.LOGOUT,
+                    tx: tx
+                }
+                this.props.actionLogout(payload)
+                this.props.history.push('/');
+            }
         }
     }
 
-
+    
     render(){
-        const itemHeaderMainSelected = this.props.itemHeaderMain;
+
+        const {itemHeaderMainSelected}  = this.props;
         const count = 1;
         const menu = (
             <Menu onClick={this.handleMenuClick}>
                 <Menu.Item key="1">
-                    <a>Profile</a>
+                    <a>pProfile</a>
                 </Menu.Item>
                 <Menu.Item key="2">
                     <a>Update profile</a>
@@ -195,6 +216,12 @@ class HeaderMain extends Component{
                                 <div className="wrapper-content">
                                     <Icon type="profile" />
                                     <span className='content'>Profile</span>
+                                </div>
+                            </div>
+                            <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'history'})} onClick={this.handleClickHistoryItem}>
+                                <div className="wrapper-content">
+                                    <Icon type="calendar" />
+                                    <span className='content'>History</span>
                                 </div>
                             </div>
                         </div>

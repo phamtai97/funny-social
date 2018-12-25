@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DetailPost from '../../components/detail-post';
 import helpers from '../../helpers/helpers';
-
 import './post-review.css';
+import '../../config/typeActivity'
 
 class PostReview extends Component {
     state = {
@@ -26,6 +26,9 @@ class PostReview extends Component {
         this.setState({ visibleDetailPost: true });
     }
 
+    renderContent = (type) => {
+        // if(type === '')
+    }
 
     render() {
         const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
@@ -69,6 +72,8 @@ class PostReview extends Component {
                         </div>
                         <div className="content">
                             {content}
+
+                            
                         </div>
                         <div className="footer">
                             <div className="item">

@@ -33,7 +33,7 @@
     color: #666;
 }
 
-.wrapper-input-username{
+.wrapper-input-key{
     margin-top: 15px;
 }
 
@@ -47,17 +47,18 @@
 
 .container-button-gen-register-key{
     display: flex;
-    flex-direction: row;
-    margin-top: 60px;
-    align-content: flex-start;
+    flex-direction: column;
+    margin-top: 30px;
+    /* justify-content: flex-end; */
 }
 
-.wrapper-btn-register-key {
-    margin-left: 40px;
+.container-button-gen-register-key .wrapper-btn-register-key{
+    display: flex;
+    flex-direction: column;
 }
 
 .container-register{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }

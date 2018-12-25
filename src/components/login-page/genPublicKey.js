@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './registerSuccess.css';
+import './genPublicKey.css';
 import { Input, Button} from 'antd';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Download from '@axetroy/react-download';
+import { Keypair } from 'stellar-base';
 
-const Search = Input.Search;
 
-class RegisterSuccess extends Component{
+class GenPublicKey extends Component{
     state = {
         iconLoadingLogin: false,
     }
@@ -15,15 +15,13 @@ class RegisterSuccess extends Component{
         return new Promise((resolve) => setTimeout(resolve, time));
     }
     
-    handleEnterLogin = () => {
-        this.sleep(5000).then(() => {
-            var payload = {
-                isLoginSuccess: true
-            }
-            this.props.actionSetLoginSuccess(payload);
-            this.setState({ iconLoadingLogin: false });
-        })
-        this.setState({ iconLoadingLogin: true });
+    handleGenKey = () => {
+        const key = Keypair.random();
+        var payload = {
+            privateKey: key.secret().toString('base64'),
+            publicKey: key.publicKey().toString('base64')
+        }
+        this.props.actionGenPrivatePublicKey(payload);
     }
 
 
@@ -33,29 +31,36 @@ class RegisterSuccess extends Component{
             publicKey: ''
         }
         this.props.actionGenPrivatePublicKey(payload);
-        
-        payload = {};
-        payload = {
-            isRegisterSuccess: false
-        }
-        this.props.actionSetRegisterSuccess(payload);
     } 
 
-    handleClickDownloadFile = () => {
-
+    componentDidMount = () => {
+        const key = Keypair.random();
+        var payload = {
+            privateKey: key.secret().toString('base64'),
+            publicKey: key.publicKey().toString('base64')
+        }
+        this.props.actionGenPrivatePublicKey(payload);
     }
 
     render(){
         const {privateKey, publicKey} = this.props;
-        var content = 'Private Key: ' + this.props.privateKey + '\n' + 'Public key: ' + this.props.publicKey
-
+        var isDownload = true;
+        var content = JSON.stringify({PrivateKey : this.props.privateKey, PublicKey: this.props.publicKey});
+        if(privateKey.length > 0 && publicKey.length > 0){
+            isDownload = false;
+        }
         return(
             <div className='container-tab-register-success'>
                 <div className='title-tab'>
                     <div className='name-title'>Save Your Private Key And Public Key</div>
                     <div className='button-download-file'>
                         <Download file="privatekey.txt" content={content}>
-                            <Button type="primary" icon="download" size={"large"} onClick={this.handleClickDownloadFile}>Download</Button>
+                            <Button 
+                                type="primary" 
+                                icon="download" 
+                                size={"large"} 
+                                disabled={isDownload}
+                                onClick={this.handleClickDownloadFile}>Download</Button>
                         </Download>
                     </div>
                 </div>
@@ -94,21 +99,20 @@ class RegisterSuccess extends Component{
                     </div>
                 </div>
                 <div className='wrapper-decided-button'>
-                    <div className='wrapper-button-cancel'>
+                    {/* <div className='wrapper-button-cancel'>
                         <Button 
                             type="danger" 
                             size={"large"} 
                             style={{width: 300}} 
                             onClick={this.handleClickCanncel}>Cancel</Button>
-                    </div>
+                    </div> */}
                     <div className='wrapper-button-login'>
                         <Button 
                             type="primary" 
                             size="large"
                             style={{width: 300}} 
                             loading={this.state.iconLoadingLogin}
-                            onClick={this.handleEnterLogin}
-                        >Login</Button>
+                            onClick={this.handleGenKey}>Generate Key</Button>
                     </div>
                 </div>
             </div>
@@ -116,4 +120,4 @@ class RegisterSuccess extends Component{
     }
 }
 
-export default RegisterSuccess;
+export default GenPublicKey;

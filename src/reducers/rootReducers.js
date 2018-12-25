@@ -5,13 +5,15 @@ import reactReviewReducer from './reactReviewReducer';
 import headerMainReducer from './headerMainReducer';
 import registerReducer from './registerReducer';
 import loginReducer from './loginReducer';
+import updateProfileReducer from './updateProfileReducer';
 
 const rootReducer = combineReducers({
     profilePage,
     reactReviewReducer,
     headerMainReducer,
     registerReducer,
-    loginReducer
+    loginReducer,
+    updateProfileReducer
 });
 
 export default rootReducer;

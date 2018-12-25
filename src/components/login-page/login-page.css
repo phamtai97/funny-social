@@ -42,7 +42,7 @@
     margin-left: 30px;
 }
 
-.header-tab .tab{
+.header-tab .tab-login{
     height: 50px;
     width: 100px;
     text-align: center;
@@ -50,7 +50,35 @@
 }
 
 
-.header-tab .tab:hover{
+.header-tab .tab-login:hover{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+    cursor:pointer;
+}
+
+.header-tab .tab-register{
+    height: 50px;
+    width: 120px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.header-tab .tab-register:hover{
+    color: rgba(0, 170, 255, 0.89);
+    border-bottom: 2px solid rgba(0, 170, 255, 0.89);
+    cursor:pointer;
+}
+
+.header-tab .tab-generatekey{
+    height: 50px;
+    width: 130px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.header-tab .tab-generatekey:hover{
     color: rgba(0, 170, 255, 0.89);
     border-bottom: 2px solid rgba(0, 170, 255, 0.89);
     cursor:pointer;
@@ -83,15 +111,9 @@
 
 .container-tab-login .wrapper-input-private-key{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-.wrapper-input-private-key .ant-btn{
-    border-top-left-radius: 0px !important;
-    border-bottom-left-radius: 0px !important
-}
-
-.wrapper-input-private-key .ant-input{
-    border-top-right-radius: 0px !important;
-    border-bottom-right-radius: 0px !important
+.container-tab-login .ant-btn{
+    margin-top: 30px;
 }

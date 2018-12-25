@@ -22,11 +22,14 @@ function beforeUpload(file) {
     return isJPG && isLt2M;
 }
 
-class CollectionCreateForm extends Component {
+class UpdateProfile extends Component {
     state={
         loading: false, 
     }
 
+    handleOnCreate = () => {
+        this.props.onCreate(this.state.imageUrl)
+    }
     //handle update avatar
     handleChange = (info) => {
         if (info.file.status === 'uploading') {
@@ -43,7 +46,7 @@ class CollectionCreateForm extends Component {
     }
 
     render() {
-        const { visible, onCancel, onCreate, form } = this.props;
+        const { visible, onCancel, form } = this.props;
         const { getFieldDecorator } = form;
         const uploadButton = (
             <div>
@@ -61,7 +64,7 @@ class CollectionCreateForm extends Component {
                     title="Update your profile"
                     okText="Update"
                     onCancel={onCancel}
-                    onOk={onCreate}
+                    onOk={this.handleOnCreate}
                 >
                     <Form layout="vertical" className="container-form">
                         <div className="container-upload">
@@ -73,7 +76,6 @@ class CollectionCreateForm extends Component {
                                 action="//jsonplaceholder.typicode.com/posts/"
                                 beforeUpload={beforeUpload}
                                 onChange={this.handleChange}
-                                className="update-avatar"
                             >
                                 {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
                             </Upload> 
@@ -106,4 +108,4 @@ class CollectionCreateForm extends Component {
     }
 }
 
-export default Form.create()(CollectionCreateForm);
+export default Form.create()(UpdateProfile);
