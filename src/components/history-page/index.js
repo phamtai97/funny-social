@@ -56,6 +56,8 @@ const columns = [
 
 const data = [];
 const numberPage = 10000;
+
+
 for (let i = 0; i < numberPage; i++){
     data.push({
         key: '1',
