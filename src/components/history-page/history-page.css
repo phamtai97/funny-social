@@ -1,0 +1,34 @@
+.container-history-page{
+    margin-top: 73px;  
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-history-page .wrapper-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+}
+
+.container-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.container-history-page .title{
+    margin: 15px;   
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    background: white;
+    width: 100%;
+    text-align: center; 
+    padding: 5px;
+}

@@ -7,8 +7,26 @@ import ProfilePage from '../containers/profilePage';
 import HeaderMain from '../containers/headerMain';
 import LoginPage from '../containers/login';
 import NotificationPage from '../components/notification-page';
+import HistoryPage from '../components/history-page';
+
+
 
 class App extends Component {
+  componentDidMount = () => {
+    const privateKeyEncode = localStorage.getItem('privateKey');  
+    if(privateKeyEncode){
+      const privateKeyDecode = atob(privateKeyEncode);
+      var payload = {
+        isLoginSuccess: true
+      }
+      this.props.actionSetLoginSuccess(payload);
+      payload = {
+        privateKey: privateKeyDecode
+      }
+      this.props.actionGenPrivatePublicKey(payload)
+    }
+  }
+
   render() {
     const {isLoginSuccess} = this.props;
     return (
@@ -21,6 +39,7 @@ class App extends Component {
                 <Route exact path = '/' component = {LoginPage}/>
                 <Route path = '/profile' component = {ProfilePage}/>
                 <Route path = '/notification' component = {NotificationPage}/>
+                <Route path ='/history' component =  {HistoryPage}/>
               </Switch>
             </div>
           </BrowserRouter>

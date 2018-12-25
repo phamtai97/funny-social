@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './login-page.css';
-import { Input, Button} from 'antd';
+import { Input, Button, message} from 'antd';
 import classNames from 'classnames';
-import RegisterSuccess from '../../containers/registerSuccess';
+import GenPublicKey from '../../containers/genPublicKey';
 import Register from '../../containers/register';
 import HomePage from '../../components/home-page';
-import baseURL from '../../config/baseURL';
+import {baseURL} from '../../config/baseURL';
+import {transactionGet} from '../../lib/transaction/get';
+const { Keypair } = require('stellar-base');
 
-const Search = Input.Search;
 
 class LoginPage extends Component {
     state = {
@@ -28,19 +29,18 @@ class LoginPage extends Component {
     
     handleEnterLogin = () => {
         if(this.state.privateKey.length > 0){
-            // var payload = {
-            //     url: baseURL + '/',
-            //     privateKey: this.state.privateKey
-            // }
-            // this.props.actionLogin(payload)
-
-            this.sleep(1000).then(() => {
+            try{
+                const tx = transactionGet.login(this.state.privateKey);
                 var payload = {
-                    isLoginSuccess: true
+                    url: baseURL.BASE_URL + baseURL.URL.LOGIN,
+                    tx: tx
                 }
-                this.props.actionSetLoginSuccess(payload);
-            })
-            this.setState({ iconLoadingLogin: true });
+                this.props.actionLogin(payload)
+                this.setState({ iconLoadingLogin: true});
+            }catch (err) {
+                console.log('err login: ', err)
+                message.error('Login failed !!!');
+            }
         }
     }
 
@@ -51,16 +51,69 @@ class LoginPage extends Component {
     }
     
     componentDidUpdate = () => {
-        if(this.state.iconLoadingLogin === true){
+        if(this.props.isLoginSuccess === true && this.state.iconLoadingLogin === true){
+            const payload = {
+                privateKey: this.state.privateKey,
+                publicKey: ''
+            }
+            this.props.actionGenPrivatePublicKey(payload)
+            //encode privatekey and save to storage
+
+            const privateKeyEncode = btoa(this.state.privateKey);
+            localStorage.setItem('privateKey', privateKeyEncode);
             this.setState({
-                iconLoadingLogin: false
+                iconLoadingLogin: false,
+                privateKey: ''
             })
+        }
+    }
+
+    renderTab = (nameTab) => {
+        if(nameTab === 'login'){
+            return (
+                <div className='container-tab-login'>
+                    <div className='wrapper-input-private-key'>
+                        <Input
+                                placeholder='Enter your private key'
+                                enterButton='Login'
+                                size='large'
+                                style={{width: 600}}
+                                onChange={this.onChangePrivateKey}
+                                onPressEnter={this.handleEnterLogin}
+                        />
+                        <Button 
+                            type="primary" 
+                            size="large"
+                            loading={this.state.iconLoadingLogin}
+                            onClick={this.handleEnterLogin}
+                        >Login</Button>
+                    </div>
+                </div>
+            )
+        } else if (nameTab === 'register'){
+            return (
+                <div className='container-tab-register'>
+                    <Register></Register>
+                </div>
+            )
+        }else {
+            return (
+                <GenPublicKey></GenPublicKey>
+            )
+        }
+    }
+
+    handleDeleteDataInStorage = () => {
+        const privateKeyEncode = localStorage.getItem('privateKey');  
+        if(this.props.isLogoutSuccess === true && this.props.isLoginSuccess === false && privateKeyEncode){
+            localStorage.removeItem('privateKey')
         }
     }
 
     render(){
         const {tabName}  = this.state;
-        const {isRegisterSuccess, isLoginSuccess} = this.props;
+        const {isLoginSuccess} = this.props;
+        this.handleDeleteDataInStorage();
         if(isLoginSuccess){
             return(
                 <div>
@@ -77,59 +130,20 @@ class LoginPage extends Component {
                     </div>
                     <div className='header-tab'>
                         <div className='wrapper-header-tab'>
-                            <div className={classNames('tab', {'tab-selected': tabName === 'login'})}>
+                            <div className={classNames('tab-login', {'tab-selected': tabName === 'login'})}>
                                 <div className='content' onClick={() => this.handleClickTab('login')}>Login</div>
                             </div>
-                            <div className={classNames('tab', {'tab-selected': tabName === 'register'})}>
+                            <div className={classNames('tab-register', {'tab-selected': tabName === 'register'})}>
                                 <div className='content' onClick={() => this.handleClickTab('register')}>Register</div>
+                            </div>
+                            <div className={classNames('tab-generatekey', {'tab-selected': tabName === 'generatekey'})}>
+                                <div className='content' onClick={() => this.handleClickTab('generatekey')}>Generate Key</div>
                             </div>
                         </div>
                     </div>
                     <div className='content-tab'>
                         {
-                            tabName === 'login' ? 
-                            (
-                                <div className='container-tab-login'>
-                                    <div className='title-tab'>
-                                        Enter Private Key
-                                    </div>
-                                    <div className='wrapper-input-private-key'>
-                                        <Input
-                                                placeholder='Enter your private key'
-                                                enterButton='Login'
-                                                size='large'
-                                                style={{width: 600}}
-                                                onChange={this.onChangePrivateKey}
-                                                onPressEnter={this.handleEnterLogin}
-                                        />
-                                        <Button 
-                                            type="primary" 
-                                            size="large"
-                                            loading={this.state.iconLoadingLogin}
-                                            onClick={this.handleEnterLogin}
-                                        >Login</Button>
-                                    </div>
-                                </div>
-                            )
-                            :
-                            (   
-                                <div>
-                                    {
-                                        isRegisterSuccess ?
-                                        (
-                                            <div>
-                                                <RegisterSuccess></RegisterSuccess>
-                                            </div>
-                                        ) 
-                                        :
-                                        (
-                                            <div className='container-tab-register'>
-                                                <Register></Register>
-                                            </div>
-                                        )
-                                    }
-                                </div>
-                            )
+                            this.renderTab(tabName)
                         }
                     </div>
                 </div>

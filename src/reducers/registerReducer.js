@@ -3,6 +3,7 @@ import {registerConstant} from '../constants/registerConstant'
 const initalState = {
     privateKey: '',
     publicKey: '',
+    isRegisterSuccess: false
 }
 
 export default function registerReducer(state=initalState, actions){

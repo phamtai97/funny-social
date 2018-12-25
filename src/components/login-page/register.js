@@ -1,81 +1,55 @@
 import React, {Component} from 'react';
 import './register.css';
-import { Input, Upload, message, Icon, Button} from 'antd';
-import { Keypair } from 'stellar-base';
+import { Input, Icon, Button, message} from 'antd';
+import {baseURL} from '../../config/baseURL';
+import {transactionGet} from '../../lib/transaction/get';
+import axios from 'axios';
+const { Keypair } = require('stellar-base');
 
-const Search = Input.Search;
+// function getBase64(img, callback) {
+//     const reader = new FileReader();
+//     reader.addEventListener('load', () => callback(reader.result));
+//     reader.readAsDataURL(img);
+// }
 
-function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
-
-function beforeUpload(file) {
-    const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
-    if (!isJPG) {
-        message.error('You can only upload JPG file!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
-    }
-    return isJPG && isLt2M;
-}
+// function beforeUpload(file) {
+//     const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
+//     if (!isJPG) {
+//         alert('You can only upload JPG file!');
+//     }
+//     const isLt2M = file.size / 1024 / 1024 / 1024 < 20;
+//     if (!isLt2M) {
+//         alert('Image must smaller than 20KB!');
+//     }
+//     return isJPG && isLt2M;
+// }
 
 class Register extends Component{
     state={
         loading: false, 
-        userName: '',
-        publicKeyOfReferer: '',
+        privateKey: 'SA72RQJR3RUU4ACDSM3QMLYQIH3FIWRGFI3HM6X7NPYT3GMEPNNPNMEP',
+        publicKey: '',
         iconLoadingRegister: false
     }
 
-    handleChange = (info) => {
-        if (info.file.status === 'uploading') {
-            this.setState({ loading: true });
-            return;
-        }
-        if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, imageUrl => this.setState({
-                imageUrl,
-                loading: false,
-                
-            }));
-        }
-    }
-
-    handleEnterYourName = (e) => {
-        console.log(e.target.value)
-    }
-
     emitEmpty = () => {
-        this.userNameInput.focus();
-        this.setState({ userName: '' });
+        this.privateKeyInput.focus();
+        this.setState({ privateKey: '' });
     }
 
     emitEmptyInputPublicKeyOfReferer = () => {
         this.publicKeyRefererInput.focus();
-        this.setState({ publicKeyOfReferer: '' });
+        this.setState({ publicKey: '' });
     }
 
-    onChangeUserName = (e) => {
-        this.setState({ userName: e.target.value });
+    onChangePrivatekey = (e) => {
+        this.setState({ privateKey: e.target.value });
     }
 
-    onChangePublicKeyOfReferer = (e) => {
-        this.setState({ publicKeyOfReferer: e.target.value });
+    onChangePublicKey = (e) => {
+        this.setState({ publicKey: e.target.value });
     }
 
-    handleClickBtnGenKey = () => {
-        const key = Keypair.random();
-        var payload = {
-            privateKey: key.secret().toString('base64'),
-            publicKey: key.publicKey().toString('base64')
-        }
-        this.props.actionGenPrivatePublicKey(payload);
-    }
 
     sleep = (time) => {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -83,115 +57,99 @@ class Register extends Component{
     
     
     handleClickBtnRegistrer = () => {
-        this.sleep(1000).then(() => {
-            var payload = {
-                isRegisterSuccess: true
+        const key = Keypair.fromSecret(this.state.privateKey);
+        const publicKey = key.publicKey();
+        axios.get(baseURL.BASE_URL + baseURL.URL.GET_SEQUENCE + publicKey).then((result) => {
+            try{
+                var sequence = parseInt(result.data.data.sequence) + 1;
+                const tx = transactionGet.createAccount(this.state.privateKey, sequence, this.props.publicKey)
+                var payload = {
+                    url: baseURL.BASE_URL + baseURL.URL.BROADCAST,
+                    Tx: tx
+                }
+                this.props.actionRegister(payload)
+        
+                this.setState({ iconLoadingRegister: true });
+            }catch(err){
+                console.log('error: ',err)
+                message.error('Register account failed !!!');
+                this.setState({
+                    iconLoadingRegister: false,
+                    privateKey: '',
+                    publicKey: ''
+                })
             }
-            this.props.actionSetRegisterSuccess(payload);
-            this.setState({ iconLoadingRegisterRegister: false });
         })
-        this.setState({ iconLoadingRegister: true });
+
     }
+    
+    componentDidUpdate = () => {
+        if(this.props.isRegisterSuccess === true && this.state.iconLoadingRegister === true){
+            message.success('Register account successed!!!');
+            this.setState({
+                iconLoadingRegister: false,
+                privateKey: '',
+                publicKey: ''
+            })
+
+        }else if(this.props.isRegisterSuccess === false && this.state.iconLoadingRegister === true){
+            message.error('Register account failed !!!');
+            this.setState({
+                iconLoadingRegister: false,
+                privateKey: '',
+                publicKey: ''
+            })
+        }
+    }
+        
 
     render(){
         var isGenKey = true;
-        const {privateKey, publicKey} = this.props;
-        const imageUrl = this.state.imageUrl;
-        const { userName, publicKeyOfReferer } = this.state;
-        const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
-        const suffixPublicKeyOfReferer = publicKeyOfReferer ? <Icon type="close-circle" onClick={this.emitEmptyInputPublicKeyOfReferer} /> : null;
+        const {isRegisterSuccess} = this.props;
+        const {iconLoadingRegister} = this.state;
+        const suffix = this.state.privateKey ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+        const suffixPublicKeyOfReferer = this.state.publicKey ? <Icon type="close-circle" onClick={this.emitEmptyInputPublicKeyOfReferer} /> : null;
 
-
-        if(privateKey.length > 0 && userName.length > 0){
+        if(this.state.publicKey.length > 0 && this.state.privateKey.length > 0){
             isGenKey = false;
         }
-
-        const uploadButton = (
-            <div>
-                <Icon type={this.state.loading ? 'loading' : 'plus'} />
-                <div className="ant-upload-text">Upload</div>
-            </div>
-        );
-
         return(
             <div className="container-register">
-                <div className="container-upload-avatar">
-                    <Upload
-                        name="avatar"
-                        listType="picture-card"
-                        className="avatar-uploader"
-                        showUploadList={false}
-                        action="//jsonplaceholder.typicode.com/posts/"
-                        beforeUpload={beforeUpload}
-                        onChange={this.handleChange}
-                        className="update-avatar"
-                    >
-                        {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
-                    </Upload> 
-                </div>
-                <div className="wrapper-input-username">
-                        <Input
-                            placeholder="Enter your username"
-                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            suffix={suffix}
-                            value={userName}
-                            onChange={this.onChangeUserName}
-                            ref={node => this.userNameInput = node}
-                            style={{width:600}}
-                            size={"large"}
-                        />
+                <div className="wrapper-input-key">
+                    <Input
+                        placeholder="Enter private key"
+                        prefix={<Icon type="key" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        suffix={suffix}
+                        value={this.state.privateKey}
+                        onChange={this.onChangePrivatekey}
+                        ref={node => this.privateKeyInput = node}
+                        style={{width:600}}
+                        size={"large"}
+                    />
                 </div>
 
-                <div className="wrapper-input-username">
+                <div className="wrapper-input-key">
                     <Input
-                        placeholder="Enter public key of referrer"
+                        placeholder="Enter public key"
                         prefix={<Icon type="key" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         suffix={suffixPublicKeyOfReferer}
-                        value={publicKeyOfReferer}
-                        onChange={this.onChangePublicKeyOfReferer}
+                        value={this.state.publicKey}
+                        onChange={this.onChangePublicKey}
                         ref={node => this.publicKeyRefererInput = node}
                         style={{width:600}}
                         size={"large"}
                     />
                 </div>
 
-                <div className="wrapper-private-key">
-                    <Input
-                        placeholder='Private key'
-                        enterButton='Copy'
-                        size='large'
-                        style={{width: 600}}
-                        disabled={false}
-                        value={privateKey}
-                    />
-                </div>
                 
-                <div className="wrapper-public-key">
-                    <Input
-                        placeholder='Public key'
-                        enterButton='Copy'
-                        size='large'
-                        style={{width: 600}}
-                        disabled={false}
-                        value={publicKey}
-                    />
-                </div>
                 <div className='container-button-gen-register-key'>
-                    <div className='wrapper-btn-gen-key'>
-                        <Button 
-                            type="primary" 
-                            size={"large"} 
-                            style={{width:280}}
-                            icon="key" 
-                            onClick={this.handleClickBtnGenKey}>Generate Key</Button> 
-                    </div>
                     <div className='wrapper-btn-register-key'>
                         <Button 
                             type="primary" 
-                            size={"large"} 
-                            style={{width:280}}
+                            size="large"
                             icon="form"
-                            loading={this.state.iconLoadingRegister}
+                            width={1000}
+                            loading={iconLoadingRegister}
                             disabled={isGenKey}
                             onClick={this.handleClickBtnRegistrer}>Register</Button>                       
                     </div>

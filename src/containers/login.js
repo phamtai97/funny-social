@@ -9,11 +9,14 @@ const mapStateToProps = (state) => ({
     publicKey: state.registerReducer.publicKey,
     isRegisterSuccess: state.registerReducer.isRegisterSuccess,
     isLoginSuccess: state.loginReducer.isLoginSuccess,
+    isLogoutSuccess: state.loginReducer.isLogoutSuccess,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     actionGenPrivatePublicKey: (payload) => dispatch(registerAction.actionGenPrivatePublicKey(payload)),
-    actionSetLoginSuccess: (payload) => dispatch(loginAction.actionSetLoginSuccess(payload))
+    actionSetLoginSuccess: (payload) => dispatch(loginAction.actionSetLoginSuccess(payload)),
+    actionLogin: (payload) => dispatch(loginAction.actionLogin(payload)),
+    actionLogout: (payload) => dispatch(loginAction.actionLogout(payload))
 })
 
 export default compose(

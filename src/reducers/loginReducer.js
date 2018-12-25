@@ -1,6 +1,7 @@
 import {loginConstant} from '../constants/loginConstant';
 const initalState = {
-    isLoginSuccess: false
+    isLoginSuccess: false,
+    isLogoutSuccess: false
 }
 
 export default function loginReducer (state=initalState, actions) {
@@ -9,6 +10,11 @@ export default function loginReducer (state=initalState, actions) {
             return {
                 ...state,
                 isLoginSuccess: actions.payload.isLoginSuccess
+            }
+        case loginConstant.IS_LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isLogoutSuccess: actions.payload.isLogoutSuccess
             }
         default:
             return state

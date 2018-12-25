@@ -1,0 +1,4 @@
+export const updateProfileConstant = {
+    UP_LOAD_PROFILE: 'UP_LOAD_PROFILE',
+    IS_UP_LOAD_PROFILE_SUCCESS: 'IS_UP_LOAD_PROFILE_SUCCESS'
+}

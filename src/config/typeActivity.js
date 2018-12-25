@@ -1,0 +1,10 @@
+export const typeActivity = {
+    POST: 'POST',
+    SEND_MONEY: 'SEND_MONEY',
+    COMMENT: 'COMMENT',
+    REACT_ACTION: 'REACT_ACTION',
+    UPDATE_NAME: 'UPDATE_NAME',
+    UPDATE_AVATAR: 'UPDATE_AVATAR',
+    FOLLOW: 'FOLLOW',
+    UN_FOLLOW: 'UN_FOLLOW',
+}

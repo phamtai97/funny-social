@@ -22,7 +22,6 @@ const actionRequestFail = (payload) => ({
 const actionRequestApi = (payload) => {
     return (dispatch, getState) => {
         dispatch(actionRequesting);
-        // let state = getState;
         switch (payload.method){
             case requestApiConstant.GET:
                 return axios.get(payload.url);
