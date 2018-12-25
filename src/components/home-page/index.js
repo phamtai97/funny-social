@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './home-page.css';
-import ListPost from './list-post';
+import ListPostHomePage from '../../containers/listPostHomePage';
 import NavLeftInfo from '../../containers/navLeftInfo';
-import InputStatus from './inputStatus';
+import InputStatus from '../../containers/inputStatus';
 import NavRightNotification from '../../containers/navRightNotification';
 
 class HomePage extends Component{
@@ -18,7 +18,7 @@ class HomePage extends Component{
                         <div className="container-nav-center">
                             <InputStatus></InputStatus>
                             <div className="container-post">
-                                <ListPost></ListPost>
+                                <ListPostHomePage></ListPostHomePage>
                             </div>
                         </div>
                     </div>

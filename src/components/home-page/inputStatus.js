@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import './input-status.css';
 import { Avatar, Button, Input } from 'antd';
+import axios from 'axios';
+import {baseURL} from '../../config/baseURL';
+import {transactionGet} from '../../lib/transaction/get';
+import moment from 'moment';
+import helpers from '../../helpers/helpers'
+import {typeActivity} from '../../config/typeActivity';
 
 const {TextArea} = Input;
 
@@ -11,6 +17,40 @@ class InputStatus extends Component{
     //handler write status
     handleClickFunnyBtn = () => {
         alert(this.state.status);
+        const status = this.state.status;
+        const privateKey = this.props.privateKey;
+        const publicKey = 'GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO';
+
+        axios.get(baseURL.BASE_URL + baseURL.URL.GET_SEQUENCE + publicKey).then((result) => {
+            console.log('result sequence: ', result.data.data.sequence);
+
+            try{
+                var sequence = parseInt(result.data.data.sequence) + 1;
+                const tx = transactionGet.post(privateKey, sequence, status);
+                var payload = {
+                    url: baseURL.BASE_URL + baseURL.URL.BROADCAST,
+                    Tx: tx,
+                    itemPost:{
+                        avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
+                        interactPerson: 'Vo Minh Tri',
+                        time: moment().format(helpers.FORMAT_DATE),
+                        type: typeActivity.POST,
+                        content: status,
+                        cntLove: 0,
+                        cntLike: 0,
+                        cntAngry: 0,
+                        cntCmt: 0,
+                        cntShare: 0
+                    }
+                }
+                this.props.actionPushNewPostHomePage(payload);
+                this.setState({
+                    status: ''
+                })
+            }catch(err){
+                console.log('error: ',err)
+            }
+        })
     }
 
     // handleComment = (e) => {

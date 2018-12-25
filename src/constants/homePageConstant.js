@@ -1,0 +1,4 @@
+export const homePageConstant = {
+    SET_LIST_POST_HOME_PAGE: 'SET_LIST_POST_HOME_PAGE',
+    ADD_NEW_POST_HOME_PAGE: 'ADD_NEW_POST_HOME_PAGE'
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './header-main.css';
-import { Input, Button, Avatar, Dropdown, Menu, Icon, Badge} from 'antd';
+import { Input, Button, Avatar, Dropdown, Menu, Icon, Badge, message} from 'antd';
 import UpdateProfile from '../../containers/updateProfile';
-import InputStatus from './input-status';
+import InputStatus from '../../containers/inputStatusHeaderMain';
 import {withRouter} from "react-router-dom";
 import classNames from 'classnames';
 import iconSendmoney from '../../images/icon-send-money.png';
@@ -153,9 +153,19 @@ class HeaderMain extends Component{
         }
     }
 
-    
+    componentDidUpdate = () => {
+        if(this.props.isSendMoneySuccess){
+            message.success('You have successfully sent money')
+            var payload = {
+                isSendMoneySuccess: false,
+                moneySend: 0
+            }
+            this.props.actionSendMoneySuccess(payload)
+        }
+    }
+
     render(){
-        const {itemHeaderMainSelected}  = this.props;
+        const {actionSendMoney, itemHeaderMainSelected, privateKey, publicKey}  = this.props;
         const count = 1;
         const menu = (
             <Menu onClick={this.handleMenuClick}>
@@ -190,6 +200,9 @@ class HeaderMain extends Component{
                 />
 
                 <BoxSendMoneyFrom
+                    privateKey={privateKey}
+                    publicKey={publicKey}
+                    actionSendMoney={actionSendMoney}
                     visible={this.state.visibleBoxSendMoney}
                     onCancel={this.handleCancelBoxSendMoney}
                     onCreate={this.handleSendMoney}

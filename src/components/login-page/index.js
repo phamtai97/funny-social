@@ -4,7 +4,7 @@ import { Input, Button, message} from 'antd';
 import classNames from 'classnames';
 import GenPublicKey from '../../containers/genPublicKey';
 import Register from '../../containers/register';
-import HomePage from '../../components/home-page';
+import HomePage from '../../containers/homePage';
 import {baseURL} from '../../config/baseURL';
 import {transactionGet} from '../../lib/transaction/get';
 const { Keypair } = require('stellar-base');
@@ -54,7 +54,7 @@ class LoginPage extends Component {
         if(this.props.isLoginSuccess === true && this.state.iconLoadingLogin === true){
             const payload = {
                 privateKey: this.state.privateKey,
-                publicKey: ''
+                publicKey: 'GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO'
             }
             this.props.actionGenPrivatePublicKey(payload)
             //encode privatekey and save to storage

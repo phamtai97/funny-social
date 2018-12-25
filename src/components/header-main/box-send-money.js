@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import './input-status.css'
-import { Modal,  Input, Tooltip } from 'antd'
+import { Modal,  Input, Tooltip, message } from 'antd'
 import helpers from '../../helpers/helpers';
 import './box-send-money.css';
-
+import axios from 'axios';
+import {baseURL} from '../../config/baseURL';
+import {transactionGet} from '../../lib/transaction/get';
 
 class BoxSendMoney extends Component {
     state={
@@ -13,12 +15,37 @@ class BoxSendMoney extends Component {
 
     onChangePublicKey = (e) => {
         this.setState({
-            publicKey:e.target.value
+            publicKey: e.target.value
         })
     }
-    //handler write status
+
     onCreate = () => {
-        alert(this.state.publicKey + this.state.money)
+        const {privateKey, publicKey, actionSendMoney} = this.props;
+        const publicKeyReceiver = this.state.publicKey ;
+        const moneySend = this.state.money;
+        axios.get(baseURL.BASE_URL + baseURL.URL.GET_SEQUENCE + publicKey).then((result) => {
+            try{
+                var sequence = parseInt(result.data.data.sequence) + 1;
+                const tx = transactionGet.payment(privateKey, sequence, publicKeyReceiver, parseInt(moneySend));
+                var payload = {
+                    url: baseURL.BASE_URL + baseURL.URL.BROADCAST,
+                    Tx: tx,
+                    moneySend: moneySend
+                }
+                actionSendMoney(payload);
+                this.setState({
+                    publicKey: '',
+                    money: ''
+                })
+            }catch(err){
+                message.error(err.toString());
+                this.setState({
+                    publicKey: '',
+                    money: ''
+                })
+            }
+        })
+
         this.props.onCreate();
     }
 
@@ -29,6 +56,8 @@ class BoxSendMoney extends Component {
     onChangeMoney = (value) => {
         this.setState({ money: value });
     }
+
+
 
     render(){
         const { visible, onCancel} = this.props;
@@ -48,6 +77,7 @@ class BoxSendMoney extends Component {
                                 placeholder='Enter public key'
                                 size='large'
                                 onChange={this.onChangePublicKey}
+                                value={this.state.publicKey}
                             />
                             <NumericInput className='input-money'
                                 size='large'

@@ -11,7 +11,7 @@ const objectPost = {
     interactPerson: 'Vo Minh Tri',
     time: moment().format(helpers.FORMAT_DATE),
     type: typeActivity.POST,
-    content: 'Hello viet nam 11111111111111111111111111222222222222 222222222223333333333333333333333444444444444444444444444444444444444',
+    content: 'Hello viet nam \n 44444444444444444444444444444444',
     cntLove: 10,
     cntLike: 100,
     cntAngry: 40,
@@ -96,7 +96,7 @@ const objectUpdateAvatar = {
     interactedPerson: 'Vo Minh Tri Oc Cho',
     time: moment().format(helpers.FORMAT_DATE),
     type: typeActivity.UPDATE_AVATAR,
-    content: "http://sohanews.sohacdn.com/2017/photo-1-1491982254229.jpg",
+    content: "http://img.f50.bdpcdn.net/Assets/Media/2018/08/03/75/hot-girl.jpg",
     cntLove: 10,
     cntLike: 100,
     cntAngry: 40,
@@ -160,7 +160,8 @@ listPost.push(objectUnFollow);
 class ListPost extends Component {
     
     render() {
-
+        const {listPostHomePage} = this.props;
+        listPost = listPostHomePage.concat(listPost);
         return (
             <div className="list-post">
                 <div className="list-post-container">
