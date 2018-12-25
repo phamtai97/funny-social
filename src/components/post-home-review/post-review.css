@@ -28,15 +28,14 @@
     border-radius: 100%;
     background-size: 100% 100%;
     text-align: center;
-    margin: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px !important;
 }
 
 .post-review-wrapper {
     display: flex;
     flex-direction: column;
     padding: 5px;
+    width: 100%;
 }
 
 .post-review-wrapper .header {
@@ -45,19 +44,25 @@
     flex-direction: row;
 }
 
-.post-review-wrapper .header .name{
+.wrapper-content .name{
     margin-right: 5px;
     font-family: 'Allerta', sans-serif;
     color: black;
+    font-weight: bold;
+    word-break: break-all; 
 }
 
-.post-review-wrapper .header .time{
-    margin-left: 5px;
+.post-review-wrapper .time{
+    margin-top: 5px;
 }
 
 
-.post-review-wrapper .content {
+.post-review-wrapper .wrapper-content .content {
     font-family: 'Chivo', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 0 !important;
+    word-break: break-all; 
 }
 
 .post-review-wrapper .footer {
@@ -138,4 +143,16 @@
 
 .post-review-wrapper .footer .share:hover {
     background-image: url("../../images/share-icon-blue.png");
+}
+
+.wrapper-content .update-avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.wrapper-content .content-email{
+    font-weight: bold;
+    font-size: 15px;
 }

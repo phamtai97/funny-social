@@ -106,7 +106,7 @@ class GenPublicKey extends Component{
                             style={{width: 300}} 
                             onClick={this.handleClickCanncel}>Cancel</Button>
                     </div> */}
-                    <div className='wrapper-button-login'>
+                    <div className='wrapper-button-genkey'>
                         <Button 
                             type="primary" 
                             size="large"

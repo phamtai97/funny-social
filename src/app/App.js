@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import 'antd/dist/antd.css';
-import HomePage from '../components/home-page';
 import ProfilePage from '../containers/profilePage';
 import HeaderMain from '../containers/headerMain';
 import LoginPage from '../containers/login';

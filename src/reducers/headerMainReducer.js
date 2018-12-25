@@ -1,7 +1,7 @@
 import {headerMainConstant} from '../constants/headerMainConstant'
 
 const initalState = {
-    itemHeaderMain : '',
+    itemHeaderMainSelected : '',
 }
 
 export default function  headerMainReducer(state=initalState, actions){
@@ -9,7 +9,7 @@ export default function  headerMainReducer(state=initalState, actions){
         case headerMainConstant.SET_ITEM_HEADER_MAIN_SELETED:
             return {
                 ...state,
-                itemHeaderMain: actions.payload.itemHeaderMain
+                itemHeaderMainSelected: actions.payload.itemHeaderMainSelected
             }
         default:
             return state;

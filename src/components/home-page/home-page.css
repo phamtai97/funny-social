@@ -20,7 +20,7 @@
 
 .nav-center{
     flex-grow: 1;
-    /* width: 35%; */
+    width: 35%;
     padding-right: 10px;
 }
 
