@@ -21,7 +21,8 @@
 .content-container {
     height: auto;
     margin-top: 208px;
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 35%;
     margin-right: 10px;
 }
 

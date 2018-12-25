@@ -5,11 +5,11 @@
 
 .header-detail-post{
     margin-top: 3vh;
+    margin-bottom: 15px;
     width: 100%;
-    height: 10vh;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .info-post{
@@ -135,4 +135,29 @@
 .input-comment-wrapper .ant-input{
     width: 32vw;
     border-radius: 30px!important;
+}
+
+.header-detail-post .wrapper-content{
+    margin-left: 10px;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.header-detail-post .wrapper-content .header{
+    font-size: 30px;
+}
+
+.header-detail-post .wrapper-content .content{
+    font-size: 20px;
+    margin-left: 0px;
+    word-break: break-all; 
+}
+
+.header-detail-post .wrapper-content .name{
+    font-size: 18px;
+}
+
+.header-detail-post .wrapper-content .content-email{
+    font-size: 18px;
 }
