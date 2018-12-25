@@ -69,6 +69,10 @@
     width: 100%;
 }
 
-.wrapper-decided-button .wrapper-button-login{
-    margin-left: 90px;
+.wrapper-decided-button .wrapper-button-genkey{
+    width: 100%;
+}
+
+.wrapper-button-genkey .ant-btn{
+    width: 100% !important;
 }

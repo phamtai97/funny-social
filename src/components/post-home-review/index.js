@@ -1,18 +1,29 @@
-import React, {Component} from 'react';
-import './detail-post.css';
-import { Avatar, Input, Modal } from 'antd';
-import ListReact from '../../containers/reactReviewDetailPost';
-import ListComment from '../list-comment';
+import React, { Component } from 'react';
+import DetailPost from '../../components/detail-post';
+import helpers from '../../helpers/helpers';
+import './post-review.css';
 import {typeActivity} from '../../config/typeActivity'
 
-class DetailPost extends Component{
-    state={
-        loading: false, 
-        key: ''
+class PostHomeReview extends Component {
+    state = {
+        visibleDetailPost:false,
     }
-    
-    handleComment = (e) => {
-        alert(e.target.value );
+
+    onViewDetailPost = () => {
+        this.showModalDetailPost();
+    }
+
+    //handle click in detal post
+    handleCancelDetailPost = () => {
+        this.setState({ visibleDetailPost: false });
+    }
+
+    handleOkDetailPost = () => {
+        this.setState({ visibleDetailPost: false });        
+    }
+
+    showModalDetailPost = () => {
+        this.setState({ visibleDetailPost: true });
     }
 
     renderContent = (value) => {
@@ -97,61 +108,92 @@ class DetailPost extends Component{
                         <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
                     </div>
                 )
+            case typeActivity.COMMENT:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'> comment </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                        <span className="content">{value.content}</span>
+                    </div>
+                )
             default:
         }
     }
 
-    
-    render(){
-        const { visible, onCancel, onCreate, width, valueDetail } = this.props;
-        const listActioner = [{"src":"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}
-        , {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}];
+    render() {
+        const {value} = this.props;
+        return (
+            <div className="container-post-review">
+                <DetailPost 
+                    valueDetail={value}
+                    width={helpers.WIDTH_DETAIL_POST}
+                    visible={this.state.visibleDetailPost}
+                    onCancel={this.handleCancelDetailPost}
+                    onCreate={this.handleOkDetailPost}
+                >
+                </DetailPost>
 
-        return(
-            <div className="container-modal">
-                <Modal 
-                    footer={null}
-                    width={width}
-                    visible={visible}                 
-                    onCancel={onCancel}
-                    onOk={onCreate}>
 
-                    <div className="container-detail-post">
-                        <div className="header-detail-post">
-                            <div className="avatar-post">
-                                <Avatar icon="user"/>
-                            </div>
-                            <div className='wrapper-content'>
-                                {this.renderContent(valueDetail)}
-                            </div>
-                        </div>
-                        <div className="list-react-actioner">
-                            <ListReact typeReact={this.props.typeReact}>
-                            </ListReact>
-                            <div className="avatar-actioner">
-                                {listActioner.map((item, index) => {
-                                    return(
-                                        <Avatar key={index} src={item.src} className="avatar-actioner-wrapper"></Avatar>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                        <div className="input-comment">
-                            <div className="avatar-wrapper">
-                                <Avatar size="large" icon="user"></Avatar>
-                            </div>
-                            <div className="input-comment-wrapper">
-                                <Input size="large" placeholder="Write your comment..." onPressEnter = {this.handleComment}/>
-                            </div>
-                        </div>
-                        <div className="list-comment">
-                            <ListComment></ListComment>
+                <div className="post-review"
+                    onClick={() => this.onViewDetailPost()}
+                >
+                    <div className="avatar">
+                        <div className="avatar-img"
+                            style={{ backgroundImage: `url(${value.avatarUrl})` }}
+                        >
                         </div>
                     </div>
-                </Modal>
+                    <div className="post-review-wrapper">
+                        <div className='wrapper-content'>
+                            {this.renderContent(value)}
+                        </div>
+                        <div className='time'>
+                            {value.time}
+                        </div>
+                        <div className="footer">
+                            <div className="item">
+                                <div className="icon love">
+                                </div>
+                                <div className="count">
+                                    {value.cntLove}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon like">
+                                </div>
+                                <div className="count">
+                                    {value.cntLike}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon angry">
+                                </div>
+                                <div className="count">
+                                    {value.cntAngry}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon comment">
+                                </div>
+                                <div className="count">
+                                    {value.cntCmt}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon share">
+                                </div>
+                                <div className="count">
+                                    {value.cntShare}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        )
+        );
     }
 }
 
-export default DetailPost;
+export default PostHomeReview;

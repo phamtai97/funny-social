@@ -11,29 +11,21 @@
     flex-direction: column;
     flex-grow: 1;
     margin-left: 5px;
-    white-space: nowrap;
-    overflow: hidden;
+    width: 100%;
 }
 
-.container-name-content .user-name{
+.container-name-content .name{
+    margin-right: 5px;
     font-family: 'Allerta', sans-serif;
-    font-size: 14px;
-    color: #1890ff;
+    color: black;
     font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} 
-
-.container-name-content .content-action{
-    font-family: 'Chivo', sans-serif;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
+    word-break: break-all; 
 }
 
-.container-name-content .time-action{
-    font-size: 12px;
-    color: rgb(133, 133, 133);
+.container-name-content .content {
+    font-family: 'Chivo', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 0 !important;
+    word-break: break-all; 
 }

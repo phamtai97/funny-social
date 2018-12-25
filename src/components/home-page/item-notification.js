@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './item-notification.css';
-import moment from 'moment';
+import '../post-home-review/post-review.css';
 import {Avatar} from 'antd';
 import helpers from '../../helpers/helpers';
 import DetailPost from '../../components/detail-post';
+import {typeActivity} from '../../config/typeActivity';
 
 class ItemNotification extends Component {
     state = {
@@ -27,10 +28,56 @@ class ItemNotification extends Component {
         this.setState({ visibleDetailPost: true });
     }
 
+    renderContent = (value) => {
+        switch(value.type){             
+            case typeActivity.PAYMENT:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'>credit transfer </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                        <span className="content">{value.content}</span>
+                    </div>
+                )
+            case typeActivity.REACTION:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'>reacted </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                    </div>
+                )
+            case typeActivity.FOLLOWINGS:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'>followings </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                    </div>
+                )
+            case typeActivity.UNFOLLOW:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'>unfollows </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                    </div>
+                )
+            case typeActivity.COMMENT:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'> comment </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                        <span className="content">{value.content}</span>
+                    </div>
+                )
+            default:
+        }
+    }
+
     render(){
-        const timeCreatePost = moment().format(helpers.FORMAT_DATE);
-        const userNameAction = 'Pham Tinh Hong Tan Tai AJ Pham';
-        const contentAction = "Da comment bai viet nay vi qua"
+        const {value} = this.props;
         return(
             <div>
                 <DetailPost 
@@ -38,6 +85,7 @@ class ItemNotification extends Component {
                     visible={this.state.visibleDetailPost}
                     onCancel={this.handleCancelDetailPost}
                     onCreate={this.handleOkDetailPost}
+                    valueDetail={value}                    
                 >
                 </DetailPost>
 
@@ -46,15 +94,7 @@ class ItemNotification extends Component {
                         <Avatar size={65} icon="user" />
                     </div>
                     <div className='container-name-content'>
-                        <div className='user-name'>
-                            {userNameAction}
-                        </div>
-                        <div className='content-action'>
-                            {contentAction}
-                        </div>
-                        <div className='time-action'>
-                            {timeCreatePost}
-                        </div>
+                        {this.renderContent(value)}
                     </div>
                 </div>
             </div>

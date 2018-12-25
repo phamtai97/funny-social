@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {headerMainAction} from '../actions/headerMainAction';
 import {loginAction} from '../actions/loginAction';
 const mapStateToProps = (state) => ({
-    itemHeaderMain: state.headerMainReducer.itemHeaderMain,
+    itemHeaderMainSelected: state.headerMainReducer.itemHeaderMainSelected,
     isLoginSuccess: state.loginReducer.isLoginSuccess,
     isLogoutSuccess: state.loginReducer.isLogoutSuccess,
     privateKey: state.registerReducer.privateKey,

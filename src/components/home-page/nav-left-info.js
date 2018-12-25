@@ -31,7 +31,7 @@ class NavLeftInfo extends Component{
     }
 
     render(){
-        const name = "Vo Minh Tri";
+        const name = "Vo Minh Tri oc cho";
         const numberPost = 1000;
         const numberFollowing = 1000;
         const numberFollowers = 1000;

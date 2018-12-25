@@ -88,7 +88,7 @@ class HeaderMain extends Component{
     handleClickHomeItem = () => {
         this.props.history.push('/');
         var payload = {
-            itemHeaderMain: 'home'
+            itemHeaderMainSelected: 'home'
         }
         this.props.actionSetItemHeaderMainSelected(payload);
     }
@@ -96,7 +96,7 @@ class HeaderMain extends Component{
     handleClickNotificationItem = () => {
         this.props.history.push('/notification');
         var payload = {
-            itemHeaderMain: 'notification'
+            itemHeaderMainSelected: 'notification'
         }
         this.props.actionSetItemHeaderMainSelected(payload);
     }
@@ -104,7 +104,7 @@ class HeaderMain extends Component{
     handleClickProfileItem = () => {
         this.props.history.push('/profile');
         var payload = {
-            itemHeaderMain: 'profile'
+            itemHeaderMainSelected: 'profile'
         }
         this.props.actionSetItemHeaderMainSelected(payload);
     }
@@ -112,10 +112,11 @@ class HeaderMain extends Component{
     handleClickHistoryItem = () => {
         this.props.history.push('/history');
         var payload = {
-            itemHeaderMain: 'history'
+            itemHeaderMainSelected: 'history'
         }
         this.props.actionSetItemHeaderMainSelected(payload);
     }
+
     //handler search
     handleSearch = (value) => {
         alert(value);
@@ -131,8 +132,8 @@ class HeaderMain extends Component{
     handleMenuClick = (e) => {
         if (e.key === '1') {
             this.props.history.push('/profile');
-            var payload = {
-                itemHeaderMain: 'profile'
+            let payload = {
+                itemHeaderMainSelected: 'profile'
             }
             this.props.actionSetItemHeaderMainSelected(payload);
         }else if(e.key === '2'){
@@ -142,7 +143,7 @@ class HeaderMain extends Component{
         }else if(e.key === '4'){
             if(this.props.privateKey.length > 0){
                 const tx = transactionGet.logout(this.props.privateKey);
-                var payload = {
+                let payload = {
                     url: baseURL.BASE_URL + baseURL.URL.LOGOUT,
                     tx: tx
                 }
@@ -154,7 +155,6 @@ class HeaderMain extends Component{
 
     
     render(){
-
         const {itemHeaderMainSelected}  = this.props;
         const count = 1;
         const menu = (
@@ -226,7 +226,7 @@ class HeaderMain extends Component{
                             </div>
                         </div>
                         <div className="button-send-money">
-                            <img src={iconSendmoney}  onClick={this.handleClickButtonSendMoney} ></img>
+                            <img src={iconSendmoney}  onClick={this.handleClickButtonSendMoney} alt='avtar'></img>
                         </div>
                         <div className="search-bar">
                             <Search
