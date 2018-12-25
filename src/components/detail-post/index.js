@@ -97,6 +97,15 @@ class DetailPost extends Component{
                         <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
                     </div>
                 )
+            case typeActivity.COMMENT:
+                return (
+                    <div>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactPerson}</span>
+                        <span className='content'> comment </span>
+                        <span style={{color: "#1890ff"}} className='name'>{value.interactedPerson}</span>
+                        <span className="content">{value.content}</span>
+                    </div>
+                )
             default:
         }
     }
