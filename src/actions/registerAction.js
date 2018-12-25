@@ -24,7 +24,7 @@ const actionCopyKey = (payload) => ({
 })
 
 const actionRegister = (payload) => {
-    return (dispach) => {
+    return (dispatch) => {
         let payloadTmp = {
             method: 'POST',
             url: payload.url,
@@ -33,23 +33,23 @@ const actionRegister = (payload) => {
             }
         }
         
-        dispach(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+        dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
             if(result.data.status.code === 0){
                 let payloadTmp = {
                     isRegisterSuccess: true
                 }
-                dispach(actionSetRegisterSuccess(payloadTmp))
+                dispatch(actionSetRegisterSuccess(payloadTmp))
             }else {
                 let payloadTmp = {
                     isRegisterSuccess: false
                 }
-                dispach(actionSetRegisterSuccess(payloadTmp))
+                dispatch(actionSetRegisterSuccess(payloadTmp))
             }
         }).catch((err) => {
             let payloadTmp = {
                 isRegisterSuccess: false
             }
-            dispach(actionSetRegisterSuccess(payloadTmp))
+            dispatch(actionSetRegisterSuccess(payloadTmp))
         })
     }
 }

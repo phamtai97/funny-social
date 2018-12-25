@@ -100,7 +100,7 @@ const payment = (secrect, sequence, receiver, amount) => {
     return getRawTxAndEncode(secrect, sequence, 'payment', params);
 };
 
-const post = (secrect, sequence, content, keys) => {
+const post = (secrect, sequence, content, keys=[]) => {
     const bufKeys = keys.map((key) => {
         return Buffer.from(key);
     });

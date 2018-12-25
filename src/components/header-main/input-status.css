@@ -19,12 +19,15 @@
     margin-left: 20px;
     flex-grow: 1;
     margin-right:20px;
+    
 }
 
 .wrapper-input-status .input-status .ant-input{
     border-radius: 30px!important;
     padding-left: 20px !important;
     padding-right: 20px !important;
+    height: 100% !important;
+    
 }
 
 .ant-modal-footer .ant-btn .ant-btn-primary{
