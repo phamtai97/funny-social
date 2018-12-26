@@ -40,6 +40,7 @@ class LoginPage extends Component {
             }catch (err) {
                 console.log('err login: ', err)
                 message.error('Login failed !!!');
+                this.setState({ iconLoadingLogin: false});
             }
         }
     }
@@ -56,15 +57,19 @@ class LoginPage extends Component {
                 privateKey: this.state.privateKey,
                 publicKey: 'GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO'
             }
-            this.props.actionGenPrivatePublicKey(payload)
+            this.props.actionsSetPrivatrPublicKey(payload)
             //encode privatekey and save to storage
 
             const privateKeyEncode = btoa(this.state.privateKey);
+            const publicKeyEncode = btoa("GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO");
+
             localStorage.setItem('privateKey', privateKeyEncode);
+            localStorage.setItem('publicKey', publicKeyEncode)
             this.setState({
                 iconLoadingLogin: false,
                 privateKey: ''
             })
+            message.success('Login success')
         }
     }
 
@@ -105,8 +110,11 @@ class LoginPage extends Component {
 
     handleDeleteDataInStorage = () => {
         const privateKeyEncode = localStorage.getItem('privateKey');  
-        if(this.props.isLogoutSuccess === true && this.props.isLoginSuccess === false && privateKeyEncode){
-            localStorage.removeItem('privateKey')
+        const publicKeyEncode = localStorage.getItem('publicKey');  
+
+        if(this.props.isLogoutSuccess === true && this.props.isLoginSuccess === false && privateKeyEncode && publicKeyEncode){
+            localStorage.removeItem('privateKey');
+            localStorage.removeItem('publicKey')
         }
     }
 

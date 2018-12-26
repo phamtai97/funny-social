@@ -9,18 +9,26 @@ import iconSendmoney from '../../images/icon-send-money.png';
 import BoxSendMoney from './box-send-money';
 import {transactionGet} from '../../lib/transaction/get';
 import {baseURL} from '../../config/baseURL';
-
+import BoxUpdateName from './box-update-name';
+import BoxUpdateEmail from './box-update-email';
+import BoxUpdateAvatar from './box-update-avatar';
 
 const Search = Input.Search;
 const CollectionCreateForm = UpdateProfile;
 const InputStatusFrom = InputStatus;
 const BoxSendMoneyFrom = BoxSendMoney;
+const BoxUpdateNameFrom = BoxUpdateName;
+const BoxUpdateEmailFrom = BoxUpdateEmail;
+const BoxUpdateAvatarFrom = BoxUpdateAvatar;
 
 class HeaderMain extends Component{
     state = {
         visible: false,  
         visibleInputStatus: false, 
         visibleBoxSendMoney: false,
+        visibleBoxUpdateName: false,
+        visibleBoxUpdateEmail: false,
+        visibleBoxUpdateAvatar: false,
     };
     
     //handle update profile
@@ -84,6 +92,45 @@ class HeaderMain extends Component{
         this.showModalSendMoney();
     }
 
+    //click update name
+    handleCancelBoxUpdateName  = () => {
+        this.setState({ visibleBoxUpdateName: false });
+    }
+
+    showModalUpdateName = () => {
+        this.setState({ visibleBoxUpdateName: true });
+    }
+
+    handleUpdateName = () => {
+        this.setState({ visibleBoxUpdateName: false });
+    }
+
+    //click update email
+    handleCancelBoxUpdateEmail  = () => {
+        this.setState({ visibleBoxUpdateEmail: false });
+    }
+
+    showModalUpdateEmail = () => {
+        this.setState({ visibleBoxUpdateEmail: true });
+    }
+
+    handleUpdateEmail = () => {
+        this.setState({ visibleBoxUpdateEmail: false });
+    }
+
+    //click update avatar
+    handleCancelBoxUpdateAvatar  = () => {
+        this.setState({ visibleBoxUpdateAvatar: false });
+    }
+
+    showModalUpdateAvatar = () => {
+        this.setState({ visibleBoxUpdateAvatar: true });
+    }
+
+    handleUpdateAvatar = () => {
+        this.setState({ visibleBoxUpdateAvatar: false });
+    }
+
     //handle clich item on header
     handleClickHomeItem = () => {
         this.props.history.push('/');
@@ -139,8 +186,12 @@ class HeaderMain extends Component{
         }else if(e.key === '2'){
             this.showModal();
         }else if(e.key === '3'){
-            alert("Change password")
+            this.showModalUpdateName();
         }else if(e.key === '4'){
+            this.showModalUpdateEmail();
+        }else if(e.key === '5'){
+            this.showModalUpdateAvatar();
+        }else if(e.key === '6'){
             if(this.props.privateKey.length > 0){
                 const tx = transactionGet.logout(this.props.privateKey);
                 let payload = {
@@ -162,23 +213,51 @@ class HeaderMain extends Component{
             }
             this.props.actionSendMoneySuccess(payload)
         }
+
+        if(this.props.isUpdateNameSuccess){
+            message.success('You have successfully update name')
+            var payload = {
+                isUpdateNameSuccess: false,
+            }
+            this.props.actionUpdateNameSuccess(payload)
+        }
+
+        console.log(this.props);
+        
+        if(this.props.isUpdateEmailSuccess){
+            message.success('You have successfully update email')
+            var payload = {
+                isUpdateEmailSuccess: false,
+            }
+            this.props.actionUpdateEmailSuccess(payload)
+        }
     }
 
     render(){
-        const {actionSendMoney, itemHeaderMainSelected, privateKey, publicKey}  = this.props;
+        const {actionUpdateAvatar, actionUpdateEmail, actionSendMoney, itemHeaderMainSelected, privateKey, publicKey, actionUpdateName}  = this.props;
         const count = 1;
+        const userName = "Vo Minh Tri";
+        const email = "abcxyz@gmail.com";
+        const avatar = '../../images/icon-avatar-default.png';
+
         const menu = (
             <Menu onClick={this.handleMenuClick}>
                 <Menu.Item key="1">
-                    <a>pProfile</a>
+                    <a>Profile</a>
                 </Menu.Item>
                 <Menu.Item key="2">
                     <a>Update profile</a>
                 </Menu.Item>
                 <Menu.Item key="3">
-                    <a>Change password</a>
+                    <a>Update name</a>
                 </Menu.Item>
                 <Menu.Item key="4">
+                    <a>Update email</a>
+                </Menu.Item>
+                <Menu.Item key="5">
+                    <a>Update avatar</a>
+                </Menu.Item>
+                <Menu.Item key="6">
                     <a target="_blank">Log out</a>
                 </Menu.Item>
             </Menu>
@@ -207,6 +286,37 @@ class HeaderMain extends Component{
                     onCancel={this.handleCancelBoxSendMoney}
                     onCreate={this.handleSendMoney}
                 />
+
+                <BoxUpdateNameFrom
+                    privateKey={privateKey}
+                    publicKey={publicKey}
+                    userName={userName}
+                    actionUpdateName={actionUpdateName}
+                    visible={this.state.visibleBoxUpdateName}
+                    onCancel={this.handleCancelBoxUpdateName}
+                    onCreate={this.handleUpdateName}
+                />
+
+                <BoxUpdateEmailFrom
+                    privateKey={privateKey}
+                    publicKey={publicKey}
+                    email={email}
+                    actionUpdateEmail={actionUpdateEmail}
+                    visible={this.state.visibleBoxUpdateEmail}
+                    onCancel={this.handleCancelBoxUpdateEmail}
+                    onCreate={this.handleUpdateEmail}
+                />
+
+                <BoxUpdateAvatarFrom
+                    privateKey={privateKey}
+                    publicKey={publicKey}
+                    avatar={avatar}
+                    actionUpdateAvatar={actionUpdateAvatar}
+                    visible={this.state.visibleBoxUpdateAvatar}
+                    onCancel={this.handleCancelBoxUpdateAvatar}
+                    onCreate={this.handleUpdateAvatar}
+                />
+                
 
                 <div className="header">
                     <div className="header-wrapper">

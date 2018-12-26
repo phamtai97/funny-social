@@ -1,6 +1,6 @@
 import {loginConstant} from '../constants/loginConstant';
 import {requestApiAction} from './requestApiAction';
-import {registerAction} from './registerAction';
+import {accountAction} from './accountAction';
 
 const actionSetLoginSuccess = (payload) => ({
     type: loginConstant.IS_LOGIN_SUCCESS,
@@ -38,7 +38,7 @@ const actionLogout = (payload) => {
                     privateKey: '',
                     publicKey: ''
                 }
-                dispatch(registerAction.actionGenPrivatePublicKey(payloadTmp))
+                dispatch(accountAction.actionsSetPrivatrPublicKey(payloadTmp))
                 //get profile
             }else{
                 let payloadTmp = {

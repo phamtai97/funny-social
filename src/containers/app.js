@@ -1,7 +1,7 @@
 import App from '../app/App';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {registerAction} from '../actions/registerAction';
+import {accountAction} from '../actions/accountAction';
 import {loginAction} from '../actions/loginAction';
 
 const mapStateToProps = (state) => ({
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    actionGenPrivatePublicKey: (payload) => dispatch(registerAction.actionGenPrivatePublicKey(payload)),
+    actionsSetPrivatrPublicKey: (payload) => dispatch(accountAction.actionsSetPrivatrPublicKey(payload)),
     actionSetLoginSuccess: (payload) => dispatch(loginAction.actionSetLoginSuccess(payload)),
 })
 

@@ -1,17 +1,15 @@
 import GenPublicKey from '../components/login-page/genPublicKey';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {registerAction} from '../actions/registerAction';
-import {loginAction} from '../actions/loginAction';
 
 const mapStateToProps = (state) => ({
-    privateKey: state.registerReducer.privateKey,
-    publicKey: state.registerReducer.publicKey,
-    isLoginSuccess: state.loginReducer.isLoginSuccess,
+    // privateKey: state.registerReducer.privateKey,
+    // publicKey: state.registerReducer.publicKey,
+    // isLoginSuccess: state.loginReducer.isLoginSuccess,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    actionGenPrivatePublicKey: (payload) => dispatch(registerAction.actionGenPrivatePublicKey(payload)),
+    // actionGenPrivatePublicKey: (payload) => dispatch(registerAction.actionGenPrivatePublicKey(payload)),
 })
 
 export default compose(

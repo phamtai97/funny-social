@@ -82,6 +82,16 @@ const updateName = (secrect, sequence, newName) => {
     return getRawTxAndEncode(secrect, sequence, 'update_account', params);
 }
 
+const updateEmail = (secrect, sequence, newEmail) => {
+
+    const params = {
+        key: 'email',
+        value: Buffer.from(newEmail)
+    };
+
+    return getRawTxAndEncode(secrect, sequence, 'update_account', params);
+}
+
 const updatePicture = (secrect, sequence, photo) => {
     const params = {
         key: 'picture',
@@ -159,5 +169,6 @@ export const transactionGet = {
     login,
     logout,
     verifyKeyAndSignature,
-    genKeyAndSignature
+    genKeyAndSignature,
+    updateEmail
 };

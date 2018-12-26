@@ -13,16 +13,25 @@ import HistoryPage from '../components/history-page';
 class App extends Component {
   componentDidMount = () => {
     const privateKeyEncode = localStorage.getItem('privateKey');  
-    if(privateKeyEncode){
+    const publicKeyEncode = localStorage.getItem('publicKey');
+    if(privateKeyEncode && publicKeyEncode){
       const privateKeyDecode = atob(privateKeyEncode);
-      var payload = {
+      const publicKeyDecode = atob(publicKeyEncode);
+
+      let payload = {
         isLoginSuccess: true
       }
       this.props.actionSetLoginSuccess(payload);
       payload = {
-        privateKey: privateKeyDecode
+        privateKey: privateKeyDecode,
+        publicKey: publicKeyDecode
       }
-      this.props.actionGenPrivatePublicKey(payload)
+      this.props.actionsSetPrivatrPublicKey(payload)
+    }else {
+      let payload = {
+        isLoginSuccess: false
+      }
+      this.props.actionSetLoginSuccess(payload);
     }
   }
 

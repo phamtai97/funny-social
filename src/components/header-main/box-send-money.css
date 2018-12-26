@@ -1,3 +1,18 @@
 .wrapper-box-send-money .input-money{
     margin-top: 15px;
 }
+
+.wrapper-box-send-money .wrapper-public-key{
+    margin-top: 0px !important;
+}
+
+.wrapper-box-send-money .userName{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}
+
+.wrapper-box-send-money .userName>p{
+    margin-left: 5px;
+    font-family: 'Allerta', sans-serif;
+}

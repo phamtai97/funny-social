@@ -1,13 +1,13 @@
 import {registerConstant} from '../constants/registerConstant'
 import { requestApiAction } from './requestApiAction';
 
-const actionGenPrivatePublicKey = (payload) => ({
-    type: registerConstant.GEN_PRIVATE_PUBLIC_KEY,
-    payload: {
-        privateKey: payload.privateKey,
-        publicKey: payload.publicKey,
-    }
-})
+// const actionGenPrivatePublicKey = (payload) => ({
+//     type: registerConstant.GEN_PRIVATE_PUBLIC_KEY,
+//     payload: {
+//         privateKey: payload.privateKey,
+//         publicKey: payload.publicKey,
+//     }
+// })
 
 const actionSetRegisterSuccess = (payload) => ({
     type:registerConstant.IS_REGISTER_SUCCESS,
@@ -34,20 +34,21 @@ const actionRegister = (payload) => {
         }
         
         dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+            console.log('register: ', result)
             if(result.data.status.code === 0){
                 let payloadTmp = {
-                    isRegisterSuccess: true
+                    isRegisterSuccess: 0
                 }
                 dispatch(actionSetRegisterSuccess(payloadTmp))
             }else {
                 let payloadTmp = {
-                    isRegisterSuccess: false
+                    isRegisterSuccess: 1
                 }
                 dispatch(actionSetRegisterSuccess(payloadTmp))
             }
         }).catch((err) => {
             let payloadTmp = {
-                isRegisterSuccess: false
+                isRegisterSuccess: 1
             }
             dispatch(actionSetRegisterSuccess(payloadTmp))
         })
@@ -55,7 +56,7 @@ const actionRegister = (payload) => {
 }
 
 export const registerAction = {
-    actionGenPrivatePublicKey,
+    // actionGenPrivatePublicKey,
     actionSetRegisterSuccess,
     actionCopyKey,
     actionRegister
