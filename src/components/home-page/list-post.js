@@ -4,6 +4,7 @@ import {typeActivity} from '../../config/typeActivity';
 import './list-post.css';
 import moment from 'moment';
 import helpers from '../../helpers/helpers';
+import axios from 'axios';
 
 var listPost = [];
 
@@ -157,9 +158,27 @@ listPost.push(objectUpdateEmail);
 listPost.push(objectFollowing);
 listPost.push(objectUnFollow);
 
+const value1 = {
+    "_id" : "007E9B3013E7C93396AE768B0BD49E5B60F30DD7A2683F47DD13B61B8EBA95E9",
+    "time" : 1544672518,
+    "author" : "GAKXVIL35CL7QRBFIAXCYMOAV4JKD3QDWGRYJRMSWNRJWX7RL726IAOF",
+    "type" : "payment",
+    "params" : {
+        "address" : "GB73OPHUZC3RSDEU2LYV5T7MEAN2Q26HYQPDYIENGNBUHW5CXAQ6UJOO",
+        "amount" : 1
+    }
+}
 
 class ListPost extends Component {
-    
+    constructor(props){
+        super(props);
+        this.state = {
+            listNewFeed : []
+        }
+    }
+    componentDidMount = () => {
+        
+    }
     render() {
         const {listPostHomePage} = this.props;
         listPost = listPostHomePage.concat(listPost);
@@ -168,7 +187,7 @@ class ListPost extends Component {
                 <div className="list-post-container">
                     {
                         listPost.map((value, index)=> {
-                            return <PostHomeReview key={index} value={value}/>
+                            return <PostHomeReview key={index} value={value1}/>
                         })
                     }
                 </div>

@@ -57,7 +57,7 @@ class ProfileHeader extends Component {
 
     render() {
         const { isOwner } = this.state;
-
+        const {numberPostUser, numberFollowersUser, numberFollowingUser} = this.props;
         return (
             <div className="profile-header">
                 <div className="profile-header-wrapper">
@@ -70,7 +70,7 @@ class ProfileHeader extends Component {
                                     Posts
                                 </div>
                                 <div className="data-count">
-                                    10
+                                    {numberPostUser}
                                 </div>
                             </div>
                             <div className={this.getClassNameSelect("following")}
@@ -80,7 +80,7 @@ class ProfileHeader extends Component {
                                     Following
                                 </div>
                                 <div className="data-count">
-                                    10
+                                    {numberFollowingUser}
                                 </div>
                             </div>
                             <div className={this.getClassNameSelect("followers")}
@@ -90,7 +90,7 @@ class ProfileHeader extends Component {
                                     Followers
                                 </div>
                                 <div className="data-count">
-                                    10
+                                    {numberFollowersUser}
                                 </div>
                             </div>
                         </div>

@@ -1,92 +1,114 @@
-import React, {Component} from 'react'
+
+import React, { Component } from 'react'
 import './notification-page.css'
 import ItemNotification from '../home-page/item-notification';
 import moment from 'moment';
 import helpers from '../../helpers/helpers'
-import {typeActivity} from '../../config/typeActivity';
-
-var listPost = [];
-
-const objectSendMoney = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.PAYMENT,
-    content: 10000,
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-
-const objectComment = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.COMMENT,
-    content: "Hello hot girl",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectReact = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.REACTION,
-    content: "abcd",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectFollowing = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.FOLLOWINGS,
-    content: "",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectUnFollow = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.UNFOLLOW,
-    content: "",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-listPost.push(objectSendMoney);
-listPost.push(objectComment);
-listPost.push(objectReact);
-listPost.push(objectFollowing);
-listPost.push(objectUnFollow);
-
-class NotificationPage extends Component{
-    render(){
-        return(
+import { typeActivity } from '../../config/typeActivity';
+import axios from 'axios';
+import { baseURL } from '../../config/baseURL';
+ 
+ 
+const _key = 'GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO';
+ 
+class NotificationPage extends Component {
+    state = {
+        list: [],
+        isLoading: false,
+        page: 0,
+        per_page: 20
+    };
+ 
+    componentDidMount() {
+        this.loadNotify();
+    }
+    
+    componentWillMount = () => {
+        this.props.history.push('/');
+        const privateKeyEncode = localStorage.getItem('privateKey');  
+        const publicKeyEncode = localStorage.getItem('publicKey');
+        if(privateKeyEncode && publicKeyEncode){
+        const privateKeyDecode = atob(privateKeyEncode);
+        const publicKeyDecode = atob(publicKeyEncode);
+        let payload = {
+            isLoginSuccess: true
+        }
+        this.props.actionSetLoginSuccess(payload);
+        payload = {
+            privateKey: privateKeyDecode,
+            publicKey: publicKeyDecode
+        }
+        this.props.actionsSetPrivatrPublicKey(payload);
+        payload = {
+            url: baseURL.BASE_URL + baseURL.URL.GET_ACCOUNT + publicKeyDecode
+        } 
+        this.props.actionGetAccountUser(payload);
+        }else {
+            let payload = {
+                isLoginSuccess: false
+            }
+            this.props.actionSetLoginSuccess(payload);
+            this.props.history.push('/');
+        }
+    }
+    
+    loadNotify = () => {
+        const publicKey = _key;
+ 
+        const request = {
+            method: 'get',
+            baseURL: baseURL.BASE_URL,
+            url: baseURL.URL.GET_NOTIFY,
+            params: {
+                address: publicKey,
+                page: -1,
+                per_page: 5
+            }
+        };
+ 
+        axios.request(request).then(res => {
+            const { status, data } = res.data;
+            if (status.code !== 0) {
+                this.setState({
+                    ...this.state,
+                    isLoading: false
+                });
+            } else {
+                this.setState({
+                    list: this.state.list.concat(data.list),
+                    isLoading: false
+                });
+            }
+ 
+        });
+    }
+ 
+    renderList = () => {
+        const { list, isLoading } = this.state;
+ 
+        const isEmpty = list.length === 0 && isLoading === false;
+ 
+        if (isLoading === true) {
+            return <div style={{
+                textAlign: "center"
+            }}>Loading...</div>
+        }
+ 
+        if (isEmpty === true) {
+            return <div style={{
+                textAlign: "center"
+            }}>Notification empty</div>
+        } else {
+ 
+ 
+            return list.map((value, index) => {
+                return <ItemNotification key={index} value={value}/>
+            });
+        }
+    }
+    
+    render() {
+        return (
             <div className="container-notification-page">
                 <div className="container-notification-nav-center">
                     <div className="title-notication">
@@ -94,9 +116,7 @@ class NotificationPage extends Component{
                     </div>
                     <div className="list-notification">
                         {
-                            listPost.map((value, index)=> {
-                                return <ItemNotification key={index} value={value}/>
-                            })
+                            this.renderList()
                         }
                     </div>
                 </div>
