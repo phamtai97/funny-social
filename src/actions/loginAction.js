@@ -25,6 +25,7 @@ const actionLogout = (payload) => {
             }
         }
         dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+            console.log('login: ', result);
             if(result.data.status.code === 0){
                 let payloadTmp = {
                     isLoginSuccess: false
@@ -51,6 +52,7 @@ const actionLogout = (payload) => {
                 dispatch(actionSetLogoutSuccess(payloadTmp))
             }
         }).catch((err) => {
+            console.log('err: ', err);
             let payloadTmp = {
                 isLoginSuccess: false
             }
@@ -72,12 +74,25 @@ const actionLogin = (payload) => {
                 ...payload.tx
             }
         }
-        dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+        dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {            
             if(result.data.status.code === 0){
                 let payloadTmp = {
                     isLoginSuccess: true
                 }
                 dispatch(actionSetLoginSuccess(payloadTmp))
+                const data = result.data.data;
+                payloadTmp = {
+                    publicKey: data._id,
+                    userName: data.name,
+                    email: data.email,
+                    avatar: data.picture,
+                    balance: data.balance,
+                    oxygen: data.bandwidthLimit - data.bandwidth,
+                    numberPost: data.countPost,
+                    numberFollowing: data.countFollowings,
+                    numberFollowers: data.countFollowers
+                }
+                dispatch(accountAction.actionSetProfile(payloadTmp))
                 //get profile
                 payloadTmp = {
                     isLogoutSuccess: false

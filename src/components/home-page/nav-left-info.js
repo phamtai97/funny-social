@@ -11,7 +11,7 @@ class NavLeftInfo extends Component{
         });
 
         this.props.onViewPost();
-        this.props.history.push('/profile');        
+        this.props.history.push('/profile/' + this.props.publicKey);        
     }
 
     handleClickItemFollwing = () => {
@@ -19,7 +19,7 @@ class NavLeftInfo extends Component{
             selected: "following"
         });
         this.props.onViewFollowing();
-        this.props.history.push('/profile');        
+        this.props.history.push('/profile/'+ this.props.publicKey);        
     }
 
     handleClickItemFollwers = () => {
@@ -27,14 +27,11 @@ class NavLeftInfo extends Component{
             selected: "followers"
         });
         this.props.onViewFollower();
-        this.props.history.push('/profile');                
+        this.props.history.push('/profile/' + this.props.publicKey);                
     }
 
     render(){
-        const name = "Vo Minh Tri oc cho";
-        const numberPost = 1000;
-        const numberFollowing = 1000;
-        const numberFollowers = 1000;
+        const {userName, numberPost, numberFollowing, numberFollowers, avatar} = this.props;
         return(
             <div className='container-nav-left'>
                 <div className='background-user-home'>
@@ -45,7 +42,7 @@ class NavLeftInfo extends Component{
                 <div className="container-nav-left-info">
                     <div className="container-info">
                         <div className="name">
-                            {name}
+                            {userName}
                         </div>
                     </div>
                     <div className='account-box'>

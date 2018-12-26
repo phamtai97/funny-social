@@ -221,8 +221,6 @@ class HeaderMain extends Component{
             }
             this.props.actionUpdateNameSuccess(payload)
         }
-
-        console.log(this.props);
         
         if(this.props.isUpdateEmailSuccess){
             message.success('You have successfully update email')
@@ -231,6 +229,14 @@ class HeaderMain extends Component{
             }
             this.props.actionUpdateEmailSuccess(payload)
         }
+
+        if(this.props.isUpdateAvatarSuccess){
+            message.success('You have successfully update avatar')
+            var payload = {
+                isUpdateAvatarSuccess: false,
+            }
+            this.props.actionUpdateAvatarSuccess(payload)
+        }
     }
 
     render(){
@@ -238,7 +244,7 @@ class HeaderMain extends Component{
         const count = 1;
         const userName = "Vo Minh Tri";
         const email = "abcxyz@gmail.com";
-        const avatar = '../../images/icon-avatar-default.png';
+        const avatar = 'http://img.f50.bdpcdn.net/Assets/Media/2018/08/03/75/hot-girl.jpg';
 
         const menu = (
             <Menu onClick={this.handleMenuClick}>

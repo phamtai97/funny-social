@@ -3,7 +3,8 @@ import PostHomeReview from '../../components/post-home-review';
 import {typeActivity} from '../../config/typeActivity';
 import './list-post.css';
 import moment from 'moment';
-import helpers from '../../helpers/helpers'
+import helpers from '../../helpers/helpers';
+
 var listPost = [];
 
 const objectPost = {

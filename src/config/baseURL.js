@@ -4,6 +4,7 @@ export const baseURL = {
         GET_SEQUENCE: '/api/get_sequence?address=',
         BROADCAST: '/api/broadcast_tx_commit',
         LOGIN: '/api/login',
-        LOGOUT: '/api/logout'
+        LOGOUT: '/api/logout',
+        GET_ACCOUNT: '/api/get_account?address='
     }
 }

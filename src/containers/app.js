@@ -7,12 +7,13 @@ import {loginAction} from '../actions/loginAction';
 const mapStateToProps = (state) => ({
     isRegisterSuccess: state.registerReducer.isRegisterSuccess,
     isLoginSuccess: state.loginReducer.isLoginSuccess,
-    privateKey: state.registerReducer.privateKey,
+    privateKey: state.accountReducer.privateKey
 })
 
 const mapDispatchToProps = (dispatch) => ({
     actionsSetPrivatrPublicKey: (payload) => dispatch(accountAction.actionsSetPrivatrPublicKey(payload)),
     actionSetLoginSuccess: (payload) => dispatch(loginAction.actionSetLoginSuccess(payload)),
+    actionGetAccountUser: (payload) => dispatch(accountAction.actionGetAccountUser(payload))
 })
 
 export default compose(

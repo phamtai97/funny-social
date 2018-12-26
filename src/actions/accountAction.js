@@ -86,6 +86,39 @@ const actionSetProfile = (payload) => ({
         numberFollowers: payload.numberFollowers
     }
 })
+
+const actionGetAccountUser = (payload) => {
+    return (dispatch) => {
+        let payloadTmp = {
+            method: 'GET',
+            url: payload.url,
+        }
+        dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+            console.log('result get:', result)
+            if(result.data.status.code === 0){
+                const data = result.data.data;
+                payloadTmp = {
+                    publicKey: data._id,
+                    userName: data.name,
+                    email: data.email,
+                    avatar: data.picture,
+                    balance: data.balance,
+                    oxygen: data.bandwidthLimit - data.bandwidth,
+                    numberPost: data.countPost,
+                    numberFollowing: data.countFollowings,
+                    numberFollowers: data.countFollowers
+                }
+                dispatch(accountAction.actionSetProfile(payloadTmp))
+            }else {
+                console.log('post fail')
+            }
+        }).catch((err) => {
+            console.log('err: ', err)
+        })
+    }
+}
+
+
 export const accountAction = {
     actionsSetPrivatrPublicKey,
     actionSetProfileUser,
@@ -97,5 +130,6 @@ export const accountAction = {
     actionSetNumberPost,
     actionSetNumberFollowing,
     actionSetNumberFollowers,
-    actionSetProfile
+    actionSetProfile,
+    actionGetAccountUser
 }

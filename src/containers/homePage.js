@@ -5,7 +5,7 @@ import {homePageAction} from '../actions/homePageAction';
 
 const mapStateToProps = (state) => ({
     listPostHomePage: state.homePageReducer.listPostHomePage,
-    newPostHomePage: state.homePageReducer.newPostHomePage
+    newPostHomePage: state.homePageReducer.newPostHomePage,
 })
 
 const mapDispatchToProps = (dispatch) => ({

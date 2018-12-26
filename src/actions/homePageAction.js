@@ -41,8 +41,35 @@ const actionPushNewPostHomePage = (payload) => {
     }
 }
 
+const getListPostHomePage = (payload) => {
+    // return (dispatch) => {
+    //     let payloadTmp = {
+    //         method: 'POST',
+    //         url: payload.url,
+    //         data: {
+    //             tx: payload.Tx
+    //         }
+    //     }
+        
+    //     dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+    //         console.log('result post:', result)
+    //         if(result.data.status.code === 0){
+    //             let payloadTmp = {
+    //                 newPostHomePage: payload.itemPost
+    //             }
+    //             dispatch(actionSetListPostHomePage(payloadTmp))
+    //         }else {
+    //             console.log('post fail')
+    //         }
+    //     }).catch((err) => {
+    //         console.log('err: ', err)
+    //     })
+    // }
+}
+
 export const homePageAction = {
     actionSetListPostHomePage,
     actionAddNewPostHomePage,
-    actionPushNewPostHomePage
+    actionPushNewPostHomePage,
+    getListPostHomePage
 }

@@ -5,9 +5,7 @@ import { Input, Button, Icon, Tooltip} from 'antd';
 
 class AccountBox extends Component {
     render(){
-        const {publicKey} = this.props;   
-        const money = "100000000000000000000000000000";  
-        const oxygen = "11111111111111111111111111"   
+        const {publicKey, balance, oxygen} = this.props;   
         return(
             <div className='container-account-box'>
                 <div className='public-key'>
@@ -33,9 +31,9 @@ class AccountBox extends Component {
                         <Icon type="dollar" />
                         <span>Balance: </span>
                     </div>
-                    <Tooltip placement="bottomRight" title={money}>
+                    <Tooltip placement="bottomRight" title={balance}>
                         <div className='balance'>
-                            {money}
+                            {balance}
                         </div>
                     </Tooltip>
                     <div className="unit">
