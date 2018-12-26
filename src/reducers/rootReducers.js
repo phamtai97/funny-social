@@ -7,6 +7,7 @@ import registerReducer from './registerReducer';
 import loginReducer from './loginReducer';
 import updateProfileReducer from './updateProfileReducer';
 import homePageReducer from './homePageReducer';
+import accountReducer from './accountReducer';
 
 const rootReducer = combineReducers({
     profilePage,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     registerReducer,
     loginReducer,
     updateProfileReducer,
-    homePageReducer
+    homePageReducer,
+    accountReducer
 });
 
 export default rootReducer;

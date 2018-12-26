@@ -3,7 +3,9 @@ import {headerMainConstant} from '../constants/headerMainConstant'
 const initalState = {
     itemHeaderMainSelected : '',
     isSendMoneySuccess: false,
-    moneySend: ''
+    moneySend: '',
+    isUpdateNameSuccess: false,
+    isUpdateEmailSuccess: false,
 }
 
 export default function  headerMainReducer(state=initalState, actions){
@@ -19,6 +21,16 @@ export default function  headerMainReducer(state=initalState, actions){
                 isSendMoneySuccess: actions.payload.isSendMoneySuccess,
                 moneySend: actions.payload.moneySend
             }
+        case headerMainConstant.IS_UPDATE_NAME_SUCCESS:
+            return{
+                ...state,
+                isUpdateNameSuccess: actions.payload.isUpdateNameSuccess
+            }
+        case headerMainConstant.IS_UPDATE_EMAIL_SUCCESS:
+            return{
+                ...state,
+                isUpdateEmailSuccess: actions.payload.isUpdateEmailSuccess
+            }  
         default:
             return state;
     }

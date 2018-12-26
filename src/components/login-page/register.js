@@ -62,7 +62,7 @@ class Register extends Component{
         axios.get(baseURL.BASE_URL + baseURL.URL.GET_SEQUENCE + publicKey).then((result) => {
             try{
                 var sequence = parseInt(result.data.data.sequence) + 1;
-                const tx = transactionGet.createAccount(this.state.privateKey, sequence, this.props.publicKey)
+                const tx = transactionGet.createAccount(this.state.privateKey, sequence, this.state.publicKey)
                 var payload = {
                     url: baseURL.BASE_URL + baseURL.URL.BROADCAST,
                     Tx: tx
@@ -84,28 +84,29 @@ class Register extends Component{
     }
     
     componentDidUpdate = () => {
-        if(this.props.isRegisterSuccess === true && this.state.iconLoadingRegister === true){
+        if(this.props.isRegisterSuccess === 0 && this.state.iconLoadingRegister === true){
             message.success('Register account successed!!!');
             this.setState({
                 iconLoadingRegister: false,
                 privateKey: '',
                 publicKey: ''
             })
-
-        }else if(this.props.isRegisterSuccess === false && this.state.iconLoadingRegister === true){
-            message.error('Register account failed !!!');
-            this.setState({
-                iconLoadingRegister: false,
-                privateKey: '',
-                publicKey: ''
-            })
-        }
+        }else if(this.props.isRegisterSuccess === 1 && this.state.iconLoadingRegister === true){
+                message.error('Register account failed !!!');
+                let payloadTmp = {
+                    isRegisterSuccess: -1
+                }
+                this.props.actionSetRegisterSuccess(payloadTmp);
+                this.setState({
+                    iconLoadingRegister: false,
+                    privateKey: '',
+                    publicKey: ''
+                })
+            }
     }
         
-
     render(){
         var isGenKey = true;
-        const {isRegisterSuccess} = this.props;
         const {iconLoadingRegister} = this.state;
         const suffix = this.state.privateKey ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         const suffixPublicKeyOfReferer = this.state.publicKey ? <Icon type="close-circle" onClick={this.emitEmptyInputPublicKeyOfReferer} /> : null;

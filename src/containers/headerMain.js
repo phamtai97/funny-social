@@ -7,18 +7,23 @@ const mapStateToProps = (state) => ({
     itemHeaderMainSelected: state.headerMainReducer.itemHeaderMainSelected,
     isLoginSuccess: state.loginReducer.isLoginSuccess,
     isLogoutSuccess: state.loginReducer.isLogoutSuccess,
-    privateKey: state.registerReducer.privateKey,
-    publicKey: state.registerReducer.publicKey,
+    privateKey: state.accountReducer.privateKey,
+    publicKey: state.accountReducer.publicKey,
     moneySend: state.headerMainReducer.moneySend,
-    isSendMoneySuccess: state.headerMainReducer.isSendMoneySuccess
-
+    isSendMoneySuccess: state.headerMainReducer.isSendMoneySuccess,
+    isUpdateNameSuccess: state.headerMainReducer.isUpdateNameSuccess,
+    isUpdateEmailSuccess: state.headerMainReducer.isUpdateEmailSuccess,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     actionSetItemHeaderMainSelected: (payload) => dispatch(headerMainAction.actionSetItemHeaderMainSelected(payload)),
     actionLogout: (payload) => dispatch(loginAction.actionLogout(payload)),
     actionSendMoney: (payload) => dispatch(headerMainAction.actionSendMoney(payload)),
-    actionSendMoneySuccess: (payload) => dispatch(headerMainAction.actionSendMoneySuccess(payload))
+    actionSendMoneySuccess: (payload) => dispatch(headerMainAction.actionSendMoneySuccess(payload)),
+    actionUpdateName: (payload) => dispatch(headerMainAction.actionUpdateName(payload)),
+    actionUpdateNameSuccess: (payload) => dispatch(headerMainAction.actionUpdateNameSuccess(payload)),
+    actionUpdateEmail: (payload) => dispatch(headerMainAction.actionUpdateEmail(payload)),
+    actionUpdateEmailSuccess: (payload) => dispatch(headerMainAction.actionUpdateEmailSuccess(payload)),
 })
 
 export default compose(

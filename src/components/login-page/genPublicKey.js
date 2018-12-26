@@ -9,6 +9,8 @@ import { Keypair } from 'stellar-base';
 class GenPublicKey extends Component{
     state = {
         iconLoadingLogin: false,
+        privateKey: '',
+        publicKey: '',
     }
 
     sleep = (time) => {
@@ -17,35 +19,34 @@ class GenPublicKey extends Component{
     
     handleGenKey = () => {
         const key = Keypair.random();
-        var payload = {
+        this.setState({
             privateKey: key.secret().toString('base64'),
-            publicKey: key.publicKey().toString('base64')
-        }
-        this.props.actionGenPrivatePublicKey(payload);
+            publicKey: key.publicKey().toString('base64'),
+        })
     }
 
 
     handleClickCanncel = () => {
-        var payload = {
+        this.setState({
             privateKey: '',
             publicKey: ''
-        }
-        this.props.actionGenPrivatePublicKey(payload);
+        })
     } 
 
     componentDidMount = () => {
-        const key = Keypair.random();
-        var payload = {
-            privateKey: key.secret().toString('base64'),
-            publicKey: key.publicKey().toString('base64')
+        if(this.state.publicKey.length == 0 && this.state.privateKey.length === 0) {
+            const key = Keypair.random();
+            this.setState({
+                privateKey: key.secret().toString('base64'),
+                publicKey: key.publicKey().toString('base64'),
+            })
         }
-        this.props.actionGenPrivatePublicKey(payload);
     }
 
     render(){
-        const {privateKey, publicKey} = this.props;
+        const {privateKey, publicKey} = this.state;
         var isDownload = true;
-        var content = JSON.stringify({PrivateKey : this.props.privateKey, PublicKey: this.props.publicKey});
+        var content = JSON.stringify({PrivateKey : this.state.privateKey, PublicKey: this.state.publicKey});
         if(privateKey.length > 0 && publicKey.length > 0){
             isDownload = false;
         }
@@ -70,7 +71,6 @@ class GenPublicKey extends Component{
                         <div className="wrapper-input-button-key">
                             <Input
                                     placeholder='Private key'
-                                    // enterButton='Copy'
                                     size='large'
                                     style={{width: 600}}
                                     disabled={false}
@@ -86,7 +86,6 @@ class GenPublicKey extends Component{
                         <div className="wrapper-input-button-key">
                             <Input
                                     placeholder='Private key'
-                                    // enterButton='Copy'
                                     size='large'
                                     style={{width: 600}}
                                     disabled={false}
@@ -99,13 +98,6 @@ class GenPublicKey extends Component{
                     </div>
                 </div>
                 <div className='wrapper-decided-button'>
-                    {/* <div className='wrapper-button-cancel'>
-                        <Button 
-                            type="danger" 
-                            size={"large"} 
-                            style={{width: 300}} 
-                            onClick={this.handleClickCanncel}>Cancel</Button>
-                    </div> */}
                     <div className='wrapper-button-genkey'>
                         <Button 
                             type="primary" 
