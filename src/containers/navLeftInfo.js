@@ -4,7 +4,14 @@ import { connect } from 'react-redux';
 import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profilePageEvent';
 
 const mapStateToProps = state => ({
-    view: state.profilePage.view
+    view: state.profilePage.view,
+    publicKey: state.accountReducer.publicKey,
+    userName: state.accountReducer.userName,
+    email: state.accountReducer.email,
+    avatar: state.accountReducer.avatar,
+    numberFollowing: state.accountReducer.numberFollowing,
+    numberFollowers: state.accountReducer.numberFollowers,
+    numberPost: state.accountReducer.numberPost,
 });
 
 const mapDispatchToProps = dispatch => ({

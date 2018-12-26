@@ -12,7 +12,7 @@ class HomePage extends Component{
             <div className="container-home-page">
                 <div className="warpper-home-page">
                     <div className="nav-left">
-                        <NavLeftInfo></NavLeftInfo>
+                        <NavLeftInfo publicKey={this.props.publicKey}></NavLeftInfo>
                     </div>
                     <div className="nav-center">
                         <div className="container-nav-center">

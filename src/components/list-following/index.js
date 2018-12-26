@@ -42,6 +42,8 @@ class ListFollowing extends Component {
     }
 
     render() {
+        console.log(222222);
+
         return (
             <div className="list-following">
                 {

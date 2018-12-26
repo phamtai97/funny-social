@@ -7,7 +7,7 @@ import HeaderMain from '../containers/headerMain';
 import LoginPage from '../containers/login';
 import NotificationPage from '../components/notification-page';
 import HistoryPage from '../components/history-page';
-
+import {baseURL} from '../config/baseURL';
 
 
 class App extends Component {
@@ -17,7 +17,6 @@ class App extends Component {
     if(privateKeyEncode && publicKeyEncode){
       const privateKeyDecode = atob(privateKeyEncode);
       const publicKeyDecode = atob(publicKeyEncode);
-
       let payload = {
         isLoginSuccess: true
       }
@@ -26,7 +25,11 @@ class App extends Component {
         privateKey: privateKeyDecode,
         publicKey: publicKeyDecode
       }
-      this.props.actionsSetPrivatrPublicKey(payload)
+      this.props.actionsSetPrivatrPublicKey(payload);
+      payload = {
+        url: baseURL.BASE_URL + baseURL.URL.GET_ACCOUNT + publicKeyDecode
+      } 
+      this.props.actionGetAccountUser(payload);
     }else {
       let payload = {
         isLoginSuccess: false

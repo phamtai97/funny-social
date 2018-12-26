@@ -6,22 +6,18 @@ import './box-send-money.css';
 import axios from 'axios';
 import {baseURL} from '../../config/baseURL';
 import {transactionGet} from '../../lib/transaction/get';
+import fs from 'fs';
 
 
-function getBase64(img, callback) {
-    const reader = new FileReader();  
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
+
 
 function beforeUpload(file) {
-    console.log('file: ', file);
 
     const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
     if (!isJPG) {
         message.error('You can only upload JPG file!');
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
+    const isLt2M = file.size / 1024 / 1024 /1024 < 20;
     if (!isLt2M) {
         message.error('Image must smaller than 2MB!');
     }
@@ -33,51 +29,53 @@ class BoxUpdateAvatar extends Component {
         newAvatar: '',
         imageUrl: '',
         loading: false,
-        previewImage: '',
-        previewVisible: false,
     }
 
-    handlePreview = (file) => {
+    onChangeEmail = (e) => {
         this.setState({
-            previewImage: file.url || file.thumbUrl,
-            previewVisible: true,
-        });
+            newEmail: e.target.value
+        })
     }
+
+    getBase64 = (img) => {
+        if(this.state.imageUrl.length === 0){
+            const reader = new FileReader();
+            reader.readAsDataURL(img);
+
+            reader.onloadend = () => {
+                this.setState({
+                    imageUrl: reader.result
+                })
+            };
+        }
+    }
+
     //handle update avatar
     handleChange = (info) => {
-        if (info.file.status === 'uploading') {
-            this.setState({ loading: true });
-            return;
-        }
-        if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, imageUrl => this.setState({
-                imageUrl,
-                loading: false,
-            }));
-        }
+        this.getBase64(info.file.originFileObj);
     }
 
+
     onCreate = () => {
-        const {privateKey, publicKey, actionUpdateEmail} = this.props;
-        const newEmail = this.state.newEmail;
+        const {privateKey, publicKey, actionUpdateAvatar} = this.props;
         axios.get(baseURL.BASE_URL + baseURL.URL.GET_SEQUENCE + publicKey).then((result) => {
             try{
                 var sequence = parseInt(result.data.data.sequence) + 1;
-                const tx = transactionGet.updateEmail(privateKey, sequence, newEmail);
+                const tx = transactionGet.updatePicture(privateKey, sequence, this.state.imageUrl);
                 var payload = {
                     url: baseURL.BASE_URL + baseURL.URL.BROADCAST,
                     Tx: tx,
-                    newEmail: newEmail
+                    // newEmail: newEmail
                 }
-                actionUpdateEmail(payload);
+                actionUpdateAvatar(payload);
                 this.setState({
-                    newEmail: '',
+                    imageUrl: '',
                 })
             }catch(err){
+                console.log('err: ', err)
                 message.error(err.toString());
                 this.setState({
-                    newEmail: '',
+                    imageUrl: '',
                 })
             }
         })
@@ -88,7 +86,6 @@ class BoxUpdateAvatar extends Component {
 
     render(){
         const { visible, onCancel, avatar} = this.props;
-        const { previewVisible, previewImage} = this.state;
         const uploadButton = (
             <div>
                 <Icon type={this.state.loading ? 'loading' : 'plus'} />
@@ -97,7 +94,6 @@ class BoxUpdateAvatar extends Component {
         );
         
         const imageUrl = this.state.imageUrl;
-
         return(
             <div>
                 <Modal
@@ -109,25 +105,22 @@ class BoxUpdateAvatar extends Component {
                     onOk={this.onCreate}
                 >
                     <div className="wrapper-box-send-money">
-                        <div className='wrapper-public-key'>
-                            <div className="avatar">
-
+                        <div className='container-avatar'>
+                            <div className="wrapper-avatar">
+                                <Upload
+                                    name="avatar"
+                                    listType="picture-card"
+                                    className="avatar-uploader"
+                                    showUploadList={false}
+                                    action="//jsonplaceholder.typicode.com/posts/"
+                                    beforeUpload={beforeUpload}
+                                    onChange={this.handleChange}
+                                >
+                                    {imageUrl  ? <img src={imageUrl} alt="avatar" />
+                                    :
+                                    <img src={avatar} alt="avatar" />}
+                                </Upload> 
                             </div>
-                            <Upload
-                                name="avatar"
-                                listType="picture-card"
-                                className="avatar-uploader"
-                                showUploadList={false}
-                                action="//jsonplaceholder.typicode.com/posts/"
-                                onPreview={this.handlePreview}
-                                beforeUpload={beforeUpload}
-                                onChange={this.handleChange}
-                            >
-                                {imageUrl ? <img src={imageUrl} alt="avatar" /> : <img src={previewImage} alt="avatar" /> }
-                            </Upload> 
-                            <Modal visible={previewVisible} footer={null}>
-                                <img alt="avatar" style={{ width: '100%' }} src={previewImage} />
-                            </Modal>
                         </div>
                     </div>
                 </Modal>

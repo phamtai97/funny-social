@@ -123,6 +123,46 @@ const actionUpdateEmail= (payload) => {
     }
 }
 
+const actionUpdateAvatarSuccess = (payload) => ({
+    type:headerMainConstant.IS_UPDATE_AVATAR_SUCCESS,
+    payload:{
+        isUpdateAvatarSuccess: payload.isUpdateAvatarSuccess,
+    }
+})
+
+const actionUpdateAvatar = (payload) => {
+    return (dispatch) => {
+        let payloadTmp = {
+            method: 'POST',
+            url: payload.url,
+            data: {
+                tx: payload.Tx
+            }
+        }
+
+        dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
+            console.log('result post:', result)
+            if(result.data.status.code === 0){
+                let payloadTmp = {
+                    isUpdateAvatarSuccess: true,    
+                }
+                dispatch(actionUpdateAvatarSuccess(payloadTmp))
+            }else {
+                console.log('err')
+                let payloadTmp = {
+                    isUpdateAvatarSuccess: false,    
+                }
+                dispatch(actionUpdateAvatarSuccess(payloadTmp))
+            }
+        }).catch((err) => {
+            console.log('err: ', err);
+            let payloadTmp = {
+                isUpdateAvatarSuccess: false,    
+            }
+            dispatch(actionUpdateAvatarSuccess(payloadTmp))
+        })
+    }
+}
 export const headerMainAction = {
     actionSetItemHeaderMainSelected,
     actionSendMoneySuccess,
@@ -131,4 +171,6 @@ export const headerMainAction = {
     actionUpdateNameSuccess,
     actionUpdateEmailSuccess,
     actionUpdateEmail,
+    actionUpdateAvatar,
+    actionUpdateAvatarSuccess
 }

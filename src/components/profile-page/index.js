@@ -24,7 +24,23 @@ class ProfilePage extends Component {
         }
     }
 
+    getTag(){
+        const url = window.location.href.split('/');
+        console.log(url);
+
+        if(url.length === 5 && url[3] === "profile"){
+            return url[4];
+        }else{
+            return null;
+        }
+    }
+
+    componentDidUpdate = () => {
+        // console.log(this.getTag());
+    }
+    
     render() {
+        console.log(1111);
         const { onViewPost, onViewFollowing, onViewFollower, view} = this.props;
         const avatarUrl = "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg";
         const name = "Võ Minh Trí";

@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
     isSendMoneySuccess: state.headerMainReducer.isSendMoneySuccess,
     isUpdateNameSuccess: state.headerMainReducer.isUpdateNameSuccess,
     isUpdateEmailSuccess: state.headerMainReducer.isUpdateEmailSuccess,
+    isUpdateAvatarSuccess: state.headerMainReducer.isUpdateAvatarSuccess,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,6 +25,8 @@ const mapDispatchToProps = (dispatch) => ({
     actionUpdateNameSuccess: (payload) => dispatch(headerMainAction.actionUpdateNameSuccess(payload)),
     actionUpdateEmail: (payload) => dispatch(headerMainAction.actionUpdateEmail(payload)),
     actionUpdateEmailSuccess: (payload) => dispatch(headerMainAction.actionUpdateEmailSuccess(payload)),
+    actionUpdateAvatar: (payload) => dispatch(headerMainAction.actionUpdateAvatar(payload)),
+    actionUpdateAvatarSuccess: (payload) => dispatch(headerMainAction.actionUpdateAvatarSuccess(payload)),
 })
 
 export default compose(
