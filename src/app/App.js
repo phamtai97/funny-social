@@ -53,7 +53,7 @@ class App extends Component {
                 <Route
                   path='/history'
                   render={(props) => <HistoryPage {...props} publicKey={this.props.publicKey} />}
-                />
+                />  
               </Switch>
             </div>
           </BrowserRouter>
