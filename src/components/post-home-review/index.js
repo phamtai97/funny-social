@@ -429,6 +429,7 @@ class PostHomeReview extends Component {
         console.log("value post ", value)
         return (
             <div className="container-post-review">
+                
                 <DetailPost 
                     data={this.state.data}
                     valueDetail={value}
