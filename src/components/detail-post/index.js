@@ -10,10 +10,25 @@ import { baseURL } from '../../config/baseURL';
 const defReaction = ['', 'like', 'love', 'wow', 'haha', 'sad', 'angry'];
 
 class DetailPost extends Component{
-    state={
-        loading: false, 
-        key: ''
+    constructor(props) {
+        super(props);
+
+        const { value } = props;
+
+        let listName = this.initListName(value);
+
+        this.state = {
+            visibleDetailPost: false,
+            data: {},
+            listName,
+            ...this.props,
+        };
     }
+
+    componentDidMount() {
+        this.requestName(this.state.listName);
+    }
+
     
     handleComment = (e) => {
         alert(e.target.value );
@@ -369,7 +384,13 @@ class DetailPost extends Component{
         
         const listActioner = [{"src":"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}
         , {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}];
+        console.log(valueDetail);
 
+        
+        if(valueDetail === undefined){
+            console.log("undefi")
+            return null;
+        }
         return(
             <div className="container-modal">
                 <Modal 
@@ -411,7 +432,7 @@ class DetailPost extends Component{
                             <ListComment></ListComment>
                         </div>
                     </div>
-                </Modal>
+                </Modal> */}
             </div>
         )
     }

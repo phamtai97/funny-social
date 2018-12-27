@@ -11,10 +11,4 @@ export const typeActivity = {
     UPDATE_EMAIL: 'update_email',
     FOLLOW: 'follow',
     UNFOLLOW: 'unfollow',
-
-
-
-
-
-    
 }
