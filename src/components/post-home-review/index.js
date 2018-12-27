@@ -419,51 +419,13 @@ class PostHomeReview extends Component {
     
     
     handleClickIcon = (type) => {
-        console.log(type);
-        let {keys, _id, count} = this.state.value;
-        
-        const idReact = defReaction.indexOf(type);
-        
-        const reacted = keys.indexOf(type);
-        if (reacted !== -1) {
-            // transaction voi data = 0
-            // const request = {
-            //     method: 'get',
-            //     baseURL: baseURL.BASE_URL,
-            //     url: baseURL.URL.GET_NOTIFY,
-            //     params: {
-            //         address: publicKey,
-            //         page: -1,
-            //         per_page: 5
-            //     }
-            // };
-     
-            // axios.request(request).then(res => {
-            //     const { status, data } = res.data;
-            //     if (status.code !== 0) {
-            //         this.setState({
-            //             ...this.state,
-            //             isLoading: false
-            //         });
-            //     } else {
-            //         this.setState({
-            //             list: this.state.list.concat(data.list),
-            //             isLoading: false
-            //         });
-            //     }
-     
-            // });
-        }
-        else {
-            // data = idReact
-        }
     }
 
     render() {
         const {value, userNameUser, avatarUser, _id} = this.props;
         const time = moment(value.time).format(helpers.FORMAT_DATE);
         const keys = value.keys;
-        
+        console.log("value post")
         return (
             <div className="container-post-review">
                 <DetailPost 

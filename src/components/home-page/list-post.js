@@ -60,6 +60,7 @@ class ListPost extends Component {
                 <div className="list-post-container">
                     {
                         listPostHomePage.map((value, index)=> {
+                            console.log('value post home: ',  value)
                             return <PostHomeReview key={index} value={value} publicKey={publicKey}/>
                         })
                     }

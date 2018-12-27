@@ -50,7 +50,10 @@ class App extends Component {
                 <Route exact path = '/' component = {LoginPage}/>
                 <Route path = '/profile' component = {ProfilePage}/>
                 <Route path = '/notification' component = {NotificationPage}/>
-                <Route path ='/history' component =  {HistoryPage}/>
+                <Route
+                  path='/history'
+                  render={(props) => <HistoryPage {...props} publicKey={this.props.publicKey} />}
+                />  
               </Switch>
             </div>
           </BrowserRouter>
