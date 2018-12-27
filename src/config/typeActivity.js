@@ -9,7 +9,7 @@ export const typeActivity = {
     UPDATE_NAME: 'update_name',
     UPDATE_AVATAR: 'update_avatar',
     UPDATE_EMAIL: 'update_email',
-    FOLLOW: 'followings',
+    FOLLOW: 'follow',
     UNFOLLOW: 'unfollowings',
     FOLLOWINGS: 'followings'
 }
