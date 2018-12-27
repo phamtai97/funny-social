@@ -178,7 +178,7 @@ class HeaderMain extends Component{
     //handler clich on menu
     handleMenuClick = (e) => {
         if (e.key === '1') {
-            this.props.history.push('/profile');
+            this.props.history.push('/profile/' + this.props.publicKey);
             let payload = {
                 itemHeaderMainSelected: 'profile'
             }
@@ -341,12 +341,12 @@ class HeaderMain extends Component{
                                     </Badge>
                                 </div>
                             </div>
-                            <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'profile'})} onClick={this.handleClickProfileItem}>
+                            {/* <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'profile'})} onClick={this.handleClickProfileItem}>
                                 <div className="wrapper-content">
                                     <Icon type="profile" />
                                     <span className='content'>Profile</span>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className={classNames("item-container", {'item-container-selected': itemHeaderMainSelected === 'history'})} onClick={this.handleClickHistoryItem}>
                                 <div className="wrapper-content">
                                     <Icon type="calendar" />

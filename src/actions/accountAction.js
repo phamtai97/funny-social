@@ -108,7 +108,7 @@ const actionGetAccountUser = (payload) => {
                     numberFollowing: data.countFollowings,
                     numberFollowers: data.countFollowers
                 }
-                dispatch(accountAction.actionSetProfile(payloadTmp))
+                dispatch(actionSetProfile(payloadTmp))
             }else {
                 console.log('post fail')
             }

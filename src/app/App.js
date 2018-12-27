@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import ProfilePage from '../containers/profilePage';
 import HeaderMain from '../containers/headerMain';
 import LoginPage from '../containers/login';
-import NotificationPage from '../components/notification-page';
+import NotificationPage from '../containers/notificationPage';
 import HistoryPage from '../components/history-page';
 import {baseURL} from '../config/baseURL';
 

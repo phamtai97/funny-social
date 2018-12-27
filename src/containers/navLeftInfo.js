@@ -1,10 +1,10 @@
 import NavLeftInfo from '../components/home-page/nav-left-info';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profilePageEvent';
+import {onViewPost, onViewFollowing, onViewFollower} from '../actions/profilePageEventAction';
 
 const mapStateToProps = state => ({
-    view: state.profilePage.view,
+    view: state.profilePageReducer.view,
     publicKey: state.accountReducer.publicKey,
     userName: state.accountReducer.userName,
     email: state.accountReducer.email,
