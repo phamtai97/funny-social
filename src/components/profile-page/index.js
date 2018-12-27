@@ -45,15 +45,9 @@ class ProfilePage extends Component {
         if(url.length === 5 && url[3] === "profile"){
             return url[4];
         }else{
-            return null     ;
+            return null;
         }
     }
-
-
-
-
-
-
 
     componentWillMount = () => {
         const privateKeyEncode = localStorage.getItem('privateKey');  

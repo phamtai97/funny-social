@@ -1,4 +1,4 @@
-const typeActivity = {
+export const typeActivity = {
     CREATE_ACCOUNT: 'create_account',
     POST: 'post',
     PAYMENT: 'payment',
@@ -11,4 +11,10 @@ const typeActivity = {
     UPDATE_EMAIL: 'update_email',
     FOLLOW: 'follow',
     UNFOLLOW: 'unfollow',
+
+
+
+
+
+    
 }

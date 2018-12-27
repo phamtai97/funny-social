@@ -423,9 +423,10 @@ class PostHomeReview extends Component {
 
     render() {
         const {value, userNameUser, avatarUser, _id} = this.props;
+
         const time = moment(value.time).format(helpers.FORMAT_DATE);
         const keys = value.keys;
-        console.log("value post")
+        console.log("value post ", value)
         return (
             <div className="container-post-review">
                 <DetailPost 
