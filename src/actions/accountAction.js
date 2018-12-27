@@ -94,7 +94,7 @@ const actionGetAccountUser = (payload) => {
             url: payload.url,
         }
         dispatch(requestApiAction.actionRequestApi(payloadTmp)).then((result) => {
-            console.log('result get:', result)
+            console.log('result get account user:', result)
             if(result.data.status.code === 0){
                 const data = result.data.data;
                 payloadTmp = {

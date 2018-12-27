@@ -7,158 +7,6 @@ import helpers from '../../helpers/helpers';
 import axios from 'axios';
 import { baseURL } from '../../config/baseURL';
 
-var listPost = [];
-
-const objectPost = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.POST,
-    content: 'Hello viet nam \n 44444444444444444444444444444444',
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectSendMoney = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.PAYMENT,
-    content: "100000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-
-const objectComment = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.COMMENT,
-    content: "abcddqưedqưqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectReact = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.REACTION,
-    content: "abcd",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectUpdate = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.UPDATE_ACCOUNT,
-    content: "abc",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectUpdateName = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Vo Minh Tri Oc Cho',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.UPDATE_NAME,
-    content: "abc",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectUpdateAvatar = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Vo Minh Tri Oc Cho',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.UPDATE_AVATAR,
-    content: "http://img.f50.bdpcdn.net/Assets/Media/2018/08/03/75/hot-girl.jpg",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectUpdateEmail = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Vo Minh Tri Oc Cho',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.UPDATE_EMAIL,
-    content: "septantai@gmai.com",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectFollowing = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.FOLLOWINGS,
-    content: "",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-
-const objectUnFollow = {
-    avatarUrl: "https://f22-org-zp.zdn.vn/009bacc892dc798220cd.jpg",
-    interactPerson: 'Vo Minh Tri',
-    interactedPerson: 'Tan Tai',
-    time: moment().format(helpers.FORMAT_DATE),
-    type: typeActivity.UNFOLLOW,
-    content: "",
-    cntLove: 10,
-    cntLike: 100,
-    cntAngry: 40,
-    cntCmt: 50,
-    cntShare: 4566
-}
-listPost.push(objectPost);
-listPost.push(objectSendMoney);
-listPost.push(objectComment);
-listPost.push(objectReact);
-listPost.push(objectUpdate);
-listPost.push(objectUpdateName);
-listPost.push(objectUpdateAvatar);
-listPost.push(objectUpdateEmail);
-listPost.push(objectFollowing);
-listPost.push(objectUnFollow);
-
 const value1 = {
     "_id" : "008096CC174EF9A93F7274D88BDFF878AE56A5310763AC2CE8C4DB4280B86036",
     "time" : 1545708287,
@@ -194,24 +42,25 @@ class ListPost extends Component {
         };
 
         axios.request(request).then(result =>{
-            console.log(result);
-            this.setState({
-                listNewFeed: result.data.data.list
-            })
+            var payload = {
+                listPostHomePage: result.data.data.list
+            }
+            console.log(payload);
+
+            this.props.actionSetListPostHomePage(payload);
         }).catch(err => {
             console.log(err);
         })
     }
 
     render() {
-        const {listPostHomePage} = this.props;
-        listPost = listPostHomePage.concat(listPost);
+        const {listPostHomePage, publicKey} = this.props;
         return (
             <div className="list-post">
                 <div className="list-post-container">
                     {
-                        this.state.listNewFeed.map((value, index)=> {
-                            return <PostHomeReview key={index} value={value}/>
+                        listPostHomePage.map((value, index)=> {
+                            return <PostHomeReview key={index} value={value} publicKey={publicKey}/>
                         })
                     }
                 </div>

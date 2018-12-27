@@ -37,6 +37,7 @@ class ListPost extends Component {
         const {listPostProfilePage,  userNameUser, avatarUser} = this.props;
 
         console.log(listPostProfilePage)
+        
         return (
             <div className="list-post">
                 <div className="list-post-container">

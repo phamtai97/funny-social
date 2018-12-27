@@ -112,7 +112,9 @@ class DetailPost extends Component{
 
     
     render(){
-        const { visible, onCancel, onCreate, width, valueDetail } = this.props;
+        const { visible, onCancel, onCreate, width, valueDetail, data } = this.props;
+        console.log(this.props);
+        
         const listActioner = [{"src":"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}
         , {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}, {"src": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}];
 

@@ -2,7 +2,7 @@ import {homePageConstant} from '../constants/homePageConstant';
 import { requestApiAction } from './requestApiAction';
 
 const actionSetListPostHomePage = (payload) => ({
-    type: homePageConstant.SET_LIST_POST_HOME,
+    type: homePageConstant.SET_LIST_POST_HOME_PAGE,
     payload: {
         listPostHomePage: payload.listPostHomePage
     }

@@ -7,7 +7,9 @@ import {loginAction} from '../actions/loginAction';
 const mapStateToProps = (state) => ({
     isRegisterSuccess: state.registerReducer.isRegisterSuccess,
     isLoginSuccess: state.loginReducer.isLoginSuccess,
-    privateKey: state.accountReducer.privateKey
+    privateKey: state.accountReducer.privateKey,
+    publicKey: state.accountReducer.publicKey,
+    
 })
 
 const mapDispatchToProps = (dispatch) => ({

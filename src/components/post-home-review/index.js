@@ -6,6 +6,7 @@ import {typeActivity} from '../../config/typeActivity';
 import moment from 'moment';
 import axios from 'axios';
 import { baseURL } from '../../config/baseURL';
+import { Icon } from 'antd';
 
 const defReaction = ['', 'like', 'love', 'wow', 'haha', 'sad', 'angry'];
 class PostHomeReview extends Component {
@@ -19,7 +20,9 @@ class PostHomeReview extends Component {
  
         this.state = {
             visibleDetailPost: false,
-            listName
+            data: {},
+            listName,
+            ...this.props,
         };
     }
 
@@ -27,8 +30,33 @@ class PostHomeReview extends Component {
         this.requestName(this.state.listName);
     }
 
-    onViewDetailPost = () => {
-        this.showModalDetailPost();
+    onViewDetailPost = (_id) => {
+        console.log('id: ', _id + ' key: ', this.props.publicKey);
+        const request = {
+            method: 'get',
+            baseURL: baseURL.BASE_URL,
+            url: baseURL.URL.GET_DETAIL_POST,
+            params: {
+                hashTx: _id,
+                address: this.props.publicKey,
+                page: -1,
+                per_page: 10
+            }
+        };
+    
+        axios.request(request).then(res => {
+            const { status, data } = res.data;
+            
+            if (status.code === 0) {
+                console.log('data axios: ', data);
+                this.showModalDetailPost(data);
+            } else {
+                console.log('errrr');
+            }
+    
+        }).catch(err => {
+            console.log('err get detatil post: ', err)
+        })
     }
 
     //handle click in detal post
@@ -40,8 +68,11 @@ class PostHomeReview extends Component {
         this.setState({ visibleDetailPost: false });        
     }
 
-    showModalDetailPost = () => {
-        this.setState({ visibleDetailPost: true });
+    showModalDetailPost = (data) => {
+        this.setState({ 
+            visibleDetailPost: true,
+            data: data
+        });
     }
 
 
@@ -76,16 +107,19 @@ class PostHomeReview extends Component {
                 break;
             case typeActivity.FOLLOW:
                 listName.push(value.author);
-                listName = listName.concat(value.params.data);
-                break;
-            case typeActivity.UNFOLLOW:
-                console.log(value);
-                listName.push(value.author);
                 const realList = value.params.data.map((item) => {
                     return item.address;
                 });
+
+                listName = listName.concat(realList);
+                break;
+            case typeActivity.UNFOLLOW: 
+                listName.push(value.author);
+                const realList1 = value.params.data.map((item) => {
+                    return item.address;
+                });
  
-                listName = listName.concat(value.params.data.map);
+                listName = listName.concat(realList1);
                 break;
             default:
                 console.warn(value.type);
@@ -95,22 +129,6 @@ class PostHomeReview extends Component {
         return listName;
     }
 
-    renderPost = (content, userNameUser) => {
-        return(
-            <div>
-                <div className="header">
-                    <div className="name">
-                        {userNameUser}
-                    </div>
-                </div>
-                <div className="content">
-                {
-                    content.type === 1 ? content.text : content.content
-                }
-                </div>
-            </div>
-        )
-    }
     
     requestName = (addresses) => {
         const request = {
@@ -239,7 +257,7 @@ class PostHomeReview extends Component {
                     <div>
                         <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
                         <div className='content-post'>
-                            {value.params.content.text}
+                            {value.params.data}
                         </div>
                     </div>
                 )
@@ -248,7 +266,7 @@ class PostHomeReview extends Component {
                     <div>
                         <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
                         <span className='content'>posted with </span>
-                        <span style={{ color: "#00000" }} className='name'>{`${value.params.content.content.length} bytes`}</span>
+                        <span style={{ color: "#00000" }} className='name'>{`${value.params.data} bytes`}</span>
                         <span className='content'> and </span>
                         <span style={{ color: "#00000" }} className='name'>{`${value.params.keys.length} keys`}</span>
                     </div>
@@ -283,26 +301,27 @@ class PostHomeReview extends Component {
         }
     }
  
-    renderListName = (list, idxDisable) => {
-        return <div> {
-            list.map((item, index) => {
-                if (index !== idxDisable) {
-                    return <span style={{ color: "#1890ff" }} className='name' key={index}>{item}</span>;
-                }
- 
-                return <span style={{ color: "#1890ff" }} className='name' key={index}></span>;
-            })
-        }</div>;
-    }
- 
     renderUnfollow = (value) => {
         if (value.type === typeActivity.UNFOLLOW) {
             const { listName } = this.state;
- 
             return (
                 <div>
                     <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
-                    <span className='content'> unfollowed </span>
+                    <span className='content'> unfollow </span>
+                    {
+                        listName.map((item, index) => {
+                            if (index === listName.length - 1 && index !== -1) {
+                                return <span style={{ color: "#1890ff" }} className='name' key={index}>{` ${item}`}</span>;
+                            }
+ 
+                            if (index !== -1) {
+                                return <span style={{ color: "#1890ff" }} className='name' key={index}>{` ${item},`}</span>;
+                            }
+ 
+                            return null;
+                        })
+                    }
+ 
                 </div>
             );
         }
@@ -397,17 +416,58 @@ class PostHomeReview extends Component {
             default:
         }
     }
-
- 
+    
+    
+    handleClickIcon = (type) => {
+        console.log(type);
+        let {keys, _id, count} = this.state.value;
+        
+        const idReact = defReaction.indexOf(type);
+        
+        const reacted = keys.indexOf(type);
+        if (reacted !== -1) {
+            // transaction voi data = 0
+            // const request = {
+            //     method: 'get',
+            //     baseURL: baseURL.BASE_URL,
+            //     url: baseURL.URL.GET_NOTIFY,
+            //     params: {
+            //         address: publicKey,
+            //         page: -1,
+            //         per_page: 5
+            //     }
+            // };
+     
+            // axios.request(request).then(res => {
+            //     const { status, data } = res.data;
+            //     if (status.code !== 0) {
+            //         this.setState({
+            //             ...this.state,
+            //             isLoading: false
+            //         });
+            //     } else {
+            //         this.setState({
+            //             list: this.state.list.concat(data.list),
+            //             isLoading: false
+            //         });
+            //     }
+     
+            // });
+        }
+        else {
+            // data = idReact
+        }
+    }
 
     render() {
-        const {value, userNameUser, avatarUser} = this.props;
+        const {value, userNameUser, avatarUser, _id} = this.props;
         const time = moment(value.time).format(helpers.FORMAT_DATE);
-        console.log(value);
-
+        const keys = value.keys;
+        
         return (
             <div className="container-post-review">
                 <DetailPost 
+                    data={this.state.data}
                     valueDetail={value}
                     width={helpers.WIDTH_DETAIL_POST}
                     visible={this.state.visibleDetailPost}
@@ -418,7 +478,7 @@ class PostHomeReview extends Component {
 
 
                 <div className="post-review"
-                    onClick={() => this.onViewDetailPost()}
+                    onClick={() => this.onViewDetailPost(value._id)}
                 >
                     <div className="avatar">
                         <div className="avatar-img"
@@ -434,60 +494,102 @@ class PostHomeReview extends Component {
                             {time}
                         </div>
                         <div className="footer">
-                            <div className="item">
-                                <div className="icon love">
-                                </div>
-                                <div className="count">
-                                    {value.count.love}
-                                </div>
+                            <div className="item" onClick={() => this.handleClickIcon("love")}>
+                                {
+                                    (keys.indexOf("love") !== -1) ? 
+                                    <div className="icon loveSelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon love">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.love}
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div className="item" onClick={() => this.handleClickIcon("like")}>
+                                {
+                                    (keys.indexOf("like") !== -1) ? 
+                                    <div className="icon likeSelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon like">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.like}
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div className="item" onClick={() => this.handleClickIcon("angry")}>
+                                {
+                                    (keys.indexOf("angry") !== -1) ? 
+                                    <div className="icon angrySelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon angry">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.angry}
+                                        </div>
+                                    </div>
+                                }   
                             </div>
                             <div className="item">
-                                <div className="icon like">
-                                </div>
-                                <div className="count">
-                                    {value.count.like}
-                                </div>
+                                {
+                                    (keys.indexOf("comment") !== -1) ? 
+                                    <div className="icon commentSelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon comment">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.comment}
+                                        </div>
+                                    </div>
+                                } 
+                            </div>
+                            <div className="item" onClick={() => this.handleClickIcon("haha")}>
+                                {
+                                    (keys.indexOf("haha") !== -1) ? 
+                                    <div className="icon hahaSelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon haha">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.haha}
+                                        </div>
+                                    </div>
+                                } 
+                            </div>
+                            <div className="item" onClick={() => this.handleClickIcon("sad")}>
+                                {   
+                                    (keys.indexOf("sad") !== -1) ? 
+                                    <div className="icon sadSelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon sad">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.sad}
+                                        </div>
+                                    </div>
+                                } 
+                            </div>
+                            <div className="item" onClick={() => this.handleClickIcon("wow")}>
+                                {   
+                                    (keys.indexOf("wow") !== -1) ? 
+                                    <div className="icon wowSelection"/> : 
+                                    <div className='wrapper-icon'>
+                                        <div className="icon wow">
+                                        </div>
+                                        <div className="count">
+                                            {value.count.wow}
+                                        </div>
+                                    </div>
+                                } 
                             </div>
                             <div className="item">
-                                <div className="icon angry">
+                                <div className="icon others">
                                 </div>
                                 <div className="count">
-                                    {value.count.angry}
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon comment">
-                                </div>
-                                <div className="count">
-                                    {value.count.comment}
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon haha">
-                                </div>
-                                <div className="count">
-                                    {"ha"}
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon sad">
-                                </div>
-                                <div className="count">
-                                    {"sad"}
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon wow">
-                                </div>
-                                <div className="count">
-                                    {"wow"}
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon other">
-                                </div>
-                                <div className="count">
-                                    {"..."}
+                                    {value.count.others}
                                 </div>
                             </div>
                         </div>

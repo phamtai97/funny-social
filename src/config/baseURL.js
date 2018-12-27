@@ -14,5 +14,6 @@ export const baseURL = {
         GET_NOTIFY: '/api/get_notify',
         GET_LIST_ACCOUNT: '/api/get_list_account',
         GET_LIST_NEW_FEED: '/api/get_new_feeds',
+        GET_DETAIL_POST: '/api/get_detail_post',
     }
 }
