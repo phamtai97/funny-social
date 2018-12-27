@@ -69,10 +69,12 @@
 .post-review-wrapper .footer {
     display: flex;
     flex-direction: row;
+    height: 30px;
+    align-items: center;
 }
 
 .post-review-wrapper .footer .item {
-    width: 60px;
+    width: 70px;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -90,6 +92,66 @@
     background-position: 50%;
     background-repeat: no-repeat;
 }
+.post-review-wrapper .footer .item .hahaSelection{
+    background-image: url("../../images/icon-haha-hover.png");
+    width: 25px;
+}
+
+
+.post-review-wrapper .footer .item .haha{
+    background-image: url("../../images/icon-haha.png");
+    width: 25px;
+}
+
+.post-review-wrapper .footer .item .haha:hover{
+    background-image: url("../../images/icon-haha-hover.png");
+    width: 25px;
+}
+
+.post-review-wrapper .footer .item .sad{
+    background-image: url("../../images/icon-sad.png");
+    width: 25x;
+}
+
+.post-review-wrapper .footer .item .sadSelection{
+    background-image: url("../../images/icon-sad-hover.png");
+    width: 25px;
+}
+
+
+.post-review-wrapper .footer .item .sad:hover{
+    background-image: url("../../images/icon-sad-hover.png");
+    width: 25px;
+}
+
+.post-review-wrapper .footer .item .wow{
+    background-image: url("../../images/icon-wow.png");
+    width: 25px;
+}
+
+.post-review-wrapper .footer .item .wow:hover{
+    background-image: url("../../images/icon-wow-hover.png");
+    width: 25px;
+}
+
+.post-review-wrapper .footer .item .wowSelection{
+    background-image: url("../../images/icon-wow-hover.png");
+    width: 25px;
+}
+
+.post-review-wrapper .footer .item .others{
+    background-image: url("../../images/icon-others.png");
+    width: 25px;
+}
+
+/* .post-review-wrapper .footer .item .others:hover{
+    background-image: url("../../images/icon-wow.png");
+    width: 28px;
+} */
+
+.post-review-wrapper .footer .item .loveSelection {
+    background-image: url("../../images/love-icon-hover.png");
+}
 
 .post-review-wrapper .footer .item .love {
     background-image: url("../../images/love-icon.png");
@@ -103,6 +165,10 @@
     background-image: url("../../images/like-icon.png");
 }
 
+.post-review-wrapper .footer .item .likeSelection {
+    background-image: url("../../images/like-icon-hover.png");
+}
+
 .post-review-wrapper .footer .item .like:hover {
     background-image: url("../../images/like-icon-hover.png");
 }
@@ -111,6 +177,9 @@
     background-image: url("../../images/angry-icon.png");
 }
 
+.post-review-wrapper .footer .item .angrySelection {
+    background-image: url("../../images/angry-icon-hover.png");
+}
 
 .post-review-wrapper .footer .item .angry:hover {
     background-image: url("../../images/angry-icon-hover.png");
@@ -118,6 +187,10 @@
 
 .post-review-wrapper .footer .item .comment {
     background-image: url("../../images/comment-icon.png");
+}
+
+.post-review-wrapper .footer .item .commentSelection {
+    background-image: url("../../images/comment-icon-blue.png");
 }
 
 .post-review-wrapper .footer .item .comment:hover {
@@ -161,4 +234,14 @@
 .post-review-wrapper .wrapper-content .content-post{
     margin-top: 5px;
     font-size: 15px;
+}
+
+.item .icon_haha {
+}
+
+.footer .item .wrapper-icon{
+    display: flex;
+    flex-direction: row;
+    width: 80px;    
+    margin-left: 8px; 
 }

@@ -6,6 +6,7 @@ import {homePageAction} from '../actions/homePageAction';
 const mapStateToProps = (state) => ({
     newPostHomePage: state.homePageReducer.newPostHomePage,
     privateKey: state.accountReducer.privateKey,    
+    publicKey: state.accountReducer.publicKey,
 })
 
 const mapDispatchToProps = (dispatch) => ({

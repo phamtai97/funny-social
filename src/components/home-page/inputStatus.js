@@ -18,8 +18,7 @@ class InputStatus extends Component{
     handleClickFunnyBtn = () => {
         alert(this.state.status);
         const status = this.state.status;
-        const privateKey = this.props.privateKey;
-        const publicKey = 'GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO';
+        const {privateKey, publicKey} = this.props;
 
         axios.get(baseURL.BASE_URL + baseURL.URL.GET_SEQUENCE + publicKey).then((result) => {
             console.log('result sequence: ', result.data.data.sequence);

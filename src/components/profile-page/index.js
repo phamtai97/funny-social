@@ -6,7 +6,6 @@ import './profile-page.css';
 import ListFollower from '../list-follower';
 import { VIEW_POST, VIEW_FOLLOWING, VIEW_FOLLOWER } from '../../constants/profilePageConstant';
 import AccountBox from '../../containers/accountBox';
-import UserReview from '../user-review';
 import {baseURL} from '../../config/baseURL';
 import {withRouter} from "react-router-dom";
 
@@ -14,7 +13,8 @@ class ProfilePage extends Component {
     getContent = () => {
         const { view, actionGetListPostProfilePage, listPostProfilePage, avatarUser, userNameUser, 
             actionGetListFollowingProfilePage, listFollowingProfilePage, listFollowerProfilePage, actionGetListFollowerProfilePage } = this.props;
-
+        console.log(listPostProfilePage);
+        
         switch (view) {
             case VIEW_POST:
                 return <ListPost 
@@ -48,8 +48,8 @@ class ProfilePage extends Component {
             return null;
         }
     }
+
     componentWillMount = () => {
-        this.props.history.push('/');
         const privateKeyEncode = localStorage.getItem('privateKey');  
         const publicKeyEncode = localStorage.getItem('publicKey');
         if(privateKeyEncode && publicKeyEncode){

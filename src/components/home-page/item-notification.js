@@ -60,16 +60,21 @@ class ItemNotification extends Component {
                 break;
             case typeActivity.FOLLOW:
                 listName.push(value.source);
-                listName = listName.concat(value.params.data);
-                break;
-            case typeActivity.UNFOLLOW:
-                console.log(value);
-                listName.push(value.source);
+
                 const realList = value.params.data.map((item) => {
                     return item.address;
                 });
  
-                listName = listName.concat(value.params.data.map);
+                listName = listName.concat(realList);
+                break;
+            case typeActivity.UNFOLLOW:
+                console.log(value);
+                listName.push(value.source);
+                const realListUn = value.params.data.map((item) => {
+                    return item.address;
+                });
+ 
+                listName = listName.concat(realListUn);
                 break;
             default:
                 console.warn(value.type);
@@ -221,11 +226,17 @@ class ItemNotification extends Component {
     renderPost = (value) => {
         if (value.type === typeActivity.POST) {
             const { listName } = this.state;
+            let bytes = 0;
+            if (value.params.type === 1) {
+                bytes =  value.params.data.length;
+            } else {
+                bytes = value.params.data;
+            }
             return (
                 <div>
                     <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
                     <span className='content'>posted with </span>
-                    <span style={{ color: "#00000" }} className='name'>{`${value.params.content.text.length} bytes`}</span>
+                    <span style={{ color: "#00000" }} className='name'>{`${bytes} bytes`}</span>
                     <span className='content'> and </span>
                     <span style={{ color: "#00000" }} className='name'>{`${value.params.keys.length} keys`}</span>
                 </div>
@@ -259,26 +270,27 @@ class ItemNotification extends Component {
         }
     }
  
-    renderListName = (list, idxDisable) => {
-        return <div> {
-            list.map((item, index) => {
-                if (index !== idxDisable) {
-                    return <span style={{ color: "#1890ff" }} className='name' key={index}>{item}</span>;
-                }
- 
-                return <span style={{ color: "#1890ff" }} className='name' key={index}></span>;
-            })
-        }</div>;
-    }
- 
     renderUnfollow = (value) => {
         if (value.type === typeActivity.UNFOLLOW) {
             const { listName } = this.state;
- 
             return (
                 <div>
                     <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
-                    <span className='content'> unfollowed </span>
+                    <span className='content'> unfollow </span>
+                    {
+                        listName.map((item, index) => {
+                            if (index === listName.length - 1 && index !== -1) {
+                                return <span style={{ color: "#1890ff" }} className='name' key={index}>{` ${item}`}</span>;
+                            }
+ 
+                            if (index !== -1) {
+                                return <span style={{ color: "#1890ff" }} className='name' key={index}>{` ${item},`}</span>;
+                            }
+ 
+                            return null;
+                        })
+                    }
+ 
                 </div>
             );
         }
