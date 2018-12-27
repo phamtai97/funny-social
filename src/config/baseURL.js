@@ -12,6 +12,7 @@ export const baseURL = {
         GET_FOLLOWERS:'/api/get_followers?address=',
         GET_ACCOUNT_PARAMS: '/api/get_account',
         GET_NOTIFY: '/api/get_notify',
-        GET_LIST_ACCOUNT: '/api/get_list_account'
+        GET_LIST_ACCOUNT: '/api/get_list_account',
+        GET_LIST_NEW_FEED: '/api/get_new_feeds',
     }
 }

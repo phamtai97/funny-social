@@ -227,7 +227,7 @@ class ItemNotification extends Component {
                     <span className='content'>posted with </span>
                     <span style={{ color: "#00000" }} className='name'>{`${value.params.content.text.length} bytes`}</span>
                     <span className='content'> and </span>
-                    <span style={{ color: "#00000" }} className='name'>{`${value.params.keys.length} bytes`}</span>
+                    <span style={{ color: "#00000" }} className='name'>{`${value.params.keys.length} keys`}</span>
                 </div>
             );
         }

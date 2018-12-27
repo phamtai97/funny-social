@@ -24,26 +24,27 @@ class NotificationPage extends Component {
     }
     
     componentWillMount = () => {
-        this.props.history.push('/');
         const privateKeyEncode = localStorage.getItem('privateKey');  
         const publicKeyEncode = localStorage.getItem('publicKey');
         if(privateKeyEncode && publicKeyEncode){
-        const privateKeyDecode = atob(privateKeyEncode);
-        const publicKeyDecode = atob(publicKeyEncode);
-        let payload = {
-            isLoginSuccess: true
-        }
-        this.props.actionSetLoginSuccess(payload);
-        payload = {
-            privateKey: privateKeyDecode,
-            publicKey: publicKeyDecode
-        }
-        this.props.actionsSetPrivatrPublicKey(payload);
-        payload = {
-            url: baseURL.BASE_URL + baseURL.URL.GET_ACCOUNT + publicKeyDecode
-        } 
-        this.props.actionGetAccountUser(payload);
+            console.log('login')
+            const privateKeyDecode = atob(privateKeyEncode);
+            const publicKeyDecode = atob(publicKeyEncode);
+            let payload = {
+                isLoginSuccess: true
+            }
+            this.props.actionSetLoginSuccess(payload);
+            payload = {
+                privateKey: privateKeyDecode,
+                publicKey: publicKeyDecode
+            }
+            this.props.actionsSetPrivatrPublicKey(payload);
+            payload = {
+                url: baseURL.BASE_URL + baseURL.URL.GET_ACCOUNT + publicKeyDecode
+            } 
+            this.props.actionGetAccountUser(payload);
         }else {
+            console.log('logout')
             let payload = {
                 isLoginSuccess: false
             }

@@ -26,7 +26,7 @@ class PostHomeReview extends Component {
     componentDidMount() {
         this.requestName(this.state.listName);
     }
-    
+
     onViewDetailPost = () => {
         this.showModalDetailPost();
     }
@@ -233,15 +233,27 @@ class PostHomeReview extends Component {
     renderPost = (value) => {
         if (value.type === typeActivity.POST) {
             const { listName } = this.state;
-            return (
-                <div>
-                    <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
-                    <span className='content'>posted with </span>
-                    <span style={{ color: "#00000" }} className='name'>{`${value.params.content.text.length} bytes`}</span>
-                    <span className='content'> and </span>
-                    <span style={{ color: "#00000" }} className='name'>{`${value.params.keys.length} bytes`}</span>
-                </div>
-            );
+            // console.log('value: ', value);
+            if(value.params.type === 1){
+                return(
+                    <div>
+                        <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
+                        <div className='content-post'>
+                            {value.params.content.text}
+                        </div>
+                    </div>
+                )
+            }else{
+                return (
+                    <div>
+                        <span style={{ color: "#1890ff" }} className='name'>{listName[0]}</span>
+                        <span className='content'>posted with </span>
+                        <span style={{ color: "#00000" }} className='name'>{`${value.params.content.content.length} bytes`}</span>
+                        <span className='content'> and </span>
+                        <span style={{ color: "#00000" }} className='name'>{`${value.params.keys.length} keys`}</span>
+                    </div>
+                );
+            }
         }
     }
  
@@ -391,6 +403,7 @@ class PostHomeReview extends Component {
     render() {
         const {value, userNameUser, avatarUser} = this.props;
         const time = moment(value.time).format(helpers.FORMAT_DATE);
+        console.log(value);
 
         return (
             <div className="container-post-review">
@@ -425,35 +438,56 @@ class PostHomeReview extends Component {
                                 <div className="icon love">
                                 </div>
                                 <div className="count">
-                                    {value.cntLove}
+                                    {value.count.love}
                                 </div>
                             </div>
                             <div className="item">
                                 <div className="icon like">
                                 </div>
                                 <div className="count">
-                                    {value.cntLike}
+                                    {value.count.like}
                                 </div>
                             </div>
                             <div className="item">
                                 <div className="icon angry">
                                 </div>
                                 <div className="count">
-                                    {value.cntAngry}
+                                    {value.count.angry}
                                 </div>
                             </div>
                             <div className="item">
                                 <div className="icon comment">
                                 </div>
                                 <div className="count">
-                                    {value.cntCmt}
+                                    {value.count.comment}
                                 </div>
                             </div>
                             <div className="item">
-                                <div className="icon share">
+                                <div className="icon haha">
                                 </div>
                                 <div className="count">
-                                    {value.cntShare}
+                                    {"ha"}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon sad">
+                                </div>
+                                <div className="count">
+                                    {"sad"}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon wow">
+                                </div>
+                                <div className="count">
+                                    {"wow"}
+                                </div>
+                            </div>
+                            <div className="item">
+                                <div className="icon other">
+                                </div>
+                                <div className="count">
+                                    {"..."}
                                 </div>
                             </div>
                         </div>

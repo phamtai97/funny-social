@@ -5,6 +5,7 @@ import './list-post.css';
 import moment from 'moment';
 import helpers from '../../helpers/helpers';
 import axios from 'axios';
+import { baseURL } from '../../config/baseURL';
 
 var listPost = [];
 
@@ -159,13 +160,17 @@ listPost.push(objectFollowing);
 listPost.push(objectUnFollow);
 
 const value1 = {
-    "_id" : "007E9B3013E7C93396AE768B0BD49E5B60F30DD7A2683F47DD13B61B8EBA95E9",
-    "time" : 1544672518,
-    "author" : "GAKXVIL35CL7QRBFIAXCYMOAV4JKD3QDWGRYJRMSWNRJWX7RL726IAOF",
-    "type" : "payment",
+    "_id" : "008096CC174EF9A93F7274D88BDFF878AE56A5310763AC2CE8C4DB4280B86036",
+    "time" : 1545708287,
+    "author" : "GCZRPJNYGLR4VD3HROBGDUF4IIS32DAF5FNBRFRHUD4QCDE5ZKTEB37B",
+    "type" : "post",
     "params" : {
-        "address" : "GB73OPHUZC3RSDEU2LYV5T7MEAN2Q26HYQPDYIENGNBUHW5CXAQ6UJOO",
-        "amount" : 1
+        "type" : 1,
+        "content" : {
+            "type" : 1,
+            "text" : "Dù ai nói ngã nói nghiêng\nThì ta cũng vững như kiềng ba chân"
+        },
+        "keys" : []
     }
 }
 
@@ -177,8 +182,27 @@ class ListPost extends Component {
         }
     }
     componentDidMount = () => {
-        
+        const request = {
+            baseURL: baseURL.BASE_URL,
+            url: baseURL.URL.GET_LIST_NEW_FEED,
+            method: 'get',
+            params:{
+                address: 'GDMZJFJVTR4PWYGZJEHN2USXQSEXNKET4AWDIUNJX7ZE56PUCTEY5NOO',
+                page: -1,
+                per_page: 10
+            }
+        };
+
+        axios.request(request).then(result =>{
+            console.log(result);
+            this.setState({
+                listNewFeed: result.data.data.list
+            })
+        }).catch(err => {
+            console.log(err);
+        })
     }
+
     render() {
         const {listPostHomePage} = this.props;
         listPost = listPostHomePage.concat(listPost);
@@ -186,8 +210,8 @@ class ListPost extends Component {
             <div className="list-post">
                 <div className="list-post-container">
                     {
-                        listPost.map((value, index)=> {
-                            return <PostHomeReview key={index} value={value1}/>
+                        this.state.listNewFeed.map((value, index)=> {
+                            return <PostHomeReview key={index} value={value}/>
                         })
                     }
                 </div>

@@ -40,7 +40,7 @@
 }
 
 .search-bar{
-    margin-left: 23%; 
+    margin-left: 25%; 
 }
 
 .search-bar .ant-input-affix-wrapper .ant-input{
@@ -99,7 +99,7 @@
 }
 
 .header-wrapper .button-send-money{
-    margin-left: 15%;
+    margin-left: 20%;
 }
 
 .header-wrapper .button-send-money:hover{
