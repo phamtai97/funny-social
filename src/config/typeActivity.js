@@ -1,4 +1,4 @@
-const typeActivity = {
+export const typeActivity = {
     CREATE_ACCOUNT: 'create_account',
     POST: 'post',
     PAYMENT: 'payment',
