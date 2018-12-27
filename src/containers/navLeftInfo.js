@@ -14,6 +14,11 @@ const mapStateToProps = state => ({
     numberPost: state.accountReducer.numberPost,
 });
 
+
+
+
+
+
 const mapDispatchToProps = dispatch => ({
     onViewPost: () => dispatch(onViewPost()),
     onViewFollowing: () => dispatch(onViewFollowing()),
